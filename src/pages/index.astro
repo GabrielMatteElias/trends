@@ -1,258 +1,485 @@
 ---
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trends Brindes - Brindes Premium | Porto Alegre RS</title>
-    <meta name="description" content="Brindes premium com gravação laser. Squeeze, garrafas térmicas, mochilas. Entrega rápida RS.">
-    <meta name="keywords" content="brindes, premium, Porto Alegre">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-slate-50 text-slate-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trends Brindes - Brindes Premium | Porto Alegre RS</title>
+        <meta
+            name="description"
+            content="Brindes premium com gravação laser. Squeeze, garrafas térmicas, mochilas. Entrega rápida RS."
+        />
+        <meta name="keywords" content="brindes, premium, Porto Alegre" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style is:global>
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
 
-<div class="bg-emerald-900 text-white py-2 px-4 text-center text-sm font-medium">
-    🌾 ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O RIO GRANDE DO SUL 🌾
-</div>
+            .category-btn {
+                transition:
+                    background-color 180ms ease,
+                    border-color 180ms ease,
+                    color 180ms ease,
+                    box-shadow 180ms ease,
+                    transform 180ms ease;
+            }
 
-<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-emerald-900">Trends Brindes</h1>
-        <button id="cart-btn" class="fixed bottom-8 right-8 bg-red-700 hover:bg-red-800 text-white rounded-full w-14 h-14 flex items-center justify-center font-bold text-lg shadow-lg transition-all z-30" aria-label="Abrir sacola">
-            <span id="cart-count" class="bg-amber-400 text-emerald-900 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold absolute -top-2 -right-2">0</span>
-            🛒
-        </button>
-    </div>
-</header>
+            .category-btn:hover {
+                box-shadow: 0 10px 24px rgba(6, 78, 59, 0.18);
+                transform: translateY(-2px);
+            }
 
-<section class="bg-gradient-to-br from-emerald-900 to-emerald-700 text-white py-20 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl font-bold mb-6">A tendência de elevar sua marca para outro patamar.</h2>
-        <p class="text-xl text-emerald-100 mb-8">Valorize seus colaboradores, clientes e parceiros com brindes premium que contam histórias.</p>
-    </div>
-</section>
+            .category-btn.active {
+                box-shadow: 0 12px 28px rgba(6, 78, 59, 0.2);
+            }
 
-<section id="about" class="py-16 px-4 bg-white">
-    <div class="max-w-4xl mx-auto">
-        <h3 class="text-3xl font-bold text-emerald-900 mb-6">Quem Somos</h3>
-        <p class="text-lg text-slate-700 leading-relaxed">Trabalhamos com soluções criativas e sob medida. Nosso propósito é desenvolver algo diferente de brindes descartáveis: um item útil que permanece, circula e cria conexões diárias.</p>
-    </div>
-</section>
+            #products-grid {
+                transition:
+                    opacity 220ms ease,
+                    transform 220ms ease;
+            }
 
-<section id="products" class="py-16 px-4">
-    <div class="max-w-7xl mx-auto">
-        <h3 class="text-3xl font-bold text-emerald-900 mb-8 text-center">Catálogo de Produtos Premium</h3>
-        
-        <div class="mb-8 flex gap-4 flex-wrap justify-center">
-            <input type="text" id="search-input" placeholder="Buscar por nome ou código..." class="px-4 py-2 border border-slate-300 rounded-lg w-full max-w-sm">
+            #products-grid.is-filtering {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            .product-card {
+                animation: productFadeIn 320ms ease both;
+            }
+
+            @keyframes productFadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    <body
+        class="bg-slate-50 text-slate-900"
+        style="font-family: 'Plus Jakarta Sans', sans-serif;"
+    >
+        <div
+            class="bg-emerald-900 text-white py-2 px-4 text-center text-sm font-medium"
+        >
+            🌾 ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O
+            RIO GRANDE DO SUL 🌾
         </div>
 
-        <div class="flex gap-2 flex-wrap justify-center mb-8">
-            <button onclick="filterByCategory('all')" class="category-btn active px-4 py-2 rounded-lg bg-emerald-900 text-white font-bold" data-category="all">Todos</button>
-            <button onclick="filterByCategory('Bebidas & Térmicos')" class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900" data-category="Bebidas & Térmicos">Bebidas & Térmicos</button>
-            <button onclick="filterByCategory('Copos & Canecas')" class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900" data-category="Copos & Canecas">Copos & Canecas</button>
-            <button onclick="filterByCategory('Escritório')" class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900" data-category="Escritório">Escritório</button>
-            <button onclick="filterByCategory('Bolsas & Sacolas')" class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900" data-category="Bolsas & Sacolas">Bolsas & Sacolas</button>
-            <button onclick="filterByCategory('Linha Regional Gaúcha')" class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900" data-category="Linha Regional Gaúcha">Regional Gaúcha</button>
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+            <div
+                class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+            >
+                <h1 class="text-2xl font-bold text-emerald-900">
+                    Trends Brindes
+                </h1>
+            </div>
+        </header>
+
+        <section
+            class="bg-gradient-to-br from-emerald-900 to-emerald-700 text-white py-20 px-4"
+        >
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-5xl font-bold mb-6">
+                    A tendência de elevar sua marca para outro patamar.
+                </h2>
+                <p class="text-xl text-emerald-100 mb-8">
+                    Valorize seus colaboradores, clientes e parceiros com
+                    brindes premium que contam histórias.
+                </p>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 px-4 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-3xl font-bold text-emerald-900 mb-6">
+                    Quem Somos
+                </h3>
+                <p class="text-lg text-slate-700 leading-relaxed">
+                    Trabalhamos com soluções criativas e sob medida. Nosso
+                    propósito é desenvolver algo diferente de brindes
+                    descartáveis: um item útil que permanece, circula e cria
+                    conexões diárias.
+                </p>
+            </div>
+        </section>
+
+        <section id="products" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h3
+                    class="text-3xl font-bold text-emerald-900 mb-8 text-center"
+                >
+                    Catálogo de Produtos
+                </h3>
+
+                <div class="mb-8 flex gap-4 flex-wrap justify-center">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Buscar por nome ou código..."
+                        class="px-4 py-2 border border-slate-300 rounded-lg w-full max-w-sm"
+                    />
+                </div>
+
+                <div class="flex gap-2 flex-wrap justify-center mb-8">
+                    <button
+                        onclick="filterByCategory('all')"
+                        class="category-btn active px-4 py-2 rounded-lg bg-emerald-900 text-white font-bold"
+                        data-category="all">Todos</button
+                    >
+                    <button
+                        onclick="filterByCategory('Garrafas e Squeezes')"
+                        class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900"
+                        data-category="Garrafas e Squeezes"
+                        >Garrafas e Squeezes</button
+                    >
+                    <button
+                        onclick="filterByCategory('Copos e Canecas')"
+                        class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900"
+                        data-category="Copos e Canecas">Copos e Canecas</button
+                    >
+                    <button
+                        onclick="filterByCategory('Bolsas e Mochilas')"
+                        class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900"
+                        data-category="Bolsas e Mochilas"
+                        >Bolsas e Mochilas</button
+                    >
+                    <button
+                        onclick="filterByCategory('Bolsas Térmicas e Marmitas')"
+                        class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900"
+                        data-category="Bolsas Térmicas e Marmitas"
+                        >Bolsas Térmicas e Marmitas</button
+                    >
+                    <button
+                        onclick="filterByCategory('Materiais de Escritório')"
+                        class="category-btn px-4 py-2 rounded-lg border-2 border-emerald-900 text-emerald-900"
+                        data-category="Materiais de Escritório"
+                        >Materiais de Escritório</button
+                    >
+                </div>
+
+                <div
+                    id="products-grid"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                </div>
+            </div>
+        </section>
+
+        <div
+            id="quote-drawer"
+            class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"
+            onclick="if(event.target===this) closeQuoteDrawer()"
+        >
+            <div
+                class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col"
+            >
+                <div
+                    class="p-6 border-b border-slate-200 flex justify-between items-center"
+                >
+                    <h2 class="text-2xl font-bold text-emerald-900">
+                        Informações de Contato
+                    </h2>
+                    <button onclick="closeQuoteDrawer()" class="text-2xl"
+                        >&times;</button
+                    >
+                </div>
+                <div class="flex-1 overflow-y-auto p-6">
+                    <h3 class="font-bold text-emerald-900 mb-4">
+                        Entre em contato via WhatsApp
+                    </h3>
+                    <p class="text-slate-700 mb-6">
+                        Clique no botão abaixo para conversar com nosso
+                        atendimento no WhatsApp e tirar todas as suas dúvidas!
+                    </p>
+                </div>
+                <div class="p-6 border-t border-slate-200">
+                    <button
+                        class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2"
+                        onclick="openWhatsApp()">💬 WhatsApp</button
+                    >
+                </div>
+            </div>
         </div>
 
-        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        </div>
-    </div>
-</section>
+        <a
+            href="https://wa.me/5551984502907?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
+            target="_blank"
+            rel="noopener noreferrer"
+            id="whatsapp-btn"
+            class="fixed bottom-8 right-8 flex items-center justify-center transition-all z-30 hover:scale-110"
+            aria-label="Conversar via WhatsApp"
+            title="Fale conosco no WhatsApp"
+        >
+            <img src="/whatsapp.png" alt="WhatsApp" class="w-14 h-14" />
+        </a>
 
-<div id="quote-drawer" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" onclick="if(event.target===this) closeQuoteDrawer()">
-    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col">
-        <div class="p-6 border-b border-slate-200 flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-emerald-900">Sua Sacola</h2>
-            <button onclick="closeQuoteDrawer()" class="text-2xl">&times;</button>
-        </div>
-        <div id="quote-items" class="flex-1 overflow-y-auto p-6">
-        </div>
-        <div class="p-6 border-t border-slate-200">
-            <button class="w-full bg-red-700 hover:bg-red-800 text-white py-3 rounded-lg font-bold" onclick="sendWhatsAppQuote()">Enviar via WhatsApp</button>
-        </div>
-    </div>
-</div>
+        <script>
+            const products = [
+                {
+                    id: 1,
+                    code: "9139A",
+                    name: "Squeeze Alumínio 500ml",
+                    category: "Garrafas e Squeezes",
+                    description:
+                        "Squeeze de alumínio 500ml com gravação laser. Leve, durável e perfeito para manter suas bebidas em temperatura ambiente.",
+                    image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Prata", hex: "#C0C0C0", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#0000FF", image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 2,
+                    code: "18821",
+                    name: "Squeeze Inox 750ml",
+                    category: "Garrafas e Squeezes",
+                    description:
+                        "Squeeze em aço inoxidável 750ml com design moderno. Mantém bebidas frias por até 24 horas. Resistente e elegante.",
+                    image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Inox", hex: "#A8A9AD", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Branco", hex: "#FFFFFF", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 3,
+                    code: "19032",
+                    name: "Garrafa Térmica Premium 800ml",
+                    category: "Garrafas e Squeezes",
+                    description:
+                        "Garrafa térmica premium 800ml com isolamento duplo. Ideal para manter bebidas quentes ou frias durante o dia todo.",
+                    image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Vermelho", hex: "#FF0000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#0080FF", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 4,
+                    code: "18969",
+                    name: "Copo Térmico Flex 900ml",
+                    category: "Copos e Canecas",
+                    description:
+                        "Copo térmico flexível 900ml com design moderno. Confortável de segurar e com capacidade generosa para bebidas.",
+                    image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Verde", hex: "#008000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 5,
+                    code: "188178",
+                    name: "Caneca Térmica Max 1.2L",
+                    category: "Copos e Canecas",
+                    description:
+                        "Caneca térmica com capacidade 1.2L e sistema de fechamento seguro. Perfeita para café quente ou bebidas frias ao longo do dia.",
+                    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Branco", hex: "#FFFFFF", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Bege", hex: "#F5E6D3", image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 6,
+                    code: "CUIA-001",
+                    name: "Cuia Térmica em Inox Gaúcha",
+                    category: "Copos e Canecas",
+                    description:
+                        "Cuia tradicional gaúcha em inox com isolamento térmico. Mantém a temperatura do chimarrão perfeita. Presente cultural e funcional.",
+                    image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Sob encomenda",
+                    colors: [
+                        { name: "Inox", hex: "#A8A9AD", image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cobre", hex: "#B87333", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 7,
+                    code: "06099A",
+                    name: "Agenda Diária 2026 Linho Luxo",
+                    category: "Materiais de Escritório",
+                    description:
+                        "Agenda diária 2026 em capa de linho com gravação personalizada. Acessório profissional e elegante para organização pessoal.",
+                    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Marrom", hex: "#8B4513", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 8,
+                    code: "10998",
+                    name: "Kit Executivo Premium 3 Peças",
+                    category: "Materiais de Escritório",
+                    description:
+                        "Kit executivo com 3 peças premium: caneta, marker e lápis. Embalagem sofisticada, ideal para presentear executivos e parceiros.",
+                    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#000080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 9,
+                    code: "1329P",
+                    name: "Bolsa Térmica Oxford 7L",
+                    category: "Bolsas Térmicas e Marmitas",
+                    description:
+                        "Bolsa térmica Oxford com capacidade 7L e isolamento eficiente. Mantém alimentos e bebidas em temperatura ideal. Prática e durável.",
+                    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Vermelho", hex: "#DC143C", image: "https://images.unsplash.com/photo-1510307704987-b8f5070fc64d?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+                {
+                    id: 10,
+                    code: "14185",
+                    name: "Mochila Antifurto Inteligente 16L",
+                    category: "Bolsas e Mochilas",
+                    description:
+                        "Mochila com capacidade 16L, recursos antifurto e compartimentos organizados. Perfeita para trabalho, viagens ou uso diário.",
+                    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&h=300&q=80",
+                    availability: "Em estoque",
+                    colors: [
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#0066CC", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },
+            ];
 
-<script>
-const products = [
-  {
-    id: 1,
-    code: "9139A",
-    name: "Squeeze Alumínio 500ml",
-    image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 2,
-    code: "18821",
-    name: "Squeeze Inox 750ml",
-    image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 3,
-    code: "19032",
-    name: "Garrafa Térmica Premium 800ml",
-    image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 4,
-    code: "18969",
-    name: "Copo Térmico Flex 900ml",
-    image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 5,
-    code: "188178",
-    name: "Caneca Térmica Max 1.2L",
-    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 6,
-    code: "CUIA-001",
-    name: "Cuia Térmica em Inox Gaúcha",
-    image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 7,
-    code: "06099A",
-    name: "Agenda Diária 2026 Linho Luxo",
-    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 8,
-    code: "10998",
-    name: "Kit Executivo Premium 3 Peças",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 9,
-    code: "1329P",
-    name: "Bolsa Térmica Oxford 7L",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&h=300&q=80"
-  },
-  {
-    id: 10,
-    code: "14185",
-    name: "Mochila Antifurto Inteligente 16L",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&h=300&q=80"
-  }
-];
+            let activeCategory = "all";
+            let searchQuery = "";
+            let filterTransition;
 
-let quoteCart = JSON.parse(localStorage.getItem('quoteCart')) || [];
-
-function renderProducts(filtered = products) {
-    const grid = document.getElementById('products-grid');
-    grid.innerHTML = filtered.map(p => `
-        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all p-4 border border-slate-200">
+            function renderProducts(filtered = products) {
+                const grid = document.getElementById("products-grid");
+                grid.innerHTML = filtered
+                    .map(
+                        (p, index) => `
+        <a href="/product?id=${p.id}" class="product-card block bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 p-4 border border-slate-200 cursor-pointer hover:border-emerald-900 hover:-translate-y-1" style="animation-delay: ${index * 45}ms">
             <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" class="w-full h-48 object-cover rounded-md mb-4">
             <span class="text-xs text-amber-600 font-bold">Cód. ${p.code}</span>
             <h4 class="text-lg font-bold text-slate-900 mb-2">${p.name}</h4>
-            <p class="text-sm text-slate-600 mb-3">${p.description}</p>
-            <p class="text-xs text-slate-500 mb-4">📏 ${p.size}</p>
-            <button onclick="addToQuote(${p.id})" class="w-full bg-red-700 hover:bg-red-800 text-white py-2 rounded-lg font-bold">Adicionar ao Orçamento</button>
-        </div>
-    `).join('');
-}
-
-function filterByCategory(cat) {
-    document.querySelectorAll('.category-btn').forEach(b => {
-        b.classList.remove('bg-emerald-900', 'text-white');
-        b.classList.add('border-2', 'border-emerald-900', 'text-emerald-900');
-    });
-    event.target.classList.add('bg-emerald-900', 'text-white');
-    event.target.classList.remove('border-2', 'border-emerald-900', 'text-emerald-900');
-    const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
-    renderProducts(filtered);
-}
-
-function addToQuote(id) {
-    const product = products.find(p => p.id === id);
-    const existing = quoteCart.find(i => i.id === id);
-    if (existing) {
-        existing.qty++;
-    } else {
-        quoteCart.push({...product, qty: 1});
-    }
-    localStorage.setItem('quoteCart', JSON.stringify(quoteCart));
-    updateCartUI();
-}
-
-function updateQty(id, newQty) {
-    const item = quoteCart.find(i => i.id === id);
-    if (item) {
-        item.qty = Math.max(1, parseInt(newQty) || 1);
-        localStorage.setItem('quoteCart', JSON.stringify(quoteCart));
-        updateCartUI();
-    }
-}
-
-function removeFromQuote(id) {
-    quoteCart = quoteCart.filter(i => i.id !== id);
-    localStorage.setItem('quoteCart', JSON.stringify(quoteCart));
-    updateCartUI();
-}
-
-function updateCartUI() {
-    const total = quoteCart.reduce((sum, i) => sum + i.qty, 0);
-    document.getElementById('cart-count').textContent = total;
-    
-    const items = document.getElementById('quote-items');
-    if (quoteCart.length === 0) {
-        items.innerHTML = '<p class="text-slate-500">Nenhum item ainda</p>';
-    } else {
-        items.innerHTML = quoteCart.map(i => `
-            <div class="bg-slate-50 p-4 rounded-lg mb-4 border border-slate-200">
-                <p class="font-bold text-slate-900">${i.name}</p>
-                <p class="text-sm text-slate-600 mb-3">Cód. ${i.code}</p>
-                <div class="flex gap-2 items-center">
-                    <button onclick="updateQty(${i.id}, ${i.qty - 1})" class="bg-slate-300 px-2 py-1 rounded">−</button>
-                    <span class="w-8 text-center">${i.qty}</span>
-                    <button onclick="updateQty(${i.id}, ${i.qty + 1})" class="bg-slate-300 px-2 py-1 rounded">+</button>
-                    <button onclick="removeFromQuote(${i.id})" class="ml-auto text-red-600 text-sm font-bold">Remover</button>
-                </div>
+            <p class="text-sm text-slate-600 mb-3 line-clamp-2">${p.description}</p>
+            <div class="flex items-center justify-between">
+                <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full">${p.category}</span>
             </div>
-        `).join('');
-    }
-}
+        </a>
+    `,
+                    )
+                    .join("");
 
-function closeQuoteDrawer() {
-    document.getElementById('quote-drawer').classList.add('hidden');
-}
+                if (!filtered.length) {
+                    grid.innerHTML =
+                        '<div class="md:col-span-2 lg:col-span-3 text-center bg-white border border-slate-200 rounded-lg p-8 text-slate-600">Nenhum produto encontrado nesta categoria.</div>';
+                }
+            }
 
-function sendWhatsAppQuote() {
-    if (quoteCart.length === 0) {
-        alert('Carrinho vazio');
-        return;
-    }
-    const text = `Olá! Gostaria de solicitar orçamento:\n\n${quoteCart.map(i => `• ${i.name} (${i.code}) - ${i.qty}x`).join('\n')}\n\nObrigado!`;
-    const phone = '5151999830908';
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`);
-}
+            function getFilteredProducts() {
+                const normalizedQuery = searchQuery.trim().toLowerCase();
 
-document.getElementById('search-input').addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    const filtered = products.filter(p => 
-        p.name.toLowerCase().includes(query) || 
-        p.code.toLowerCase().includes(query)
-    );
-    renderProducts(filtered);
-});
+                return products.filter((product) => {
+                    const matchesCategory =
+                        activeCategory === "all" ||
+                        product.category === activeCategory;
+                    const matchesSearch =
+                        !normalizedQuery ||
+                        product.name.toLowerCase().includes(normalizedQuery) ||
+                        product.code.toLowerCase().includes(normalizedQuery);
 
-document.getElementById('cart-btn').addEventListener('click', () => {
-    document.getElementById('quote-drawer').classList.remove('hidden');
-});
+                    return matchesCategory && matchesSearch;
+                });
+            }
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeQuoteDrawer();
-});
+            function updateCategoryButtons() {
+                document.querySelectorAll(".category-btn").forEach((button) => {
+                    const isActive = button.dataset.category === activeCategory;
 
-renderProducts();
-updateCartUI();
-</script>
+                    button.classList.toggle("active", isActive);
+                    button.classList.toggle("bg-emerald-900", isActive);
+                    button.classList.toggle("text-white", isActive);
+                    button.classList.toggle("border-2", !isActive);
+                    button.classList.toggle("border-emerald-900", !isActive);
+                    button.classList.toggle("text-emerald-900", !isActive);
+                });
+            }
 
-</body>
+            function applyProductFilters() {
+                const grid = document.getElementById("products-grid");
+
+                clearTimeout(filterTransition);
+                grid.classList.add("is-filtering");
+
+                filterTransition = window.setTimeout(() => {
+                    renderProducts(getFilteredProducts());
+                    requestAnimationFrame(() => {
+                        grid.classList.remove("is-filtering");
+                    });
+                }, 180);
+            }
+
+            function filterByCategory(cat) {
+                activeCategory = cat;
+                updateCategoryButtons();
+                applyProductFilters();
+            }
+
+            window.filterByCategory = filterByCategory;
+
+            function closeQuoteDrawer() {
+                document.getElementById("quote-drawer").classList.add("hidden");
+            }
+
+            function openWhatsApp() {
+                window.open(
+                    "https://wa.me/5551984287099?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes.",
+                    "_blank",
+                );
+            }
+
+            document
+                .getElementById("search-input")
+                .addEventListener("input", (e) => {
+                    searchQuery = e.target.value;
+                    applyProductFilters();
+                });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeQuoteDrawer();
+            });
+
+            renderProducts();
+        </script>
+    </body>
 </html>
