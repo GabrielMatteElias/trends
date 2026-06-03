@@ -86,16 +86,11 @@
             <div
                 class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
             >
-                <a
-                    href="/"
-                    class="text-2xl font-bold text-emerald-900 hover:text-emerald-700 tracking-tight"
-                    >Trends<span class="text-amber-500">.</span> Brindes</a
-                >
+                <a href="/" class="text-2xl font-bold text-emerald-900 tracking-tight">
+                    <img src="/logo-trends.png" alt="Trends Brindes Logo" class="h-12 w-auto" />
+                </a>
                 <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-slate-700">
-                    <a href="/" class="hover:text-emerald-800 transition-colors">Catálogo</a>
-                    <a href="https://wa.me/5551984502907?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes." target="_blank" rel="noopener noreferrer" class="rounded-lg bg-amber-500 px-5 py-2.5 text-slate-950 transition-all hover:bg-amber-600">
-                        WhatsApp
-                    </a>
+                    <a href="/#products" class="hover:text-emerald-800 transition-colors">Catálogo</a>
                 </nav>
             </div>
         </header>
@@ -132,32 +127,21 @@
         </a>
 
         <script>
-            const products = [
+             const products = [
                 {
                     id: 1,
                     code: "9139A",
                     name: "Squeeze Alumínio 500ml",
                     category: "Garrafas e Squeezes",
                     description:
-                        "Squeeze de alumínio 500ml com gravação laser. Leve, durável e perfeito para manter suas bebidas em temperatura ambiente. Ideal para o dia a dia com conforto e praticidade.",
+                        "Squeeze de alumínio 500ml com gravação laser. Leve, durável e perfeito para manter suas bebidas em temperatura ambiente.",
+                    image: "/squeeze-preta.png",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Prata",
-                            hex: "#C0C0C0",
-                            image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Azul",
-                            hex: "#0000FF",
-                            image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Preto", hex: "#000000", image: "/squeeze-preta.png" },
+                        { name: "Prata", hex: "#C0C0C0", image: "/squeeze-prata.png" },
+                        { name: "Azul", hex: "#0000FF", image: "/squeeze-azul.png" },
+                    ]
                 },
                 {
                     id: 2,
@@ -165,20 +149,13 @@
                     name: "Squeeze Inox 750ml",
                     category: "Garrafas e Squeezes",
                     description:
-                        "Squeeze em aço inoxidável 750ml com design moderno. Mantém bebidas frias por até 24 horas. Resistente e elegante para uso contínuo.",
+                        "Squeeze em aço inoxidável 750ml com design moderno. Mantém bebidas frias por até 24 horas. Resistente e elegante.",
+                    image: "https://www.cdncloud.com.br/content/interfaces/cms/userfiles/pacotes_xbzbrindes/pack_202407181828472162/adicionais/squeeze-inox-750ml-5287-adic.jpg",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Inox",
-                            hex: "#A8A9AD",
-                            image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Branco",
-                            hex: "#FFFFFF",
-                            image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Inox", hex: "#A8A9AD", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Branco", hex: "#FFFFFF", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
                 {
                     id: 3,
@@ -186,25 +163,14 @@
                     name: "Garrafa Térmica Premium 800ml",
                     category: "Garrafas e Squeezes",
                     description:
-                        "Garrafa térmica premium 800ml com isolamento duplo. Ideal para manter bebidas quentes ou frias durante o dia todo com performance excepcional.",
+                        "Garrafa térmica premium 800ml com isolamento duplo. Ideal para manter bebidas quentes ou frias durante o dia todo.",
+                    image: "https://claraeletro.fbitsstatic.net/img/p/garrafa-termica-paramount-premium-4-0l-inox-73147/260532.jpg?w=800&h=800&v=202511061427",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Vermelho",
-                            hex: "#FF0000",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Azul",
-                            hex: "#0080FF",
-                            image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Vermelho", hex: "#FF0000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#0080FF", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
                 {
                     id: 4,
@@ -212,47 +178,14 @@
                     name: "Copo Térmico Flex 900ml",
                     category: "Copos e Canecas",
                     description:
-                        "Copo térmico flexível 900ml com design moderno. Confortável de segurar e com capacidade generosa para bebidas. Perfeito para viagens.",
+                        "Copo térmico flexível 900ml com design moderno. Confortável de segurar e com capacidade generosa para bebidas.",
+                    image: "https://lojassommer.cdn.magazord.com.br/img/2024/12/produto/2949/copo-mor-550.png?ims=fit-in/600x600/filters:fill(white)",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Verde",
-                            hex: "#008000",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Cinza",
-                            hex: "#808080",
-                            image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
-                },
-                {
-                    id: 5,
-                    code: "188178",
-                    name: "Caneca Térmica Max 1.2L",
-                    category: "Copos e Canecas",
-                    description:
-                        "Caneca térmica com capacidade 1.2L e sistema de fechamento seguro. Perfeita para café quente ou bebidas frias ao longo do dia.",
-                    availability: "Em estoque",
-                    colors: [
-                        {
-                            name: "Branco",
-                            hex: "#FFFFFF",
-                            image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Bege",
-                            hex: "#F5E6D3",
-                            image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
-                },
+                        { name: "Verde", hex: "#008000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
+                },                
                 {
                     id: 6,
                     code: "CUIA-001",
@@ -260,19 +193,12 @@
                     category: "Copos e Canecas",
                     description:
                         "Cuia tradicional gaúcha em inox com isolamento térmico. Mantém a temperatura do chimarrão perfeita. Presente cultural e funcional.",
+                    image: "https://acdn-us.mitiendanube.com/stores/002/566/450/products/6570eee904881de987775e7bd4ab2402-005583cc7b70b134c217519258752331-1024-1024.webp",
                     availability: "Sob encomenda",
                     colors: [
-                        {
-                            name: "Inox",
-                            hex: "#A8A9AD",
-                            image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Cobre",
-                            hex: "#B87333",
-                            image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Inox", hex: "#A8A9AD", image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cobre", hex: "#B87333", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
                 {
                     id: 7,
@@ -281,24 +207,13 @@
                     category: "Materiais de Escritório",
                     description:
                         "Agenda diária 2026 em capa de linho com gravação personalizada. Acessório profissional e elegante para organização pessoal.",
+                    image: "https://lnbbrindes.com.br/wp-content/uploads/2025/10/Agenda-Diaria-2026-Wire-O-25403-1759260740lnb-brindes-personalizados-Agenda-Diaria-2026-Wire-O-15336.jpg",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Cinza",
-                            hex: "#808080",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Marrom",
-                            hex: "#8B4513",
-                            image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Marrom", hex: "#8B4513", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
                 {
                     id: 8,
@@ -307,45 +222,27 @@
                     category: "Materiais de Escritório",
                     description:
                         "Kit executivo com 3 peças premium: caneta, marker e lápis. Embalagem sofisticada, ideal para presentear executivos e parceiros.",
+                    image: "https://papabrindes.com/uploads/91350b6fc75b562f17e6e962f6405ad8ab86fc8b.jpg",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Azul",
-                            hex: "#000080",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#000080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
                 {
                     id: 9,
                     code: "1329P",
-                    name: "Bolsa Térmica Oxford 7L",
+                    name: "Bolsa Térmica 7L",
                     category: "Bolsas Térmicas e Marmitas",
                     description:
-                        "Bolsa térmica Oxford com capacidade 7L e isolamento eficiente. Mantém alimentos e bebidas em temperatura ideal. Prática e durável.",
+                        "Bolsa térmica com capacidade 7L e isolamento eficiente. Mantém alimentos e bebidas em temperatura ideal. Prática e durável.",
+                    image: "https://cm3.com.br/wp-content/uploads/2023/04/BOLSA-TERMICA-7-LITROS-BRINDES-PERSONALIZADOS-CM3-BT307EC_0013_LOGO-CM3-simples-copy-122-copiar-58-1.jpg",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Cinza",
-                            hex: "#808080",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Vermelho",
-                            hex: "#DC143C",
-                            image: "https://images.unsplash.com/photo-1510307704987-b8f5070fc64d?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Vermelho", hex: "#DC143C", image: "https://images.unsplash.com/photo-1510307704987-b8f5070fc64d?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
                 {
                     id: 10,
@@ -354,24 +251,13 @@
                     category: "Bolsas e Mochilas",
                     description:
                         "Mochila com capacidade 16L, recursos antifurto e compartimentos organizados. Perfeita para trabalho, viagens ou uso diário.",
+                    image: "https://www.cdncloud.com.br/content/interfaces/cms/userfiles/pacotes_xbzbrindes/pack_202407181828472162/fotos003/mochila-de-nylon-17-litros-3427.jpg",
                     availability: "Em estoque",
                     colors: [
-                        {
-                            name: "Preto",
-                            hex: "#000000",
-                            image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Cinza",
-                            hex: "#808080",
-                            image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                        {
-                            name: "Azul",
-                            hex: "#0066CC",
-                            image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80",
-                        },
-                    ],
+                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Azul", hex: "#0066CC", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
+                    ]
                 },
             ];
 
@@ -479,13 +365,6 @@
                             >
                                             <img src="/whatsapp.png" alt="WhatsApp" class="h-6 w-6" />
                             Solicitar Informações via WhatsApp
-                            </a>
-
-                            <a
-                                href="/"
-                                class="mt-4 block w-full rounded-xl border border-slate-200 bg-white py-3 text-center font-bold text-slate-900 transition-all hover:bg-slate-50"
-                            >
-                                ← Voltar para Catálogo
                             </a>
                         </div>
                     </div>
