@@ -1,0 +1,53 @@
+---
+interface Props {
+    id: string;
+    nome: string;
+    codigo: string;
+    imagem: string;
+    categoria: string;
+    className?: string;
+}
+
+const { id, nome, codigo, imagem, categoria, className = "" } = Astro.props;
+---
+
+<button
+    class={`add-to-cart-btn bg-[#065F46] hover:bg-[#044e3a] text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46] outline-none ${className}`}
+    data-product={JSON.stringify({ id, nome, codigo, imagem, categoria })}
+    aria-label={`Adicionar ${nome} ao orçamento`}
+>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"
+        ></circle><path
+            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+        ></path></svg
+    >
+    Adicionar ao Carrinho
+</button>
+
+<script>
+    import { addToCart } from "./cartStore";
+
+    const buttons = document.querySelectorAll(".add-to-cart-btn");
+    buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const target = e.currentTarget as HTMLButtonElement;
+            const productData = JSON.parse(target.dataset.product || "{}");
+            addToCart(productData);
+
+            // Feedback visual simples
+            const originalText = target.innerHTML;
+            target.innerHTML = "Adicionado!";
+            setTimeout(() => (target.innerHTML = originalText), 2000);
+        });
+    });
+</script>

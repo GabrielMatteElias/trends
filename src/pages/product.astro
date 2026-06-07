@@ -1,5 +1,5 @@
 ---
-
+import CartDrawer from './CartDrawer.astro';
 ---
 
 <!doctype html>
@@ -119,7 +119,7 @@
             target="_blank"
             rel="noopener noreferrer"
             id="whatsapp-btn"
-            class="fixed bottom-8 right-8 flex items-center justify-center transition-all z-30 hover:scale-110"
+            class="fixed bottom-[90px] right-6 flex items-center justify-center transition-all z-30 hover:scale-110"
             aria-label="Conversar via WhatsApp"
             title="Fale conosco no WhatsApp"
         >
@@ -239,9 +239,9 @@
                     image: "https://cm3.com.br/wp-content/uploads/2023/04/BOLSA-TERMICA-7-LITROS-BRINDES-PERSONALIZADOS-CM3-BT307EC_0013_LOGO-CM3-simples-copy-122-copiar-58-1.jpg",
                     availability: "Em estoque",
                     colors: [
-                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Vermelho", hex: "#DC143C", image: "https://images.unsplash.com/photo-1510307704987-b8f5070fc64d?auto=format&fit=crop&w=600&h=500&q=80" },
+                        { name: "Cinza", hex: "#808080", image: "https://cm3.com.br/wp-content/uploads/2023/04/BOLSA-TERMICA-7-LITROS-BRINDES-PERSONALIZADOS-CM3-BT307EC_0013_LOGO-CM3-simples-copy-122-copiar-58-1.jpg" },
+                        { name: "Preto", hex: "#000000", image: "https://cm3.com.br/wp-content/uploads/2023/04/BOLSA-TERMICA-7-LITROS-BRINDES-PERSONALIZADOS-CM3-BT307EC_0013_LOGO-CM3-simples-copy-122-copiar-58-1.jpg" },
+                        { name: "Vermelho", hex: "#DC143C", image: "https://cm3.com.br/wp-content/uploads/2023/04/BOLSA-TERMICA-7-LITROS-BRINDES-PERSONALIZADOS-CM3-BT307EC_0013_LOGO-CM3-simples-copy-122-copiar-58-1.jpg" },
                     ]
                 },
                 {
@@ -260,6 +260,8 @@
                     ]
                 },
             ];
+
+            import { addToCart } from './cartStore';
 
             function getProductIdFromURL() {
                 const params = new URLSearchParams(window.location.search);
@@ -298,8 +300,13 @@
                     )
                     .join("");
 
-                const whatsappMessage = `Olá! Tenho interesse no produto: *${product.name}* (${product.code}). Gostaria de mais informações.`;
-                const whatsappLink = `https://wa.me/5551984287099?text=${encodeURIComponent(whatsappMessage)}`;
+                const productData = JSON.stringify({ 
+                    id: product.id, 
+                    nome: product.name, 
+                    codigo: product.code, 
+                    imagem: product.colors[0].image, 
+                    categoria: product.category 
+                });
 
                 container.innerHTML = `
                     <div class="space-y-6">
@@ -358,17 +365,26 @@
                                 </span>
                             </div>
 
-                            <a
-                                href="${whatsappLink}"
-                                target="_blank"
-                                class="flex w-full items-center justify-center gap-3 rounded-xl bg-amber-500 py-4 text-lg font-bold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 hover:bg-amber-600"
+                            <button
+                                id="add-to-cart-detail"
+                                data-product='${productData}'
+                                class="flex w-full items-center justify-center gap-3 rounded-xl bg-[#065F46] py-4 text-lg font-bold text-white shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5 hover:bg-[#047857] active:scale-[0.98] outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#065F46]"
                             >
-                                            <img src="/whatsapp.png" alt="WhatsApp" class="h-6 w-6" />
-                            Solicitar Informações via WhatsApp
-                            </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                Adicionar ao Carrinho
+                            </button>
                         </div>
                     </div>
                 `;
+
+                document.getElementById('add-to-cart-detail')?.addEventListener('click', (e) => {
+                    const btn = e.currentTarget as HTMLButtonElement;
+                    const data = JSON.parse(btn.dataset.product || '{}');
+                    addToCart(data);
+                    const originalHtml = btn.innerHTML;
+                    btn.innerText = "Adicionado!";
+                    setTimeout(() => btn.innerHTML = originalHtml, 2000);
+                });
 
                 window.currentProduct = product;
             }
@@ -381,7 +397,16 @@
                     return;
 
                 const mainImage = document.getElementById("main-image");
-                mainImage.src = window.currentProduct.colors[index].image;
+                const newImage = window.currentProduct.colors[index].image;
+                mainImage.src = newImage;
+
+                // Sincroniza a imagem no botão de adicionar ao carrinho para refletir a cor selecionada
+                const addToCartBtn = document.getElementById('add-to-cart-detail') as HTMLButtonElement;
+                if (addToCartBtn) {
+                    const data = JSON.parse(addToCartBtn.dataset.product || '{}');
+                    data.imagem = newImage;
+                    addToCartBtn.dataset.product = JSON.stringify(data);
+                }
 
                 const buttons = document.querySelectorAll(
                     "#colors-container button",
@@ -420,5 +445,7 @@
             updateHeaderState();
             renderProduct();
         </script>
+
+        <CartDrawer />
     </body>
 </html>
