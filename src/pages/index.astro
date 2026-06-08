@@ -1,5 +1,6 @@
 ---
 import { products } from "../data/products";
+import SpeedInsights from "@vercel/speed-insights/astro"
 
 const productsJson = JSON.stringify(products);
 ---
@@ -273,6 +274,8 @@ const productsJson = JSON.stringify(products);
         </style>
     </head>
     <body style="font-family: Plus Jakarta Sans, sans-serif;">
+        <SpeedInsights />
+
         <div
             class="bg-emerald-950 text-white py-3 px-4 text-center text-sm font-semibold tracking-wide"
         >
@@ -294,7 +297,7 @@ const productsJson = JSON.stringify(products);
                     <img
                         src="/logo-trends.png"
                         alt="Trends Brindes Logo"
-                        class="h-12 w-auto"
+                        class="h-12 w-18 object-contain"
                     />
                 </a>
 
