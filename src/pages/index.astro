@@ -1,4 +1,7 @@
 ---
+import { products } from "../data/products";
+
+const productsJson = JSON.stringify(products);
 ---
 
 <!doctype html>
@@ -14,10 +17,24 @@
         <meta name="keywords" content="brindes, premium, Porto Alegre" />
         <link rel="icon" type="image/png" href="/logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            rel="preload"
+            as="style"
             href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            />
+        </noscript>
         <style is:global>
             @tailwind base;
             @tailwind components;
@@ -41,7 +58,11 @@
             body {
                 color: var(--text);
                 background:
-                    radial-gradient(circle at top left, rgba(245, 158, 11, 0.1), transparent 28rem),
+                    radial-gradient(
+                        circle at top left,
+                        rgba(245, 158, 11, 0.1),
+                        transparent 28rem
+                    ),
                     var(--surface);
             }
 
@@ -117,16 +138,36 @@
 
             .featured-products {
                 background:
-                    radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05), transparent 30rem),
-                    radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05), transparent 30rem),
+                    radial-gradient(
+                        circle at 10% 20%,
+                        rgba(16, 185, 129, 0.05),
+                        transparent 30rem
+                    ),
+                    radial-gradient(
+                        circle at 90% 80%,
+                        rgba(245, 158, 11, 0.05),
+                        transparent 30rem
+                    ),
                     #ffffff;
             }
 
             .featured-marquee {
                 position: relative;
                 overflow: hidden;
-                -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-                mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+                -webkit-mask-image: linear-gradient(
+                    90deg,
+                    transparent,
+                    #000 8%,
+                    #000 92%,
+                    transparent
+                );
+                mask-image: linear-gradient(
+                    90deg,
+                    transparent,
+                    #000 8%,
+                    #000 92%,
+                    transparent
+                );
             }
 
             .featured-marquee + .featured-marquee {
@@ -194,7 +235,6 @@
                 from {
                     transform: translate3d(0, 0, 0);
                 }
-
                 to {
                     transform: translate3d(-50%, 0, 0);
                 }
@@ -204,7 +244,6 @@
                 from {
                     transform: translate3d(-50%, 0, 0);
                 }
-
                 to {
                     transform: translate3d(0, 0, 0);
                 }
@@ -215,7 +254,6 @@
                     opacity: 0;
                     transform: translateY(10px);
                 }
-
                 to {
                     opacity: 1;
                     transform: translateY(0);
@@ -227,7 +265,6 @@
                     opacity: 0;
                     transform: translateY(16px);
                 }
-
                 to {
                     opacity: 1;
                     transform: translateY(0);
@@ -236,22 +273,49 @@
         </style>
     </head>
     <body style="font-family: Plus Jakarta Sans, sans-serif;">
-        <div class="bg-emerald-950 text-white py-3 px-4 text-center text-sm font-semibold tracking-wide">
-            ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O RIO GRANDE DO SUL
+        <div
+            class="bg-emerald-950 text-white py-3 px-4 text-center text-sm font-semibold tracking-wide"
+        >
+            ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O RIO
+            GRANDE DO SUL
         </div>
 
-        <header id="site-header" class="site-header border-b border-transparent sticky top-0 z-40">
+        <header
+            id="site-header"
+            class="site-header border-b border-transparent sticky top-0 z-40"
+        >
             <div
                 class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
             >
-                <a href="/" class="text-2xl font-bold text-emerald-900 tracking-tight">
-                    <img src="/logo-trends.png" alt="Trends Brindes Logo" class="h-12 w-auto" />
+                <a
+                    href="/"
+                    class="text-2xl font-bold text-emerald-900 tracking-tight"
+                >
+                    <img
+                        src="/logo-trends.png"
+                        alt="Trends Brindes Logo"
+                        class="h-12 w-auto"
+                    />
                 </a>
 
-                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
-                    <a href="#products" class="hover:text-emerald-800 transition-colors">Catálogo</a>
-                    <a href="#about" class="hover:text-emerald-800 transition-colors">Quem Somos</a>
-                    <a href="#contact" class="hover:text-emerald-800 transition-colors">Contato</a>
+                <nav
+                    class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700"
+                >
+                    <a
+                        href="#products"
+                        class="hover:text-emerald-800 transition-colors"
+                        >Catálogo</a
+                    >
+                    <a
+                        href="#about"
+                        class="hover:text-emerald-800 transition-colors"
+                        >Quem Somos</a
+                    >
+                    <a
+                        href="#contact"
+                        class="hover:text-emerald-800 transition-colors"
+                        >Contato</a
+                    >
                 </nav>
 
                 <button
@@ -264,12 +328,34 @@
                 </button>
             </div>
 
-            <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4">
-                <nav class="flex flex-col gap-3 text-sm font-semibold text-slate-700">
-                    <a href="#products" onclick="toggleMobileMenu(false)" class="py-2">Catálogo</a>
-                    <a href="#about" onclick="toggleMobileMenu(false)" class="py-2">Quem Somos</a>
-                    <a href="#contact" onclick="toggleMobileMenu(false)" class="py-2">Contato</a>
-                    <a href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes." target="_blank" rel="noopener noreferrer" class="bg-amber-500 text-slate-950 px-5 py-3 rounded-lg text-center">
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4"
+            >
+                <nav
+                    class="flex flex-col gap-3 text-sm font-semibold text-slate-700"
+                >
+                    <a
+                        href="#products"
+                        onclick="toggleMobileMenu(false)"
+                        class="py-2">Catálogo</a
+                    >
+                    <a
+                        href="#about"
+                        onclick="toggleMobileMenu(false)"
+                        class="py-2">Quem Somos</a
+                    >
+                    <a
+                        href="#contact"
+                        onclick="toggleMobileMenu(false)"
+                        class="py-2">Contato</a
+                    >
+                    <a
+                        href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-amber-500 text-slate-950 px-5 py-3 rounded-lg text-center"
+                    >
                         WhatsApp
                     </a>
                 </nav>
@@ -279,51 +365,111 @@
         <section
             class="relative overflow-hidden bg-emerald-950 text-white px-4"
         >
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(245,158,11,0.22),transparent_24rem),radial-gradient(circle_at_85%_10%,rgba(16,185,129,0.18),transparent_22rem)]"></div>
-            <div class="relative max-w-7xl mx-auto py-16 lg:py-20 grid lg:grid-cols-[1.02fr_0.98fr] gap-12 items-center">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(245,158,11,0.22),transparent_24rem),radial-gradient(circle_at_85%_10%,rgba(16,185,129,0.18),transparent_22rem)]"
+            >
+            </div>
+            <div
+                class="relative max-w-7xl mx-auto py-16 lg:py-20 grid lg:grid-cols-[1.02fr_0.98fr] gap-12 items-center"
+            >
                 <div class="fade-up">
-                    <span class="inline-flex items-center rounded-full border border-emerald-300/25 bg-white/10 px-4 py-2 text-sm font-semibold text-emerald-50">
+                    <span
+                        class="inline-flex items-center rounded-full border border-emerald-300/25 bg-white/10 px-4 py-2 text-sm font-semibold text-emerald-50"
+                    >
                         Brindes corporativos personalizados
                     </span>
-                    <h1 class="mt-6 font-bold tracking-tight" style="font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.98;">
+                    <h1
+                        class="mt-6 font-bold tracking-tight"
+                        style="font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.98;"
+                    >
                         Sua marca nas mãos dos seus clientes.
                     </h1>
-                    <p class="mt-6 max-w-2xl text-emerald-50" style="font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.65;">
-                        Brindes corporativos personalizados para empresas, eventos e campanhas promocionais.
+                    <p
+                        class="mt-6 max-w-2xl text-emerald-50"
+                        style="font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.65;"
+                    >
+                        Brindes corporativos personalizados para empresas,
+                        eventos e campanhas promocionais.
                     </p>
                     <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                        <a href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20Trends%20Brindes." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-amber-500 px-6 py-3 font-bold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 hover:bg-amber-600">
+                        <a
+                            href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20Trends%20Brindes."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center rounded-lg bg-amber-500 px-6 py-3 font-bold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 hover:bg-amber-600"
+                        >
                             Solicitar Orçamento
                         </a>
-                        <a href="#products" class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/10 px-6 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white/15">
+                        <a
+                            href="#products"
+                            class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/10 px-6 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white/15"
+                        >
                             Ver Catálogo
                         </a>
                     </div>
                     <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="rounded-lg border border-white/10 bg-white/10 p-4">
-                            <strong class="block text-2xl text-amber-300">+500</strong>
-                            <span class="text-sm text-emerald-50">produtos</span>
+                        <div
+                            class="rounded-lg border border-white/10 bg-white/10 p-4"
+                        >
+                            <strong class="block text-2xl text-amber-300"
+                                >+500</strong
+                            >
+                            <span class="text-sm text-emerald-50">produtos</span
+                            >
                         </div>
-                        <div class="rounded-lg border border-white/10 bg-white/10 p-4">
-                            <strong class="block text-2xl text-amber-300">Pro</strong>
-                            <span class="text-sm text-emerald-50">personalização</span>
+                        <div
+                            class="rounded-lg border border-white/10 bg-white/10 p-4"
+                        >
+                            <strong class="block text-2xl text-amber-300"
+                                >Pro</strong
+                            >
+                            <span class="text-sm text-emerald-50"
+                                >personalização</span
+                            >
                         </div>
-                        <div class="rounded-lg border border-white/10 bg-white/10 p-4">
-                            <strong class="block text-2xl text-amber-300">RS</strong>
-                            <span class="text-sm text-emerald-50">entrega ágil</span>
+                        <div
+                            class="rounded-lg border border-white/10 bg-white/10 p-4"
+                        >
+                            <strong class="block text-2xl text-amber-300"
+                                >RS</strong
+                            >
+                            <span class="text-sm text-emerald-50"
+                                >entrega ágil</span
+                            >
                         </div>
                     </div>
                 </div>
 
                 <div class="fade-up relative">
-                    <div class="absolute -inset-4 rounded-[2rem] bg-amber-400/10 blur-2xl"></div>
+                    <div
+                        class="absolute -inset-4 rounded-[2rem] bg-amber-400/10 blur-2xl"
+                    >
+                    </div>
                     <div class="relative grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=620&h=760&q=80" alt="Garrafa térmica personalizada" class="col-span-1 h-72 sm:h-96 w-full rounded-2xl object-cover shadow-2xl" />
+                        <img
+                            src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=620&h=760&q=80"
+                            alt="Garrafa térmica personalizada"
+                            class="col-span-1 h-72 sm:h-96 w-full rounded-2xl object-cover shadow-2xl"
+                        />
                         <div class="grid gap-4 pt-8">
-                            <img src="https://www.guiadosbrindes.com.br/brindes/uploads/produtos/grande/mochilas-e-malas/e@07026-mochila-premium-multifuncional-35-litros-3444717436.webp" alt="Mochila corporativa" class="h-40 sm:h-52 w-full rounded-2xl object-cover shadow-xl" />
-                            <div class="rounded-2xl border border-white/10 bg-white/95 p-5 text-slate-900 shadow-xl">
-                                <span class="text-xs font-bold uppercase tracking-wide text-amber-600">Premium</span>
-                                <p class="mt-2 text-sm font-semibold text-slate-700">Produtos úteis, bonitos e prontos para levar sua marca mais longe.</p>
+                            <img
+                                src="https://www.guiadosbrindes.com.br/brindes/uploads/produtos/grande/mochilas-e-malas/e@07026-mochila-premium-multifuncional-35-litros-3444717436.webp"
+                                alt="Mochila corporativa"
+                                class="h-40 sm:h-52 w-full rounded-2xl object-cover shadow-xl"
+                            />
+                            <div
+                                class="rounded-2xl border border-white/10 bg-white/95 p-5 text-slate-900 shadow-xl"
+                            >
+                                <span
+                                    class="text-xs font-bold uppercase tracking-wide text-amber-600"
+                                    >Premium</span
+                                >
+                                <p
+                                    class="mt-2 text-sm font-semibold text-slate-700"
+                                >
+                                    Produtos úteis, bonitos e prontos para levar
+                                    sua marca mais longe.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -331,63 +477,122 @@
             </div>
         </section>
 
-        <section id="featured-products" class="featured-products relative overflow-hidden py-16 px-4 md:py-20">
-            <div class="absolute inset-x-0 top-8 h-24 bg-amber-300/10 blur-3xl"></div>
-            <div class="absolute bottom-6 right-0 h-36 w-36 rounded-full bg-emerald-700/10 blur-3xl"></div>
+        <section
+            id="featured-products"
+            class="featured-products relative overflow-hidden py-16 px-4 md:py-20"
+        >
+            <div class="absolute inset-x-0 top-8 h-24 bg-amber-300/10 blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-6 right-0 h-36 w-36 rounded-full bg-emerald-700/10 blur-3xl"
+            >
+            </div>
 
             <div class="relative mx-auto max-w-7xl">
                 <div class="mx-auto max-w-3xl text-center">
-                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/80">Vitrine</span>
+                    <span
+                        class="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/80"
+                        >Vitrine</span
+                    >
                     <h2 class="section-title mt-3 font-bold text-emerald-950">
                         Produtos em Destaque
                     </h2>
                     <p class="body-copy mt-4 text-slate-500 max-w-xl mx-auto">
-                        Conheça alguns dos brindes que ajudam empresas a fortalecer sua marca todos os dias.
+                        Conheça alguns dos brindes que ajudam empresas a
+                        fortalecer sua marca todos os dias.
                     </p>
                 </div>
 
-                <div class="mt-8 md:mt-12" aria-label="Produtos em destaque em movimento contínuo">
+                <div
+                    class="mt-8 md:mt-12"
+                    aria-label="Produtos em destaque em movimento contínuo"
+                >
                     <div class="featured-marquee featured-row-right">
                         <div id="featured-row-top" class="featured-track"></div>
                     </div>
                     <div class="featured-marquee featured-row-left">
-                        <div id="featured-row-bottom" class="featured-track"></div>
+                        <div id="featured-row-bottom" class="featured-track">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="py-20 px-4 bg-white">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
+            <div
+                class="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start"
+            >
                 <div>
-                    <span class="text-sm font-bold uppercase tracking-wide text-amber-600">Quem Somos</span>
+                    <span
+                        class="text-sm font-bold uppercase tracking-wide text-amber-600"
+                        >Quem Somos</span
+                    >
                     <h2 class="section-title mt-3 font-bold text-emerald-950">
                         Brindes com estratégia, acabamento e presença.
                     </h2>
                     <p class="body-copy mt-6 text-slate-600 leading-relaxed">
-                        Trabalhamos com soluções criativas e sob medida. Nosso propósito é desenvolver algo diferente de brindes descartáveis: um item útil que permanece, circula e cria conexões diárias.
+                        Trabalhamos com soluções criativas e sob medida. Nosso
+                        propósito é desenvolver algo diferente de brindes
+                        descartáveis: um item útil que permanece, circula e cria
+                        conexões diárias.
                     </p>
                 </div>
                 <div class="grid sm:grid-cols-2 gap-4">
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                        <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-100 text-emerald-900">✦</span>
-                        <h3 class="font-bold text-slate-950">Personalização Exclusiva</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Gravação e acabamento pensados para valorizar a identidade da sua marca.</p>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+                    >
+                        <span
+                            class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-100 text-emerald-900"
+                            >✦</span
+                        >
+                        <h3 class="font-bold text-slate-950">
+                            Personalização Exclusiva
+                        </h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Gravação e acabamento pensados para valorizar a
+                            identidade da sua marca.
+                        </p>
                     </div>
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                        <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-100 text-emerald-900">RS</span>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+                    >
+                        <span
+                            class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-100 text-emerald-900"
+                            >RS</span
+                        >
                         <h3 class="font-bold text-slate-950">Produção Local</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Atendimento próximo e logística rápida para empresas do Rio Grande do Sul.</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Atendimento próximo e logística rápida para empresas
+                            do Rio Grande do Sul.
+                        </p>
                     </div>
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                        <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-700">↗</span>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+                    >
+                        <span
+                            class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-700"
+                            >↗</span
+                        >
                         <h3 class="font-bold text-slate-950">Entrega Ágil</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Fluxo comercial objetivo para campanhas, eventos e demandas corporativas.</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Fluxo comercial objetivo para campanhas, eventos e
+                            demandas corporativas.
+                        </p>
                     </div>
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                        <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-700">+</span>
-                        <h3 class="font-bold text-slate-950">Grande Variedade</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Garrafas, canecas, mochilas, bolsas, kits e materiais de escritório.</p>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+                    >
+                        <span
+                            class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-700"
+                            >+</span
+                        >
+                        <h3 class="font-bold text-slate-950">
+                            Grande Variedade
+                        </h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Garrafas, canecas, mochilas, bolsas, kits e
+                            materiais de escritório.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -396,27 +601,54 @@
         <section class="py-20 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="max-w-2xl">
-                    <span class="text-sm font-bold uppercase tracking-wide text-amber-600">Diferenciais</span>
+                    <span
+                        class="text-sm font-bold uppercase tracking-wide text-amber-600"
+                        >Diferenciais</span
+                    >
                     <h2 class="section-title mt-3 font-bold text-emerald-950">
                         Por que escolher a Trends?
                     </h2>
                 </div>
                 <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-                        <h3 class="font-bold text-slate-950">Personalização Profissional</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Brindes com acabamento comercial e percepção de valor.</p>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
+                        <h3 class="font-bold text-slate-950">
+                            Personalização Profissional
+                        </h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Brindes com acabamento comercial e percepção de
+                            valor.
+                        </p>
                     </div>
-                    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-                        <h3 class="font-bold text-slate-950">Atendimento Especializado</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Curadoria para escolher o produto certo para sua campanha.</p>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
+                        <h3 class="font-bold text-slate-950">
+                            Atendimento Especializado
+                        </h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Curadoria para escolher o produto certo para sua
+                            campanha.
+                        </p>
                     </div>
-                    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
                         <h3 class="font-bold text-slate-950">Produção Local</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Mais proximidade, previsibilidade e agilidade no atendimento.</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Mais proximidade, previsibilidade e agilidade no
+                            atendimento.
+                        </p>
                     </div>
-                    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
                         <h3 class="font-bold text-slate-950">Entrega Ágil</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Operação preparada para empresas, eventos e ações promocionais.</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Operação preparada para empresas, eventos e ações
+                            promocionais.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -425,18 +657,25 @@
         <section id="products" class="py-20 px-4 bg-white">
             <div class="max-w-7xl mx-auto">
                 <div class="mx-auto max-w-3xl text-center">
-                    <span class="text-sm font-bold uppercase tracking-wide text-amber-600">Catálogo</span>
+                    <span
+                        class="text-sm font-bold uppercase tracking-wide text-amber-600"
+                        >Catálogo</span
+                    >
                     <h2 class="section-title mt-3 font-bold text-emerald-950">
                         Produtos para campanhas que precisam ser lembradas.
                     </h2>
                     <p class="body-copy mt-4 text-slate-600">
-                        Busque por nome ou código e filtre por categoria para encontrar o brinde ideal.
+                        Busque por nome ou código e filtre por categoria para
+                        encontrar o brinde ideal.
                     </p>
                 </div>
 
                 <div class="mt-10 mb-6 flex justify-center">
                     <label class="relative w-full max-w-xl">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">⌕</span>
+                        <span
+                            class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+                            >⌕</span
+                        >
                         <input
                             type="text"
                             id="search-input"
@@ -448,41 +687,44 @@
                 </div>
 
                 <div class="-mx-4 mb-10 overflow-x-auto px-4 pb-2">
-                    <div class="flex min-w-max gap-2 md:min-w-0 md:flex-wrap md:justify-center">
-                    <button
-                        onclick="filterByCategory('all')"
-                        class="category-btn active px-4 py-2.5 rounded-full bg-emerald-900 text-white font-bold"
-                        data-category="all">Todos</button
+                    <div
+                        class="flex min-w-max gap-2 md:min-w-0 md:flex-wrap md:justify-center"
                     >
-                    <button
-                        onclick="filterByCategory('Garrafas e Squeezes')"
-                        class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                        data-category="Garrafas e Squeezes"
-                        >Garrafas e Squeezes</button
-                    >
-                    <button
-                        onclick="filterByCategory('Copos e Canecas')"
-                        class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                        data-category="Copos e Canecas">Copos e Canecas</button
-                    >
-                    <button
-                        onclick="filterByCategory('Bolsas e Mochilas')"
-                        class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                        data-category="Bolsas e Mochilas"
-                        >Bolsas e Mochilas</button
-                    >
-                    <button
-                        onclick="filterByCategory('Bolsas Térmicas e Marmitas')"
-                        class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                        data-category="Bolsas Térmicas e Marmitas"
-                        >Bolsas Térmicas e Marmitas</button
-                    >
-                    <button
-                        onclick="filterByCategory('Materiais de Escritório')"
-                        class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                        data-category="Materiais de Escritório"
-                        >Materiais de Escritório</button
-                    >
+                        <button
+                            onclick="filterByCategory('all')"
+                            class="category-btn active px-4 py-2.5 rounded-full bg-emerald-900 text-white font-bold"
+                            data-category="all">Todos</button
+                        >
+                        <button
+                            onclick="filterByCategory('Garrafas e Squeezes')"
+                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
+                            data-category="Garrafas e Squeezes"
+                            >Garrafas e Squeezes</button
+                        >
+                        <button
+                            onclick="filterByCategory('Copos e Canecas')"
+                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
+                            data-category="Copos e Canecas"
+                            >Copos e Canecas</button
+                        >
+                        <button
+                            onclick="filterByCategory('Bolsas e Mochilas')"
+                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
+                            data-category="Bolsas e Mochilas"
+                            >Bolsas e Mochilas</button
+                        >
+                        <button
+                            onclick="filterByCategory('Bolsas Térmicas e Marmitas')"
+                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
+                            data-category="Bolsas Térmicas e Marmitas"
+                            >Bolsas Térmicas e Marmitas</button
+                        >
+                        <button
+                            onclick="filterByCategory('Materiais de Escritório')"
+                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
+                            data-category="Materiais de Escritório"
+                            >Materiais de Escritório</button
+                        >
                     </div>
                 </div>
 
@@ -496,40 +738,90 @@
 
         <section class="py-20 px-4">
             <div class="max-w-7xl mx-auto">
-                <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-center">
+                <div
+                    class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-center"
+                >
                     <div>
-                        <span class="text-sm font-bold uppercase tracking-wide text-amber-600">Prova social</span>
-                        <h2 class="section-title mt-3 font-bold text-emerald-950">
+                        <span
+                            class="text-sm font-bold uppercase tracking-wide text-amber-600"
+                            >Prova social</span
+                        >
+                        <h2
+                            class="section-title mt-3 font-bold text-emerald-950"
+                        >
                             Empresas que confiam na Trends
                         </h2>
-                        <p class="body-copy mt-4 text-slate-600 leading-relaxed">
-                            Projetos corporativos com curadoria de produtos, atendimento próximo e foco em entrega profissional.
+                        <p
+                            class="body-copy mt-4 text-slate-600 leading-relaxed"
+                        >
+                            Projetos corporativos com curadoria de produtos,
+                            atendimento próximo e foco em entrega profissional.
                         </p>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                            <strong class="block text-2xl text-emerald-900">+500</strong>
-                            <span class="text-xs font-semibold text-slate-500">produtos</span>
+                        <div
+                            class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+                        >
+                            <strong class="block text-2xl text-emerald-900"
+                                >+500</strong
+                            >
+                            <span class="text-xs font-semibold text-slate-500"
+                                >produtos</span
+                            >
                         </div>
-                        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                            <strong class="block text-2xl text-emerald-900">+100</strong>
-                            <span class="text-xs font-semibold text-slate-500">projetos</span>
+                        <div
+                            class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+                        >
+                            <strong class="block text-2xl text-emerald-900"
+                                >+100</strong
+                            >
+                            <span class="text-xs font-semibold text-slate-500"
+                                >projetos</span
+                            >
                         </div>
-                        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                            <strong class="block text-2xl text-emerald-900">B2B</strong>
-                            <span class="text-xs font-semibold text-slate-500">atendimento</span>
+                        <div
+                            class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+                        >
+                            <strong class="block text-2xl text-emerald-900"
+                                >B2B</strong
+                            >
+                            <span class="text-xs font-semibold text-slate-500"
+                                >atendimento</span
+                            >
                         </div>
-                        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                            <strong class="block text-2xl text-emerald-900">RS</strong>
-                            <span class="text-xs font-semibold text-slate-500">entrega</span>
+                        <div
+                            class="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+                        >
+                            <strong class="block text-2xl text-emerald-900"
+                                >RS</strong
+                            >
+                            <span class="text-xs font-semibold text-slate-500"
+                                >entrega</span
+                            >
                         </div>
                     </div>
                 </div>
                 <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400">Empresa Parceira</div>
-                    <div class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400">Cliente Corporate</div>
-                    <div class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400">Evento RS</div>
-                    <div class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400">Campanha B2B</div>
+                    <div
+                        class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400"
+                    >
+                        Empresa Parceira
+                    </div>
+                    <div
+                        class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400"
+                    >
+                        Cliente Corporate
+                    </div>
+                    <div
+                        class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400"
+                    >
+                        Evento RS
+                    </div>
+                    <div
+                        class="rounded-xl border border-dashed border-slate-300 bg-white/70 p-6 text-center font-bold text-slate-400"
+                    >
+                        Campanha B2B
+                    </div>
                 </div>
             </div>
         </section>
@@ -537,26 +829,54 @@
         <footer id="contact" class="bg-emerald-950 px-4 py-14 text-white">
             <div class="max-w-7xl mx-auto grid gap-10 md:grid-cols-4">
                 <div>
-                    <h2 class="text-2xl font-bold">Trends<span class="text-amber-400">.</span> Brindes</h2>
-                    <p class="mt-4 text-sm leading-6 text-emerald-50">Brindes corporativos personalizados com aparência premium e atendimento próximo.</p>
+                    <h2 class="text-2xl font-bold">
+                        Trends<span class="text-amber-400">.</span> Brindes
+                    </h2>
+                    <p class="mt-4 text-sm leading-6 text-emerald-50">
+                        Brindes corporativos personalizados com aparência
+                        premium e atendimento próximo.
+                    </p>
                 </div>
                 <div>
                     <h3 class="font-bold text-amber-300">Empresa</h3>
-                    <a href="#about" class="mt-4 block text-sm text-emerald-50 hover:text-white">Quem Somos</a>
-                    <a href="#products" class="mt-2 block text-sm text-emerald-50 hover:text-white">Catálogo</a>
+                    <a
+                        href="#about"
+                        class="mt-4 block text-sm text-emerald-50 hover:text-white"
+                        >Quem Somos</a
+                    >
+                    <a
+                        href="#products"
+                        class="mt-2 block text-sm text-emerald-50 hover:text-white"
+                        >Catálogo</a
+                    >
                 </div>
                 <div>
                     <h3 class="font-bold text-amber-300">Categorias</h3>
-                    <p class="mt-4 text-sm text-emerald-50">Garrafas, Squeezes, Canecas, Bolsas, Mochilas e Escritório.</p>
+                    <p class="mt-4 text-sm text-emerald-50">
+                        Garrafas, Squeezes, Canecas, Bolsas, Mochilas e
+                        Escritório.
+                    </p>
                 </div>
                 <div>
                     <h3 class="font-bold text-amber-300">Contato</h3>
-                    <a href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes." target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950 hover:bg-amber-600">WhatsApp</a>
-                    <p class="mt-4 text-sm text-emerald-50">Instagram: @trendsbrindes</p>
-                    <p class="mt-1 text-sm text-emerald-50">Email: contato@trendsbrindes.com.br</p>
+                    <a
+                        href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 inline-flex rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950 hover:bg-amber-600"
+                        >WhatsApp</a
+                    >
+                    <p class="mt-4 text-sm text-emerald-50">
+                        Instagram: @trendsbrindes
+                    </p>
+                    <p class="mt-1 text-sm text-emerald-50">
+                        Email: contato@trendsbrindes.com.br
+                    </p>
                 </div>
             </div>
-            <div class="max-w-7xl mx-auto mt-10 border-t border-white/10 pt-6 text-sm text-emerald-50">
+            <div
+                class="max-w-7xl mx-auto mt-10 border-t border-white/10 pt-6 text-sm text-emerald-50"
+            >
                 © 2026 Trends Brindes. Todos os direitos reservados.
             </div>
         </footer>
@@ -596,163 +916,45 @@
                 </div>
             </div>
         </div>
-
         <a
             href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
             target="_blank"
             rel="noopener noreferrer"
             id="whatsapp-btn"
-            class="fixed bottom-8 right-8 flex items-center justify-center transition-all z-30 hover:scale-110"
+            class="fixed
+        bottom-8 right-8 flex items-center justify-center transition-all z-30
+        hover:scale-110"
             aria-label="Conversar via WhatsApp"
-            title="Fale conosco no WhatsApp"
+            title="Fale conosco
+        no WhatsApp"
         >
             <img src="/whatsapp.png" alt="WhatsApp" class="w-14 h-14" />
         </a>
 
+        <script define:vars={{ productsJson }} is:inline>
+            window.__PRODUCTS__ = JSON.parse(productsJson);
+        </script>
+
         <script>
-            const products = [
-                {
-                    id: 1,
-                    code: "9139A",
-                    name: "Squeeze Alumínio 500ml",
-                    category: "Garrafas e Squeezes",
-                    description:
-                        "Squeeze de alumínio 500ml com gravação laser. Leve, durável e perfeito para manter suas bebidas em temperatura ambiente.",
-                    image: "/squeeze-preta.png",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Preto", hex: "#000000", image: "/squeeze-preta.png" },
-                        { name: "Prata", hex: "#C0C0C0", image: "/squeeze-prata.png" },
-                        { name: "Azul", hex: "#0000FF", image: "/squeeze-azul.png" },
-                    ]
-                },
-                {
-                    id: 2,
-                    code: "18821",
-                    name: "Squeeze Inox 750ml",
-                    category: "Garrafas e Squeezes",
-                    description:
-                        "Squeeze em aço inoxidável 750ml com design moderno. Mantém bebidas frias por até 24 horas. Resistente e elegante.",
-                    image: "https://www.cdncloud.com.br/content/interfaces/cms/userfiles/pacotes_xbzbrindes/pack_202407181828472162/adicionais/squeeze-inox-750ml-5287-adic.jpg",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Inox", hex: "#A8A9AD", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Branco", hex: "#FFFFFF", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-                {
-                    id: 3,
-                    code: "19032",
-                    name: "Garrafa Térmica Premium 800ml",
-                    category: "Garrafas e Squeezes",
-                    description:
-                        "Garrafa térmica premium 800ml com isolamento duplo. Ideal para manter bebidas quentes ou frias durante o dia todo.",
-                    image: "https://claraeletro.fbitsstatic.net/img/p/garrafa-termica-paramount-premium-4-0l-inox-73147/260532.jpg?w=800&h=800&v=202511061427",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Vermelho", hex: "#FF0000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Azul", hex: "#0080FF", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-                {
-                    id: 4,
-                    code: "18969",
-                    name: "Copo Térmico Flex 900ml",
-                    category: "Copos e Canecas",
-                    description:
-                        "Copo térmico flexível 900ml com design moderno. Confortável de segurar e com capacidade generosa para bebidas.",
-                    image: "https://lojassommer.cdn.magazord.com.br/img/2024/12/produto/2949/copo-mor-550.png?ims=fit-in/600x600/filters:fill(white)",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Verde", hex: "#008000", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },                
-                {
-                    id: 6,
-                    code: "CUIA-001",
-                    name: "Cuia Térmica em Inox Gaúcha",
-                    category: "Copos e Canecas",
-                    description:
-                        "Cuia tradicional gaúcha em inox com isolamento térmico. Mantém a temperatura do chimarrão perfeita. Presente cultural e funcional.",
-                    image: "https://acdn-us.mitiendanube.com/stores/002/566/450/products/6570eee904881de987775e7bd4ab2402-005583cc7b70b134c217519258752331-1024-1024.webp",
-                    availability: "Sob encomenda",
-                    colors: [
-                        { name: "Inox", hex: "#A8A9AD", image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Cobre", hex: "#B87333", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-                {
-                    id: 7,
-                    code: "06099A",
-                    name: "Agenda Diária 2026 Linho Luxo",
-                    category: "Materiais de Escritório",
-                    description:
-                        "Agenda diária 2026 em capa de linho com gravação personalizada. Acessório profissional e elegante para organização pessoal.",
-                    image: "https://www.crossbrindes.com.br/image/cache/catalog/products_2025/Agenda-Diaria-2025-7881-1756293519-276x276.jpg",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Marrom", hex: "#8B4513", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-                {
-                    id: 8,
-                    code: "10998",
-                    name: "Kit Executivo Premium 3 Peças",
-                    category: "Materiais de Escritório",
-                    description:
-                        "Kit executivo com 3 peças premium: caneta, marker e lápis. Embalagem sofisticada, ideal para presentear executivos e parceiros.",
-                    image: "https://papabrindes.com/uploads/91350b6fc75b562f17e6e962f6405ad8ab86fc8b.jpg",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Azul", hex: "#000080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-                {
-                    id: 9,
-                    code: "1329P",
-                    name: "Bolsa Térmica 7L",
-                    category: "Bolsas Térmicas e Marmitas",
-                    description:
-                        "Bolsa térmica com capacidade 7L e isolamento eficiente. Mantém alimentos e bebidas em temperatura ideal. Prática e durável.",
-                    image: "https://cm3.com.br/wp-content/uploads/2023/04/BOLSA-TERMICA-7-LITROS-BRINDES-PERSONALIZADOS-CM3-BT307EC_0013_LOGO-CM3-simples-copy-122-copiar-58-1.jpg",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Vermelho", hex: "#DC143C", image: "https://images.unsplash.com/photo-1510307704987-b8f5070fc64d?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-                {
-                    id: 10,
-                    code: "14185",
-                    name: "Mochila Antifurto Inteligente 16L",
-                    category: "Bolsas e Mochilas",
-                    description:
-                        "Mochila com capacidade 16L, recursos antifurto e compartimentos organizados. Perfeita para trabalho, viagens ou uso diário.",
-                    image: "https://www.cdncloud.com.br/content/interfaces/cms/userfiles/pacotes_xbzbrindes/pack_202407181828472162/fotos003/mochila-de-nylon-17-litros-3427.jpg",
-                    availability: "Em estoque",
-                    colors: [
-                        { name: "Preto", hex: "#000000", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Cinza", hex: "#808080", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=500&q=80" },
-                        { name: "Azul", hex: "#0066CC", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=600&h=500&q=80" },
-                    ]
-                },
-            ];
+            const products = window.__PRODUCTS__;
 
             let activeCategory = "all";
             let searchQuery = "";
-            let filterTransition;
+            let filterTransition: ReturnType<typeof setTimeout> | undefined;
+
+            // Cache dos botões — evita querySelectorAll a cada filtragem
+            const _categoryButtons = Array.from(
+                document.querySelectorAll<HTMLButtonElement>(".category-btn"),
+            );
+            let _activeCategoryBtn: HTMLButtonElement | null =
+                _categoryButtons.find((b) => b.dataset.category === "all") ??
+                null;
 
             function renderFeaturedProducts() {
                 const selectedProducts = products.slice(0, 10);
                 const topProducts = selectedProducts.slice(0, 5);
                 const bottomProducts = selectedProducts.slice(5);
-                const makeLoop = (items) => [...items, ...items, ...items, ...items];
+                const makeLoop = (items) => [...items, ...items];
                 const renderCard = (product) => `
                     <a href="/product?id=${product.id}" class="featured-card group block overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
                         <div class="aspect-[1/1] overflow-hidden flex items-center justify-center p-4">
@@ -771,12 +973,10 @@
                     </a>
                 `;
 
-                document.getElementById("featured-row-top").innerHTML = makeLoop(topProducts)
-                    .map(renderCard)
-                    .join("");
-                document.getElementById("featured-row-bottom").innerHTML = makeLoop(bottomProducts)
-                    .map(renderCard)
-                    .join("");
+                document.getElementById("featured-row-top").innerHTML =
+                    makeLoop(topProducts).map(renderCard).join("");
+                document.getElementById("featured-row-bottom").innerHTML =
+                    makeLoop(bottomProducts).map(renderCard).join("");
             }
 
             function renderProducts(filtered = products) {
@@ -784,23 +984,23 @@
                 grid.innerHTML = filtered
                     .map(
                         (p, index) => `
-        <a href="/product?id=1" class="product-card group block overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-800 hover:shadow-xl" style="animation-delay: ${index * 45}ms">
-            <div class="overflow-hidden bg-slate-100 aspect-[4/3]">
-                <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" class="product-image h-full w-full object-cover">
-            </div>
-            <div class="p-5">
-                <div class="mb-3 flex items-center justify-between gap-3">
-                    <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800">${p.category}</span>
-                    <span class="text-xs font-bold text-amber-600">Cód. ${p.code}</span>
-                </div>
-                <h4 class="text-lg font-bold text-slate-950 mb-2">${p.name}</h4>
-                <p class="text-sm text-slate-600 mb-5 line-clamp-2">${p.description}</p>
-                <span class="inline-flex w-full items-center justify-center rounded-lg bg-emerald-900 px-4 py-3 text-sm font-bold text-white transition-colors group-hover:bg-amber-500 group-hover:text-slate-950">
-                    Ver Detalhes
-                </span>
-            </div>
-        </a>
-    `,
+                        <a href="/product?id=${p.id}" class="product-card group block overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-800 hover:shadow-xl" style="animation-delay: ${index * 45}ms">
+                            <div class="overflow-hidden bg-slate-100 aspect-[4/3]">
+                                <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" class="product-image h-full w-full object-cover">
+                            </div>
+                            <div class="p-5">
+                                <div class="mb-3 flex items-center justify-between gap-3">
+                                    <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800">${p.category}</span>
+                                    <span class="text-xs font-bold text-amber-600">Cód. ${p.code}</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-950 mb-2">${p.name}</h4>
+                                <p class="text-sm text-slate-600 mb-5 line-clamp-2">${p.description}</p>
+                                <span class="inline-flex w-full items-center justify-center rounded-lg bg-emerald-900 px-4 py-3 text-sm font-bold text-white transition-colors group-hover:bg-amber-500 group-hover:text-slate-950">
+                                    Ver Detalhes
+                                </span>
+                            </div>
+                        </a>
+                    `,
                     )
                     .join("");
 
@@ -812,7 +1012,6 @@
 
             function getFilteredProducts() {
                 const normalizedQuery = searchQuery.trim().toLowerCase();
-
                 return products.filter((product) => {
                     const matchesCategory =
                         activeCategory === "all" ||
@@ -821,30 +1020,47 @@
                         !normalizedQuery ||
                         product.name.toLowerCase().includes(normalizedQuery) ||
                         product.code.toLowerCase().includes(normalizedQuery);
-
                     return matchesCategory && matchesSearch;
                 });
             }
 
             function updateCategoryButtons() {
-                document.querySelectorAll(".category-btn").forEach((button) => {
-                    const isActive = button.dataset.category === activeCategory;
-
-                    button.classList.toggle("active", isActive);
-                    button.classList.toggle("bg-emerald-900", isActive);
-                    button.classList.toggle("text-white", isActive);
-                    button.classList.toggle("border-2", !isActive);
-                    button.classList.toggle("border-emerald-900", !isActive);
-                    button.classList.toggle("text-emerald-900", !isActive);
-                });
+                // Remove estado ativo apenas do botão anteriormente ativo
+                if (_activeCategoryBtn) {
+                    _activeCategoryBtn.classList.remove(
+                        "active",
+                        "bg-emerald-900",
+                        "text-white",
+                    );
+                    _activeCategoryBtn.classList.add(
+                        "border-2",
+                        "border-emerald-900",
+                        "text-emerald-900",
+                    );
+                }
+                // Aplica estado ativo apenas no novo botão
+                _activeCategoryBtn =
+                    _categoryButtons.find(
+                        (b) => b.dataset.category === activeCategory,
+                    ) ?? null;
+                if (_activeCategoryBtn) {
+                    _activeCategoryBtn.classList.add(
+                        "active",
+                        "bg-emerald-900",
+                        "text-white",
+                    );
+                    _activeCategoryBtn.classList.remove(
+                        "border-2",
+                        "border-emerald-900",
+                        "text-emerald-900",
+                    );
+                }
             }
 
             function applyProductFilters() {
                 const grid = document.getElementById("products-grid");
-
                 clearTimeout(filterTransition);
                 grid.classList.add("is-filtering");
-
                 filterTransition = window.setTimeout(() => {
                     renderProducts(getFilteredProducts());
                     requestAnimationFrame(() => {
@@ -878,26 +1094,41 @@
                     typeof forceOpen === "boolean"
                         ? forceOpen
                         : menu.classList.contains("hidden");
-
                 menu.classList.toggle("hidden", !shouldOpen);
             }
 
+            const siteHeader = document.getElementById("site-header");
+            let _rafScrollPending = false;
+
             function updateHeaderState() {
-                document
-                    .getElementById("site-header")
-                    .classList.toggle("is-scrolled", window.scrollY > 8);
+                if (_rafScrollPending) return;
+                _rafScrollPending = true;
+                requestAnimationFrame(() => {
+                    siteHeader?.classList.toggle(
+                        "is-scrolled",
+                        window.scrollY > 8,
+                    );
+                    _rafScrollPending = false;
+                });
             }
 
             window.closeQuoteDrawer = closeQuoteDrawer;
             window.openWhatsApp = openWhatsApp;
             window.toggleMobileMenu = toggleMobileMenu;
 
-            document
-                .getElementById("search-input")
-                .addEventListener("input", (e) => {
-                    searchQuery = e.target.value;
+            let _searchDebounceTimer = undefined;
+            const SEARCH_DEBOUNCE_MS = 220;
+
+            const searchInputEl = document.getElementById(
+                "search-input",
+            ) as HTMLInputElement;
+            searchInputEl?.addEventListener("input", (e) => {
+                searchQuery = (e.target as HTMLInputElement).value;
+                clearTimeout(_searchDebounceTimer);
+                _searchDebounceTimer = window.setTimeout(() => {
                     applyProductFilters();
-                });
+                }, SEARCH_DEBOUNCE_MS);
+            });
 
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape") closeQuoteDrawer();

@@ -46,66 +46,63 @@
     <aside
         id="cart-panel"
         class="fixed z-50 bg-white shadow-2xl transition-all duration-300
-           bottom-0 left-0 right-0 h-[80vh] translate-y-full rounded-t-3xl /* Mobile: Bottom Sheet */
-           lg:top-0 lg:right-0 lg:left-auto lg:h-full lg:w-96 lg:translate-y-0 lg:translate-x-full lg:rounded-none /* Desktop: Sidebar */"
+           bottom-0 left-0 right-0 h-[80vh] translate-y-full rounded-t-3xl
+           lg:top-0 lg:right-0 lg:left-auto lg:h-full lg:w-96 lg:translate-y-0 lg:translate-x-full lg:rounded-none
     >
-        <div class="flex flex-col h-full">
-            <!-- Header -->
-            <div
-                class="p-6 border-b flex items-center justify-between bg-gray-50 lg:bg-white rounded-t-3xl lg:rounded-none"
-            >
-                <div>
-                    <h2 class="text-xl font-bold text-[#065F46]">
-                        Seu carrinho
-                    </h2>
-                    <p class="text-sm text-gray-500">
-                        <span id="cart-count">0</span> itens selecionados
-                    </p>
-                </div>
-                <button
-                    id="close-cart"
-                    class="p-2 hover:bg-gray-200 rounded-full transition-colors"
-                    aria-label="Fechar carrinho"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"
-                        ></path></svg
-                    >
-                </button>
-            </div>
-
-            <!-- Lista de Produtos -->
-            <div
-                id="cart-items-list"
-                class="flex-1 overflow-y-auto p-6 space-y-4"
-            >
-                <!-- Injetado via JS -->
-            </div>
-
-            <!-- Footer -->
-            <div class="p-6 border-t bg-white">
-                <button
-                    id="whatsapp-submit"
-                    class="w-full bg-[#065F46] hover:bg-[#044e3a] text-white font-bold py-4 rounded-xl shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:pointer-events-none"
-                    disabled
-                >
-                    Solicitar Orçamento via WhatsApp
-                </button>
-                <p
-                    class="text-center text-[10px] text-gray-400 mt-4 uppercase tracking-widest font-medium"
-                >
-                    Trends Brindes • Orçamento Rápido
+        <div class="
+        flex
+        flex-col
+        h-full"
+    >
+        <!-- Header -->
+        <div
+            class="p-6 border-b flex items-center justify-between bg-gray-50 lg:bg-white rounded-t-3xl lg:rounded-none"
+        >
+            <div>
+                <h2 class="text-xl font-bold text-[#065F46]">Seu carrinho</h2>
+                <p class="text-sm text-gray-500">
+                    <span id="cart-count">0</span> itens selecionados
                 </p>
             </div>
+            <button
+                id="close-cart"
+                class="p-2 hover:bg-gray-200 rounded-full transition-colors"
+                aria-label="Fechar carrinho"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path d="M18 6 6 18"></path><path d="m6 6 12 12"
+                    ></path></svg
+                >
+            </button>
+        </div>
+
+        <!-- Lista de Produtos -->
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
+        </div>
+
+        <!-- Footer -->
+        <div class="p-6 border-t bg-white">
+            <button
+                id="whatsapp-submit"
+                class="w-full bg-[#065F46] hover:bg-[#044e3a] text-white font-bold py-4 rounded-xl shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:pointer-events-none"
+                disabled
+            >
+                Solicitar Orçamento via WhatsApp
+            </button>
+            <p
+                class="text-center text-[10px] text-gray-400 mt-4 uppercase tracking-widest font-medium"
+            >
+                Trends Brindes • Orçamento Rápido
+            </p>
         </div>
     </aside>
 </div>
@@ -116,7 +113,7 @@
         removeFromCart,
         updateQuantity,
         generateWhatsAppUrl,
-    } from "./cartStore";
+    } from "../scripts/cartStore";
 
     const panel = document.getElementById("cart-panel");
     const overlay = document.getElementById("cart-overlay");
@@ -144,7 +141,6 @@
         const cart = getCart();
         const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-        // Updates Counters
         if (badge) {
             badge.innerText = totalItems.toString();
             badge.classList.toggle("hidden", totalItems === 0);
@@ -153,7 +149,6 @@
         if (whatsappBtn)
             (whatsappBtn as HTMLButtonElement).disabled = cart.length === 0;
 
-        // Render Items
         if (listContainer) {
             if (cart.length === 0) {
                 listContainer.innerHTML = `
@@ -197,7 +192,6 @@
         }
     }
 
-    // Event Listeners
     fab?.addEventListener("click", () => toggleCart(true));
     closeBtn?.addEventListener("click", () => toggleCart(false));
     overlay?.addEventListener("click", () => toggleCart(false));
@@ -207,7 +201,6 @@
         if (url) window.open(url, "_blank");
     });
 
-    // Delegated events for dynamic items
     listContainer?.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
         const btn = target.closest("button");
@@ -219,14 +212,14 @@
         if (btn.classList.contains("remove-item")) {
             removeFromCart(id);
         } else if (btn.classList.contains("qty-btn")) {
-            const cart = getCart();
-            const item = cart.find((i) => i.id === id);
-            if (item) {
-                const newQty = btn.classList.contains("plus")
-                    ? item.quantity + 1
-                    : item.quantity - 1;
-                updateQuantity(id, newQty);
-            }
+            const input = listContainer?.querySelector<HTMLInputElement>(
+                `.qty-input[data-id="${id}"]`,
+            );
+            const currentQty = input ? parseInt(input.value, 10) : 1;
+            const newQty = btn.classList.contains("plus")
+                ? currentQty + 1
+                : currentQty - 1;
+            updateQuantity(id, newQty);
         }
     });
 
@@ -239,11 +232,9 @@
 
     window.addEventListener("cart-updated", () => {
         renderCart();
-        // Open cart on desktop when adding item
         if (window.innerWidth >= 1024) toggleCart(true);
     });
 
-    // Initial Load
     renderCart();
 </script>
 
