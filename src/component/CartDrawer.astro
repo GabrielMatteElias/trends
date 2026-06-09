@@ -179,7 +179,7 @@
               <div class="flex items-center justify-between mt-auto">
                 <div class="flex items-center border rounded-lg bg-gray-50 overflow-hidden">
                   <button class="qty-btn minus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria-label="Diminuir quantidade">-</button>
-                  <input type="number" value="${item.quantity}" min="1" class="qty-input outline-none w-10 text-center text-xs font-bold bg-transparent border-none focus:ring-0" data-id="${item.id}" />
+                  <input type="number" value="${item.quantity}" min="1" max="10000" class="qty-input outline-none w-10 text-center text-xs font-bold bg-transparent border-none focus:ring-0" data-id="${item.id}" />
                   <button class="qty-btn plus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria-label="Aumentar quantidade">+</button>
                 </div>
               </div>
@@ -216,6 +216,9 @@
                 `.qty-input[data-id="${id}"]`,
             );
             const currentQty = input ? parseInt(input.value, 10) : 1;
+
+            if (btn.classList.contains("plus") && currentQty >= 10000) return; // Trava o clique do botão
+
             const newQty = btn.classList.contains("plus")
                 ? currentQty + 1
                 : currentQty - 1;
@@ -226,7 +229,20 @@
     listContainer?.addEventListener("change", (e) => {
         const target = e.target as HTMLInputElement;
         if (target.classList.contains("qty-input")) {
-            updateQuantity(target.dataset.id!, parseInt(target.value));
+            const id = Number(target.dataset.id);
+            let value = parseInt(target.value, 10);
+
+            if (isNaN(value) || value < 1) {
+                value = 1;
+                target.value = "1";
+            } else if (value > 10000) {
+                value = 10000;
+                target.value = "10000";
+            }
+
+            if (id) {
+                updateQuantity(id, value);
+            }
         }
     });
 

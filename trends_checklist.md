@@ -10,9 +10,9 @@
 2. Validação do Fluxo do WhatsApp e Carrinho
     [ ] Persistência do Carrinho: Feche a aba do navegador, reabra e garanta que os itens adicionados continuam lá. O localStorage resolve isso, mas isole cenários onde o usuário limpa o cache ou navega em modo anônimo (garanta que a UI não quebre se o localStorage retornar vazio).
 
-    [ ] Formatação da Mensagem (URL Encode): Teste a string que é enviada para a API do WhatsApp (https://wa.me/...). Certifique-se de que quebras de linha (%0A), emojis e espaços estão codificados corretamente para que a mensagem chegue legível e organizada para quem vai atender.
+    [x] Formatação da Mensagem (URL Encode): Teste a string que é enviada para a API do WhatsApp (https://wa.me/...). Certifique-se de que quebras de linha (%0A), emojis e espaços estão codificados corretamente para que a mensagem chegue legível e organizada para quem vai atender.
 
-    [ ] Quantidade e Limites: Teste adicionar muitos itens ou quantidades absurdas no carrinho para garantir que o layout não quebre e que o tamanho da mensagem final não estoure o limite de caracteres que a URL do WhatsApp suporta.
+    [x] Quantidade e Limites: Teste adicionar muitos itens ou quantidades absurdas no carrinho para garantir que o layout não quebre e que o tamanho da mensagem final não estoure o limite de caracteres que a URL do WhatsApp suporta.
 
 3. Integrações de Rastreamento (Analytics)
     [ ] Scripts Ativos: Abra o console do navegador na página publicada e certifique-se de que não há erros de bloqueio de conteúdo (CORS) ou falhas ao carregar o Google Analytics/Meta Pixel.
