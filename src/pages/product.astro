@@ -7,6 +7,7 @@ import BaseLayout from "./BaseLayout.astro";
 const productsJson = JSON.stringify(products);
 ---
 
+<<<<<<< HEAD
 <style>
     body {
         color: var(--text);
@@ -18,6 +19,55 @@ const productsJson = JSON.stringify(products);
             ),
             var(--surface);
     }
+=======
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhes do Produto</title>
+        <meta
+            name="description"
+            content="Veja os detalhes completos do produto"
+        />
+        <link rel="icon" type="image/png" href="/logo.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-61M5WTXZ4G"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-61M5WTXZ4G");
+        </script>
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            />
+        </noscript>
+        <style is:global>
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+>>>>>>> 42f0950ce78d659fbf6ad7f1721bf436a9064ad5
 
     .color-option {
         transition:
