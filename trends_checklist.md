@@ -1,3 +1,11 @@
+0. Funcionalidades
+
+    [ ] Validar metadados BaseLayout
+
+    [ ] Validar produtos pagina index vitrine e preview catalogo
+
+    [ ] Criar pagina catalogo
+
 1. SEO e Compartilhamento (Redes Sociais)
     [ validar descricao cliente ] Meta Description: Garanta que a descrição tem entre 120 e 160 caracteres e resume bem a proposta de valor.
 
@@ -21,6 +29,8 @@
 
 4. Experiência do Usuário (UX) e Interface
     [ ] Links Quebrados: Clique em absolutamente todos os botões, links de rodapé e políticas de privacidade para garantir que nenhum retorna 404.
+
+
 
     [ ] Comportamento do Scroll: Botões que levam o usuário para seções da mesma página (âncoras) devem funcionar de forma suave, sem pular bruscamente.
 

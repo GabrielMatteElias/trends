@@ -1,383 +1,25 @@
 ---
 import { products } from "../data/products";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import CartDrawer from "../component/CartDrawer.astro";
+import CartDrawer from "../components/CartDrawer.astro";
+import BaseLayout from "./BaseLayout.astro";
 
 const productsJson = JSON.stringify(products);
 ---
 
-<!doctype html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Trends Brindes - Brindes Corporativos Premium no RS</title>
-        <meta name="description" content="Brindes personalizados premium em Porto Alegre. Garrafas térmicas, squeezes, mochilas e gravação a laser com entrega rápida para todo o RS." />
-        <meta name="keywords" content="brindes personalizados porto alegre, brindes corporativos premium, gravação a laser, garrafa térmica personalizada, trends brindes, bolsas" />
-
-        <meta property="og:title" content="Trends Brindes - Brindes Corporativos Premium no RS" />  
-        <meta property="og:description" content="Destaque sua marca com brindes corporativos premium. Garrafas térmicas, squeezes e mochilas com gravação a laser. Entrega rápida no RS." />
-        <meta property="og:url" content="https://trends-eta-three.vercel.app/" />
-        <meta property="og:image" content="https://trends-eta-three.vercel.app/og-image.jpg" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:type" content="website" />
-        <meta property="og:logo" content="https://trends-eta-three.vercel.app/logo.png" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Trends Brindes - Brindes Premium Personalizados" />
-        <meta name="twitter:description" content="Destaque sua marca com brindes corporativos premium. Garrafas térmicas, squeezes e mochilas com gravação a laser. Entrega rápida no RS." />
-        <meta name="twitter:image" content="https://trends-eta-three.vercel.app/og-image.jpg" />
-
-        <link rel="icon" type="image/png" href="/logo.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-            media="print"
-            onload="this.media='all'"
-        />
-        <noscript>
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-            />
-        </noscript>
-        <style is:global>
-            @tailwind base;
-            @tailwind components;
-            @tailwind utilities;
-
-            :root {
-                --brand: #065f46;
-                --brand-hover: #047857;
-                --accent: #f59e0b;
-                --accent-hover: #d97706;
-                --surface: #f8fafc;
-                --text: #0f172a;
-                --muted: #475569;
-                --border: #e2e8f0;
-            }
-
-            html {
-                scroll-behavior: smooth;
-            }
-
-            body {
-                color: var(--text);
-                background:
-                    radial-gradient(
-                        circle at top left,
-                        rgba(245, 158, 11, 0.1),
-                        transparent 28rem
-                    ),
-                    var(--surface);
-            }
-
-            .section-title {
-                font-size: clamp(1.75rem, 4vw, 3rem);
-                line-height: 1.08;
-                letter-spacing: 0;
-            }
-
-            .body-copy {
-                font-size: clamp(0.95rem, 1vw, 1.1rem);
-            }
-
-            .site-header {
-                backdrop-filter: blur(18px);
-                background: rgba(255, 255, 255, 0.9);
-                transition:
-                    box-shadow 180ms ease,
-                    border-color 180ms ease;
-            }
-
-            .site-header.is-scrolled {
-                border-color: rgba(226, 232, 240, 0.95);
-                box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-            }
-
-            .fade-up {
-                animation: fadeUp 520ms ease both;
-            }
-
-            .category-btn {
-                background-color: transparent;
-                color: #004d3d;
-                border: 1px solid #004d3d;
-                transition:
-                    background-color 180ms ease,
-                    color 180ms ease,
-                    box-shadow 180ms ease;
-            }
-
-            .category-btn:hover {
-                background-color: rgba(0, 77, 61, 0.18);
-            }
-
-            .category-btn.active {
-                background-color: #004d3d;
-                color: #ffffff;
-                box-shadow: 0 4px 12px rgba(0, 77, 61, 0.2);
-            }
-
-            .product-image {
-                transition: transform 300ms ease;
-            }
-
-            .product-card:hover .product-image {
-                transform: scale(1.045);
-            }
-
-            #products-grid {
-                transition:
-                    opacity 220ms ease,
-                    transform 220ms ease;
-            }
-
-            #products-grid.is-filtering {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            .product-card {
-                animation: productFadeIn 320ms ease both;
-            }
-
-            .featured-products {
-                background:
-                    radial-gradient(
-                        circle at 10% 20%,
-                        rgba(16, 185, 129, 0.05),
-                        transparent 30rem
-                    ),
-                    radial-gradient(
-                        circle at 90% 80%,
-                        rgba(245, 158, 11, 0.05),
-                        transparent 30rem
-                    ),
-                    #ffffff;
-            }
-
-            .featured-marquee {
-                position: relative;
-                overflow: hidden;
-                -webkit-mask-image: linear-gradient(
-                    90deg,
-                    transparent,
-                    #000 8%,
-                    #000 92%,
-                    transparent
-                );
-                mask-image: linear-gradient(
-                    90deg,
-                    transparent,
-                    #000 8%,
-                    #000 92%,
-                    transparent
-                );
-            }
-
-            .featured-marquee + .featured-marquee {
-                margin-top: clamp(1.5rem, 3vw, 2.5rem);
-            }
-
-            .featured-track {
-                display: flex;
-                width: max-content;
-                gap: clamp(1.5rem, 3vw, 2.5rem);
-                will-change: transform;
-                transform: translate3d(0, 0, 0);
-            }
-
-            .featured-row-right .featured-track {
-                animation: featuredScrollRight 35s linear infinite;
-            }
-
-            .featured-row-left .featured-track {
-                animation: featuredScrollLeft 45s linear infinite;
-            }
-
-            .featured-card {
-                width: clamp(14rem, 24vw, 22rem);
-                flex: 0 0 auto;
-                border: 1px solid rgba(15, 23, 42, 0.04);
-                border-radius: 1.5rem;
-                background: #ffffff;
-                padding: 1rem;
-                transition:
-                    transform 240ms ease,
-                    box-shadow 240ms ease;
-                shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-            }
-
-            .featured-card:hover,
-            .featured-card:focus-visible {
-                transform: translateY(-4px);
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-            }
-
-            .featured-card-image {
-                transition: transform 400ms cubic-bezier(0.2, 0, 0.2, 1);
-                filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.03));
-            }
-
-            @media (max-width: 640px) {
-                .featured-row-right .featured-track {
-                    animation-duration: 42s;
-                }
-
-                .featured-row-left .featured-track {
-                    animation-duration: 54s;
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .featured-row-right .featured-track,
-                .featured-row-left .featured-track {
-                    animation-duration: 90s;
-                }
-            }
-
-            @keyframes featuredScrollLeft {
-                from {
-                    transform: translate3d(0, 0, 0);
-                }
-                to {
-                    transform: translate3d(-50%, 0, 0);
-                }
-            }
-
-            @keyframes featuredScrollRight {
-                from {
-                    transform: translate3d(-50%, 0, 0);
-                }
-                to {
-                    transform: translate3d(0, 0, 0);
-                }
-            }
-
-            @keyframes productFadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes fadeUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(16px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        </style>
-    </head>
-    <body style="font-family: Plus Jakarta Sans, sans-serif;">
+<BaseLayout
+    title="Trends Brindes | Brindes Corporativos Premium"
+    description="Brindes corporativos personalizados com aparência premium e atendimento próximo. Garrafas, squeezes, canecas e mais."
+    permalink="https://trendsbrindes.com.br"
+>
+    <main>
         <SpeedInsights />
-
         <div
             class="bg-emerald-950 text-white py-3 px-4 text-center text-sm font-semibold tracking-wide"
         >
             ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O RIO
             GRANDE DO SUL
         </div>
-
-        <header
-            id="site-header"
-            class="site-header border-b border-transparent sticky top-0 z-40"
-        >
-            <div
-                class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
-            >
-                <a
-                    href="/"
-                    class="text-2xl font-bold text-emerald-900 tracking-tight"
-                >
-                    <img
-                        src="/logo-trends.png"
-                        alt="Trends Brindes Logo"
-                        class="h-12 w-18 object-contain"
-                    />
-                </a>
-
-                <nav
-                    class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700"
-                >
-                    <a
-                        href="#products"
-                        class="hover:text-emerald-800 transition-colors"
-                        >Catálogo</a
-                    >
-                    <a
-                        href="#about"
-                        class="hover:text-emerald-800 transition-colors"
-                        >Quem Somos</a
-                    >
-                    <a
-                        href="#contact"
-                        class="hover:text-emerald-800 transition-colors"
-                        >Contato</a
-                    >
-                </nav>
-
-                <button
-                    type="button"
-                    class="md:hidden w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-emerald-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-                    onclick="toggleMobileMenu()"
-                    aria-label="Abrir menu"
-                >
-                    <span class="text-2xl leading-none">☰</span>
-                </button>
-            </div>
-
-            <div
-                id="mobile-menu"
-                class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4"
-            >
-                <nav
-                    class="flex flex-col gap-3 text-sm font-semibold text-slate-700"
-                >
-                    <a
-                        href="#products"
-                        onclick="toggleMobileMenu(false)"
-                        class="py-2">Catálogo</a
-                    >
-                    <a
-                        href="#about"
-                        onclick="toggleMobileMenu(false)"
-                        class="py-2">Quem Somos</a
-                    >
-                    <a
-                        href="#contact"
-                        onclick="toggleMobileMenu(false)"
-                        class="py-2">Contato</a
-                    >
-                    <a
-                        href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="bg-amber-500 text-slate-950 px-5 py-3 rounded-lg text-center"
-                    >
-                        WhatsApp
-                    </a>
-                </nav>
-            </div>
-        </header>
 
         <section
             class="relative overflow-hidden bg-emerald-950 text-white px-4"
@@ -843,61 +485,6 @@ const productsJson = JSON.stringify(products);
             </div>
         </section>
 
-        <footer id="contact" class="bg-emerald-950 px-4 py-14 text-white">
-            <div class="max-w-7xl mx-auto grid gap-10 md:grid-cols-4">
-                <div>
-                    <h2 class="text-2xl font-bold">
-                        Trends<span class="text-amber-400">.</span> Brindes
-                    </h2>
-                    <p class="mt-4 text-sm leading-6 text-emerald-50">
-                        Brindes corporativos personalizados com aparência
-                        premium e atendimento próximo.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-amber-300">Empresa</h3>
-                    <a
-                        href="#about"
-                        class="mt-4 block text-sm text-emerald-50 hover:text-white"
-                        >Quem Somos</a
-                    >
-                    <a
-                        href="#products"
-                        class="mt-2 block text-sm text-emerald-50 hover:text-white"
-                        >Catálogo</a
-                    >
-                </div>
-                <div>
-                    <h3 class="font-bold text-amber-300">Categorias</h3>
-                    <p class="mt-4 text-sm text-emerald-50">
-                        Garrafas, Squeezes, Canecas, Bolsas, Mochilas e
-                        Escritório.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-amber-300">Contato</h3>
-                    <a
-                        href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="mt-4 inline-flex rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950 hover:bg-amber-600"
-                        >WhatsApp</a
-                    >
-                    <p class="mt-4 text-sm text-emerald-50">
-                        Instagram: @trendsbrindes
-                    </p>
-                    <p class="mt-1 text-sm text-emerald-50">
-                        Email: contato@trendsbrindes.com.br
-                    </p>
-                </div>
-            </div>
-            <div
-                class="max-w-7xl mx-auto mt-10 border-t border-white/10 pt-6 text-sm text-emerald-50"
-            >
-                © 2026 Trends Brindes. Todos os direitos reservados.
-            </div>
-        </footer>
-
         <div
             id="quote-drawer"
             class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"
@@ -1107,33 +694,8 @@ const productsJson = JSON.stringify(products);
                 );
             }
 
-            function toggleMobileMenu(forceOpen) {
-                const menu = document.getElementById("mobile-menu");
-                const shouldOpen =
-                    typeof forceOpen === "boolean"
-                        ? forceOpen
-                        : menu.classList.contains("hidden");
-                menu.classList.toggle("hidden", !shouldOpen);
-            }
-
-            const siteHeader = document.getElementById("site-header");
-            let _rafScrollPending = false;
-
-            function updateHeaderState() {
-                if (_rafScrollPending) return;
-                _rafScrollPending = true;
-                requestAnimationFrame(() => {
-                    siteHeader?.classList.toggle(
-                        "is-scrolled",
-                        window.scrollY > 8,
-                    );
-                    _rafScrollPending = false;
-                });
-            }
-
             window.closeQuoteDrawer = closeQuoteDrawer;
             window.openWhatsApp = openWhatsApp;
-            window.toggleMobileMenu = toggleMobileMenu;
 
             let _searchDebounceTimer = undefined;
             const SEARCH_DEBOUNCE_MS = 220;
@@ -1161,5 +723,199 @@ const productsJson = JSON.stringify(products);
             renderFeaturedProducts();
             renderProducts();
         </script>
-    </body>
-</html>
+    </main>
+</BaseLayout>
+
+<style>
+    .section-title {
+        font-size: clamp(1.75rem, 4vw, 3rem);
+        line-height: 1.08;
+        letter-spacing: 0;
+    }
+
+    .body-copy {
+        font-size: clamp(0.95rem, 1vw, 1.1rem);
+    }
+
+    .fade-up {
+        animation: fadeUp 520ms ease both;
+    }
+
+    .category-btn {
+        background-color: transparent;
+        color: #004d3d;
+        border: 1px solid #004d3d;
+        transition:
+            background-color 180ms ease,
+            color 180ms ease,
+            box-shadow 180ms ease;
+    }
+
+    .category-btn:hover {
+        background-color: rgba(0, 77, 61, 0.18);
+    }
+
+    .category-btn.active {
+        background-color: #004d3d;
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 77, 61, 0.2);
+    }
+
+    .product-image {
+        transition: transform 300ms ease;
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.045);
+    }
+
+    #products-grid {
+        transition:
+            opacity 220ms ease,
+            transform 220ms ease;
+    }
+
+    #products-grid.is-filtering {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    .product-card {
+        animation: productFadeIn 320ms ease both;
+    }
+
+    .featured-products {
+        background:
+            radial-gradient(
+                circle at 10% 20%,
+                rgba(16, 185, 129, 0.05),
+                transparent 30rem
+            ),
+            radial-gradient(
+                circle at 90% 80%,
+                rgba(245, 158, 11, 0.05),
+                transparent 30rem
+            ),
+            #ffffff;
+    }
+
+    .featured-marquee {
+        position: relative;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent,
+            #000 8%,
+            #000 92%,
+            transparent
+        );
+        mask-image: linear-gradient(
+            90deg,
+            transparent,
+            #000 8%,
+            #000 92%,
+            transparent
+        );
+    }
+
+    .featured-marquee + .featured-marquee {
+        margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .featured-track {
+        display: flex;
+        width: max-content;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .featured-row-right .featured-track {
+        animation: featuredScrollRight 35s linear infinite;
+    }
+
+    .featured-row-left .featured-track {
+        animation: featuredScrollLeft 45s linear infinite;
+    }
+
+    .featured-card {
+        width: clamp(14rem, 24vw, 22rem);
+        flex: 0 0 auto;
+        border: 1px solid rgba(15, 23, 42, 0.04);
+        border-radius: 1.5rem;
+        background: #ffffff;
+        padding: 1rem;
+        transition:
+            transform 240ms ease,
+            box-shadow 240ms ease;
+        shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .featured-card:hover,
+    .featured-card:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .featured-card-image {
+        transition: transform 400ms cubic-bezier(0.2, 0, 0.2, 1);
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.03));
+    }
+
+    @media (max-width: 640px) {
+        .featured-row-right .featured-track {
+            animation-duration: 42s;
+        }
+
+        .featured-row-left .featured-track {
+            animation-duration: 54s;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .featured-row-right .featured-track,
+        .featured-row-left .featured-track {
+            animation-duration: 90s;
+        }
+    }
+
+    @keyframes featuredScrollLeft {
+        from {
+            transform: translate3d(0, 0, 0);
+        }
+        to {
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+
+    @keyframes featuredScrollRight {
+        from {
+            transform: translate3d(-50%, 0, 0);
+        }
+        to {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes productFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

@@ -1,0 +1,102 @@
+<header
+    id="site-header"
+    class="site-header border-b border-transparent sticky top-0 z-40"
+>
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-emerald-900 tracking-tight">
+            <img
+                src="/logo-trends.png"
+                alt="Trends Brindes Logo"
+                class="h-12 w-18 object-contain"
+            />
+        </a>
+
+        <nav
+            class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700"
+        >
+            <a href="#products" class="hover:text-emerald-800 transition-colors"
+                >Catálogo</a
+            >
+            <a href="#about" class="hover:text-emerald-800 transition-colors"
+                >Quem Somos</a
+            >
+            <a href="#contact" class="hover:text-emerald-800 transition-colors"
+                >Contato</a
+            >
+        </nav>
+
+        <button
+            type="button"
+            class="md:hidden w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-emerald-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+            onclick="toggleMobileMenu()"
+            aria-label="Abrir menu"
+        >
+            <span class="text-2xl leading-none">☰</span>
+        </button>
+    </div>
+
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4"
+    >
+        <nav class="flex flex-col gap-3 text-sm font-semibold text-slate-700">
+            <a href="#products" onclick="toggleMobileMenu(false)" class="py-2"
+                >Catálogo</a
+            >
+            <a href="#about" onclick="toggleMobileMenu(false)" class="py-2"
+                >Quem Somos</a
+            >
+            <a href="#contact" onclick="toggleMobileMenu(false)" class="py-2"
+                >Contato</a
+            >
+            <a
+                href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-amber-500 text-slate-950 px-5 py-3 rounded-lg text-center"
+            >
+                WhatsApp
+            </a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const siteHeader = document.getElementById("site-header");
+    let _rafScrollPending = false;
+
+    function updateHeaderState() {
+        if (_rafScrollPending) return;
+        _rafScrollPending = true;
+        requestAnimationFrame(() => {
+            siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8);
+            _rafScrollPending = false;
+        });
+    }
+
+    function toggleMobileMenu(forceOpen) {
+        const menu = document.getElementById("mobile-menu");
+        const shouldOpen =
+            typeof forceOpen === "boolean"
+                ? forceOpen
+                : menu.classList.contains("hidden");
+        menu.classList.toggle("hidden", !shouldOpen);
+    }
+
+    window.toggleMobileMenu = toggleMobileMenu;
+</script>
+
+<style>
+    .site-header {
+        backdrop-filter: blur(18px);
+        background: rgba(255, 255, 255, 0.9);
+        transition:
+            box-shadow 180ms ease,
+            border-color 180ms ease;
+    }
+
+    .site-header.is-scrolled {
+        border-color: rgba(226, 232, 240, 0.95);
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+    }
+</style>

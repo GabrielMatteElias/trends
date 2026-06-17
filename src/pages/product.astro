@@ -1,94 +1,42 @@
 ---
-import CartDrawer from "../component/CartDrawer.astro";
+import CartDrawer from "../components/CartDrawer.astro";
 import { products } from "../data/products";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import BaseLayout from "./BaseLayout.astro";
 
 const productsJson = JSON.stringify(products);
 ---
 
-<!doctype html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Detalhes do Produto</title>
-        <meta
-            name="description"
-            content="Veja os detalhes completos do produto"
-        />
-        <link rel="icon" type="image/png" href="/logo.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-            media="print"
-            onload="this.media='all'"
-        />
-        <noscript>
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-            />
-        </noscript>
-        <style is:global>
-            @tailwind base;
-            @tailwind components;
-            @tailwind utilities;
+<style>
+    body {
+        color: var(--text);
+        background:
+            radial-gradient(
+                circle at top left,
+                rgba(245, 158, 11, 0.1),
+                transparent 28rem
+            ),
+            var(--surface);
+    }
 
-            :root {
-                --brand: #065f46;
-                --brand-hover: #047857;
-                --accent: #f59e0b;
-                --surface: #f8fafc;
-                --text: #0f172a;
-                --muted: #475569;
-                --border: #e2e8f0;
-            }
+    .color-option {
+        transition:
+            transform 160ms ease,
+            box-shadow 160ms ease,
+            border-color 160ms ease;
+    }
 
-            body {
-                color: var(--text);
-                background:
-                    radial-gradient(
-                        circle at top left,
-                        rgba(245, 158, 11, 0.1),
-                        transparent 28rem
-                    ),
-                    var(--surface);
-            }
-
-            .site-header {
-                backdrop-filter: blur(18px);
-                background: rgba(255, 255, 255, 0.9);
-                transition:
-                    box-shadow 180ms ease,
-                    border-color 180ms ease;
-            }
-
-            .site-header.is-scrolled {
-                border-color: rgba(226, 232, 240, 0.95);
-                box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-            }
-
-            .color-option {
-                transition:
-                    transform 160ms ease,
-                    box-shadow 160ms ease,
-                    border-color 160ms ease;
-            }
-
-            .color-option:hover,
-            .color-option.is-selected {
-                transform: scale(1.08);
-            }
-        </style>
-    </head>
-    <body style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    .color-option:hover,
+    .color-option.is-selected {
+        transform: scale(1.08);
+    }
+</style>
+<BaseLayout
+    title="Detalhes do Produto"
+    description="Veja os detalhes completos do produto"
+    permalink="https://trendsbrindes.com.br"
+>
+    <main >
         <SpeedInsights />
 
         <div
@@ -384,5 +332,5 @@ const productsJson = JSON.stringify(products);
         </script>
 
         <CartDrawer />
-    </body>
-</html>
+    </main>
+</BaseLayout>
