@@ -529,8 +529,7 @@ const productsJson = JSON.stringify(products);
         bottom-[90px] right-6 flex items-center justify-center transition-all z-30
         hover:scale-110"
             aria-label="Conversar via WhatsApp"
-            title="Fale conosco
-        no WhatsApp"
+            title="Fale conosco no WhatsApp"
         >
             <img src="/whatsapp.png" alt="WhatsApp" class="w-14 h-14" />
         </a>
@@ -562,21 +561,21 @@ const productsJson = JSON.stringify(products);
                 const bottomProducts = selectedProducts.slice(5);
                 const makeLoop = (items) => [...items, ...items];
                 const renderCard = (product) => `
-                    <a href="/product?id=${product.id}" class="featured-card group block overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
-                        <div class="aspect-[1/1] overflow-hidden flex items-center justify-center p-4">
-                            <img
-                                src="${product.image}"
-                                alt="${product.name}"
-                                loading="lazy"
-                                decoding="async"
-                                class="featured-card-image h-[85%] w-[85%] object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-                            />
-                        </div>
-                        <div class="px-3 pb-4 pt-2 text-center">
-                            <h3 class="text-sm font-semibold tracking-tight text-slate-800">${product.name}</h3>
-                            <p class="mt-1 text-[11px] font-medium text-slate-400 uppercase tracking-wider">${product.category}</p>
-                        </div>
-                    </a>
+                <a href="/product?id=${product.id}" class="featured-card group block w-56 max-w-full overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
+                    <div class="aspect-square overflow-hidden flex items-center justify-center p-4 bg-slate-50/50 rounded-t-xl">
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            loading="lazy"
+                            decoding="async"
+                            class="featured-card-image max-h-32 max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                    </div>
+                    <div class="px-3 pb-4 pt-3 text-center">
+                        <h3 class="text-sm font-semibold tracking-tight text-slate-800 line-clamp-1">${product.name}</h3>
+                        <p class="mt-1 text-[11px] font-medium text-slate-400 uppercase tracking-wider">${product.category}</p>
+                    </div>
+                </a>
                 `;
 
                 document.getElementById("featured-row-top").innerHTML =
@@ -715,11 +714,6 @@ const productsJson = JSON.stringify(products);
                 if (e.key === "Escape") closeQuoteDrawer();
             });
 
-            window.addEventListener("scroll", updateHeaderState, {
-                passive: true,
-            });
-
-            updateHeaderState();
             renderFeaturedProducts();
             renderProducts();
         </script>
