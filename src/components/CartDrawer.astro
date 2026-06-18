@@ -46,202 +46,207 @@
     <aside
         id="cart-panel"
         class="fixed z-50 bg-white shadow-2xl transition-all duration-300
-           bottom-0 left-0 right-0 h-[80vh] translate-y-full rounded-t-3xl
-           lg:top-0 lg:right-0 lg:left-auto lg:h-full lg:w-96 lg:translate-y-0 lg:translate-x-full lg:rounded-none
+            bottom-0 left-0 right-0 h-[80vh] translate-y-full rounded-t-3xl
+            lg:top-0 lg:right-0 lg:left-auto lg:h-full lg:w-96 lg:translate-y-0 lg:translate-x-full lg:rounded-none"
     >
-        <div class="
-        flex
-        flex-col
-        h-full"
-    >
-        <!-- Header -->
-        <div
-            class="p-6 border-b flex items-center justify-between bg-gray-50 lg:bg-white rounded-t-3xl lg:rounded-none"
-        >
-            <div>
-                <h2 class="text-xl font-bold text-[#065F46]">Seu carrinho</h2>
-                <p class="text-sm text-gray-500">
-                    <span id="cart-count">0</span> itens selecionados
+        <div class="flex flex-col h-full">
+            <!-- Header -->
+            <div
+                class="p-6 border-b flex items-center justify-between bg-gray-50 lg:bg-white rounded-t-3xl lg:rounded-none"
+            >
+                <div>
+                    <h2 class="text-xl font-bold text-[#065F46]">
+                        Seu carrinho
+                    </h2>
+                    <p class="text-sm text-gray-500">
+                        <span id="cart-count">0</span> itens selecionados
+                    </p>
+                </div>
+                <button
+                    id="close-cart"
+                    class="p-2 hover:bg-gray-200 rounded-full transition-colors"
+                    aria-label="Fechar carrinho"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"
+                        ></path></svg
+                    >
+                </button>
+            </div>
+
+            <!-- Lista de Produtos -->
+            <div
+                id="cart-items-list"
+                class="flex-1 overflow-y-auto p-6 space-y-4"
+            >
+            </div>
+
+            <!-- Footer -->
+            <div class="p-6 border-t bg-white">
+                <button
+                    id="whatsapp-submit"
+                    class="w-full bg-[#065F46] hover:bg-[#044e3a] text-white font-bold py-4 rounded-xl shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:pointer-events-none"
+                    disabled
+                >
+                    Solicitar Orçamento via WhatsApp
+                </button>
+                <p
+                    class="text-center text-[10px] text-gray-400 mt-4 uppercase tracking-widest font-medium"
+                >
+                    Trends Brindes • Orçamento Rápido
                 </p>
             </div>
-            <button
-                id="close-cart"
-                class="p-2 hover:bg-gray-200 rounded-full transition-colors"
-                aria-label="Fechar carrinho"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    ><path d="M18 6 6 18"></path><path d="m6 6 12 12"
-                    ></path></svg
-                >
-            </button>
-        </div>
-
-        <!-- Lista de Produtos -->
-        <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
-        </div>
-
-        <!-- Footer -->
-        <div class="p-6 border-t bg-white">
-            <button
-                id="whatsapp-submit"
-                class="w-full bg-[#065F46] hover:bg-[#044e3a] text-white font-bold py-4 rounded-xl shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:pointer-events-none"
-                disabled
-            >
-                Solicitar Orçamento via WhatsApp
-            </button>
-            <p
-                class="text-center text-[10px] text-gray-400 mt-4 uppercase tracking-widest font-medium"
-            >
-                Trends Brindes • Orçamento Rápido
-            </p>
         </div>
     </aside>
-</div>
 
-<script>
-    import {
-        getCart,
-        removeFromCart,
-        updateQuantity,
-        generateWhatsAppUrl,
-    } from "../scripts/cartStore";
+    <script>
+        import {
+            getCart,
+            removeFromCart,
+            updateQuantity,
+            generateWhatsAppUrl,
+        } from "../scripts/cartStore";
 
-    const panel = document.getElementById("cart-panel");
-    const overlay = document.getElementById("cart-overlay");
-    const fab = document.getElementById("cart-fab");
-    const closeBtn = document.getElementById("close-cart");
-    const listContainer = document.getElementById("cart-items-list");
-    const badge = document.getElementById("cart-badge");
-    const countText = document.getElementById("cart-count");
-    const whatsappBtn = document.getElementById("whatsapp-submit");
+        const panel = document.getElementById("cart-panel");
+        const overlay = document.getElementById("cart-overlay");
+        const fab = document.getElementById("cart-fab");
+        const closeBtn = document.getElementById("close-cart");
+        const listContainer = document.getElementById("cart-items-list");
+        const badge = document.getElementById("cart-badge");
+        const countText = document.getElementById("cart-count");
+        const whatsappBtn = document.getElementById("whatsapp-submit");
 
-    function toggleCart(open: boolean) {
-        const isDesktop = window.innerWidth >= 1024;
-        if (open) {
-            if (isDesktop) panel?.classList.remove("lg:translate-x-full");
-            else panel?.classList.remove("translate-y-full");
-            overlay?.classList.remove("opacity-0", "pointer-events-none");
-        } else {
-            if (isDesktop) panel?.classList.add("lg:translate-x-full");
-            else panel?.classList.add("translate-y-full");
-            overlay?.classList.add("opacity-0", "pointer-events-none");
-        }
-    }
-
-    function renderCart() {
-        const cart = getCart();
-        const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-        if (badge) {
-            badge.innerText = totalItems.toString();
-            badge.classList.toggle("hidden", totalItems === 0);
-        }
-        if (countText) countText.innerText = totalItems.toString();
-        if (whatsappBtn)
-            (whatsappBtn as HTMLButtonElement).disabled = cart.length === 0;
-
-        if (listContainer) {
-            if (cart.length === 0) {
-                listContainer.innerHTML = `
-          <div class="flex flex-col items-center justify-center h-full text-center space-y-4">
-            <div class="bg-gray-100 p-6 rounded-full text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-            </div>
-            <p class="text-gray-500 font-medium">Seu carrinho está vazio</p>
-          </div>
-        `;
-                document
-                    .getElementById("start-shopping")
-                    ?.addEventListener("click", () => toggleCart(false));
+        function toggleCart(open: boolean) {
+            const isDesktop = window.innerWidth >= 1024;
+            if (open) {
+                if (isDesktop) panel?.classList.remove("lg:translate-x-full");
+                else panel?.classList.remove("translate-y-full");
+                overlay?.classList.remove("opacity-0", "pointer-events-none");
             } else {
-                listContainer.innerHTML = cart
-                    .map(
-                        (item) => `
-          <div class="flex gap-4 bg-white p-3 border rounded-xl hover:border-[#F59E0B] transition-colors group">
-            <img src="${item.imagem}" alt="${item.nome}" class="w-20 h-20 object-cover rounded-lg bg-gray-50" />
-            <div class="flex-1 min-w-0">
-              <div class="flex justify-between items-start">
-                <h3 class="text-sm font-bold text-gray-900 truncate pr-2">${item.nome}</h3>
-                <button class="remove-item text-gray-400 hover:text-red-500 transition-colors" data-id="${item.id}" aria-label="Remover">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-                </button>
-              </div>
-              <p class="text-[10px] text-gray-500 mb-2 italic">Cód: ${item.codigo}</p>
-              <div class="flex items-center justify-between mt-auto">
-                <div class="flex items-center border rounded-lg bg-gray-50 overflow-hidden">
-                  <button class="qty-btn minus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria-label="Diminuir quantidade">-</button>
-                  <input type="number" value="${item.quantity}" min="1" class="qty-input outline-none w-10 text-center text-xs font-bold bg-transparent border-none focus:ring-0" data-id="${item.id}" />
-                  <button class="qty-btn plus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria-label="Aumentar quantidade">+</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        `,
-                    )
-                    .join("");
+                if (isDesktop) panel?.classList.add("lg:translate-x-full");
+                else panel?.classList.add("translate-y-full");
+                overlay?.classList.add("opacity-0", "pointer-events-none");
             }
         }
-    }
 
-    fab?.addEventListener("click", () => toggleCart(true));
-    closeBtn?.addEventListener("click", () => toggleCart(false));
-    overlay?.addEventListener("click", () => toggleCart(false));
-
-    whatsappBtn?.addEventListener("click", () => {
-        const url = generateWhatsAppUrl();
-        if (url) window.open(url, "_blank");
-    });
-
-    listContainer?.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement;
-        const btn = target.closest("button");
-        if (!btn) return;
-
-        const id = Number(btn.dataset.id);
-        if (!id) return;
-
-        if (btn.classList.contains("remove-item")) {
-            removeFromCart(id);
-        } else if (btn.classList.contains("qty-btn")) {
-            const input = listContainer?.querySelector<HTMLInputElement>(
-                `.qty-input[data-id="${id}"]`,
+        function renderCart() {
+            const cart = getCart();
+            const totalItems = cart.reduce(
+                (acc, item) => acc + item.quantity,
+                0,
             );
-            const currentQty = input ? parseInt(input.value, 10) : 1;
-            const newQty = btn.classList.contains("plus")
-                ? currentQty + 1
-                : currentQty - 1;
-            updateQuantity(id, newQty);
-        }
-    });
 
-    listContainer?.addEventListener("change", (e) => {
-        const target = e.target as HTMLInputElement;
-        if (target.classList.contains("qty-input")) {
-            updateQuantity(target.dataset.id!, parseInt(target.value));
-        }
-    });
+            if (badge) {
+                badge.innerText = totalItems.toString();
+                badge.classList.toggle("hidden", totalItems === 0);
+            }
+            if (countText) countText.innerText = totalItems.toString();
+            if (whatsappBtn)
+                (whatsappBtn as HTMLButtonElement).disabled = cart.length === 0;
 
-    window.addEventListener("cart-updated", () => {
+            if (listContainer) {
+                if (cart.length === 0) {
+                    listContainer.innerHTML = `
+            <div class="flex flex-col items-center justify-center h-full text-center space-y-4">
+                <div class="bg-gray-100 p-6 rounded-full text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                </div>
+                <p class="text-gray-500 font-medium">Seu carrinho está vazio</p>
+            </div>
+        `;
+                    document
+                        .getElementById("start-shopping")
+                        ?.addEventListener("click", () => toggleCart(false));
+                } else {
+                    listContainer.innerHTML = cart
+                        .map(
+                            (item) => `
+            <div class="flex gap-4 bg-white p-3 border rounded-xl hover:border-[#F59E0B] transition-colors group">
+                <img src="${item.imagem}" alt="${item.nome}" class="w-20 h-20 object-cover rounded-lg bg-gray-50" />
+                <div class="flex-1 min-w-0">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-sm font-bold text-gray-900 truncate pr-2">${item.nome}</h3>
+                    <button class="remove-item text-gray-400 hover:text-red-500 transition-colors" data-id="${item.id}" aria-label="Remover">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                    </button>
+                </div>
+                <p class="text-[10px] text-gray-500 mb-2 italic">Cód: ${item.codigo}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <div class="flex items-center border rounded-lg bg-gray-50 overflow-hidden">
+                    <button class="qty-btn minus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria label="Diminuir quantidade">-</button>
+                    <input type="number" value="${item.quantity}" min="1" class="qty-input outline-none w-10 text-center text-xs font-bold bg-transparent border-none focus:ring-0" data-id="${item.id}" />
+                    <button class="qty-btn plus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria-label="Aumentar quantidade">+</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        `,
+                        )
+                        .join("");
+                }
+            }
+        }
+
+        fab?.addEventListener("click", () => toggleCart(true));
+        closeBtn?.addEventListener("click", () => toggleCart(false));
+        overlay?.addEventListener("click", () => toggleCart(false));
+
+        whatsappBtn?.addEventListener("click", () => {
+            const url = generateWhatsAppUrl();
+            if (url) window.open(url, "_blank");
+        });
+
+        listContainer?.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement;
+            const btn = target.closest("button");
+            if (!btn) return;
+
+            const id = Number(btn.dataset.id);
+            if (!id) return;
+
+            if (btn.classList.contains("remove-item")) {
+                removeFromCart(id);
+            } else if (btn.classList.contains("qty-btn")) {
+                const input = listContainer?.querySelector<HTMLInputElement>(
+                    `.qty-input[data-id="${id}"]`,
+                );
+                const currentQty = input ? parseInt(input.value, 10) : 1;
+                const newQty = btn.classList.contains("plus")
+                    ? currentQty + 1
+                    : currentQty - 1;
+                updateQuantity(id, newQty);
+            }
+        });
+
+        listContainer?.addEventListener("change", (e) => {
+            const target = e.target as HTMLInputElement;
+            if (target.classList.contains("qty-input")) {
+                updateQuantity(target.dataset.id!, parseInt(target.value));
+            }
+        });
+
+        window.addEventListener("cart-updated", () => {
+            renderCart();
+            if (window.innerWidth >= 1024) toggleCart(true);
+        });
+
         renderCart();
-        if (window.innerWidth >= 1024) toggleCart(true);
-    });
+    </script>
 
-    renderCart();
-</script>
-
-<style>
-    :global(input[type="number"])::-webkit-inner-spin-button,
-    :global(input[type="number"])::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-</style>
+    <style>
+        :global(input[type="number"])::-webkit-inner-spin-button,
+        :global(input[type="number"])::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</div>

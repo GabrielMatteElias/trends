@@ -1,9 +1,12 @@
 
 export interface ProductDimensions {
-    height: string | null;
-    width: string | null;
+    height?: string | null;
+    width?: string | null;
     depth?: string | null;
     diameter?: string | null;
+    circumference?: string | null;
+    length?: string | null;
+    thickness?: string | null;
 }
 
 export interface ProductColor {
@@ -17,7 +20,7 @@ export interface Product {
     name: string;
     category: string;
     description: string;
-    dimensions: ProductDimensions;
+    dimensions: ProductDimensions | null;
     image: string | null;
     colors: ProductColor[];
 }
@@ -1164,7 +1167,7 @@ export const products: Product[] = [
         category: "Bolsas, Mochilas e utilitários",
         description: "Kit viagem 2 peças Bidins em couro sintético. Porta passaporte com três divisórias e identificador de bagagem com fivela.",
         image: "https://placehold.co/600x400/cccccc/969696?text=Kit+Viagem+2+Pe%C3%A7as+Bidins",
-        dimensions: { identifier: "13 cm x 7.2 cm", document: "14 cm x 9.9 cm" },
+        dimensions: { width: "13 cm x 7.2 cm", height: "14 cm x 9.9 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
             { name: "Prata", hex: "#C0C0C0" },
@@ -1388,7 +1391,7 @@ export const products: Product[] = [
         category: "Acessórios Promocionais",
         description: "Boné de aba curva em poliéster com aba em poliestireno. Ajuste confortável com faixas de velcro.",
         image: "https://placehold.co/600x400/cccccc/969696?text=Bon%C3%A9+Aba+Curva",
-        dimensions: { height: "10.5 cm", brim_width: "6.9 cm", depth: "15.9 cm" },
+        dimensions: { height: "10.5 cm", width: "6.9 cm", depth: "15.9 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
             { name: "Prata", hex: "#C0C0C0" },
@@ -1570,7 +1573,7 @@ export const products: Product[] = [
         category: "Cuidado, bem estar e autocuidado",
         description: "Kit com travesseiro inflável (revestido de veludo), máscara de cetim e protetor auricular. Acompanha nécessaire de veludo.",
         image: "https://placehold.co/600x400/cccccc/969696?text=Kit+Viagem+3+Pe%C3%A7as",
-        dimensions: { pillow: "43 cm x 26.5 cm", mask: "8.4 cm x 18.8 cm", earplug: "2 cm x 1 cm", bag: "11.9 cm x 17.4 cm" },
+        dimensions: null,
         colors: [
             { name: "Preto", hex: "#000000" },
             { name: "Prata", hex: "#C0C0C0" },
@@ -1640,7 +1643,7 @@ export const products: Product[] = [
         category: "Gourmet e momentos ao ar livre",
         description: "Porta-Copos ou Garrafas feito em neoprene isotérmico. Disponível em tamanhos pequeno e médio.",
         image: "https://placehold.co/600x400/cccccc/969696?text=Porta-Copos+Isot%C3%A9rmico",
-        dimensions: { small: "Altura: 18cm x Largura: 7cm x Circunferência: 21cm", medium: "Altura: 20cm x Largura: 7,5cm x Circunferência: 24,7cm" },
+        dimensions: null,
         colors: [
             { name: "Preto", hex: "#000000" },
             { name: "Prata", hex: "#C0C0C0" },
