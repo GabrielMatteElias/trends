@@ -14,12 +14,6 @@ const productsJson = JSON.stringify(products);
 >
     <main>
         <SpeedInsights />
-        <div
-            class="bg-emerald-950 text-white py-3 px-4 text-center text-sm font-semibold tracking-wide"
-        >
-            ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O RIO
-            GRANDE DO SUL
-        </div>
 
         <section
             class="relative overflow-hidden bg-emerald-950 text-white px-4"
@@ -589,7 +583,7 @@ const productsJson = JSON.stringify(products);
                 grid.innerHTML = filtered
                     .map(
                         (p, index) => `
-                        <a href="/product?id=${p.id}" class="product-card group block overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-800 hover:shadow-xl" style="animation-delay: ${index * 45}ms">
+                        <a href="/produto/${p.slug}" class="product-card group block overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-800 hover:shadow-xl" style="animation-delay: ${index * 45}ms">
                             <div class="overflow-hidden bg-slate-100 aspect-[4/3]">
                                 <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" class="product-image h-full w-full object-cover">
                             </div>

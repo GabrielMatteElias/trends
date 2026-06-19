@@ -17,6 +17,7 @@ export interface ProductColor {
 export interface Product {
     id: number;
     code: string;
+    slug: string | null;
     name: string;
     category: string;
     description: string;
@@ -29,11 +30,12 @@ export const products: Product[] = [
     {
         id: 1,
         code: "9139A",
+        slug: "squeeze-aluminio-500ml",
         name: "Squeeze Alumínio 500ml",
         category: "Garrafas e Squeezes",
         description: "Squeeze de alumínio 500ml com pintura metalizada, tampa rosqueável e acompanha um segundo bico com mosquetão. Não é térmico.",
         image: "https://placehold.co/600x400/cccccc/969696?text=Squeeze+Alum%C3%ADnio+500ml",
-        dimensions: { height: "21.3 cm", width: "6.5 cm" },
+        dimensions: { height: "21.3 cm", width: "5.5 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
             { name: "Prata", hex: "#C0C0C0" },
@@ -43,6 +45,7 @@ export const products: Product[] = [
     {
         id: 2,
         code: "18821",
+        slug: "squeeze-inox-750ml",
         name: "Squeeze Inox 750ml",
         category: "Garrafas e Squeezes",
         description: "Squeeze feito em inox com 750ml. Possui tampa plástica, bocal com tampa protetora e alça para transporte. Parceiro perfeito para atividades físicas.",
@@ -57,6 +60,7 @@ export const products: Product[] = [
     {
         id: 3,
         code: "19032",
+        slug: "garrafa-termica-800ml",
         name: "Garrafa Térmica 800ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica em inox 304 com capacidade de 800ml. Estrutura de parede dupla e vedação a vácuo para conservar a temperatura. Tampa rosqueável com protetor de bocal e trava de segurança.",
@@ -71,6 +75,7 @@ export const products: Product[] = [
     {
         id: 4,
         code: "18905",
+        slug: "garrafa-termica-750ml",
         name: "Garrafa Térmica 750ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de 750ml em inox 304, excelente para manter a temperatura, quente ou fria. Tampa plástica rosqueável e alça flexível emborrachada.",
@@ -85,6 +90,7 @@ export const products: Product[] = [
     {
         id: 5,
         code: "119042",
+        slug: "garrafa-termica-500ml",
         name: "Garrafa Térmica 500ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica em inox com tampa rosqueável e pintura em spray. Estrutura de parede dupla e vedação a vácuo. Obs.: Tons de azul têm acabamento acetinado, demais cores opaco.",
@@ -99,6 +105,7 @@ export const products: Product[] = [
     {
         id: 6,
         code: "1701IF",
+        slug: "garrafa-termica-750ml-fosca",
         name: "Garrafa Térmica 750ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa 750ml em inox com tampa rosqueável e pintura fosca. Obs.: Não é um modelo térmico.",
@@ -113,6 +120,7 @@ export const products: Product[] = [
     {
         id: 7,
         code: "18816",
+        slug: "garrafa-termica-inox-550ml",
         name: "Garrafa Térmica Inox 550ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa Térmica em Inox 304 com parede dupla e capacidade de 550ml. Tampa rosqueável e alça para transporte.",
@@ -127,6 +135,7 @@ export const products: Product[] = [
     {
         id: 8,
         code: "07047",
+        slug: "garrafa-aluminio-630ml",
         name: "Garrafa Alumínio 630ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa de alumínio 630ml com tampa plástica rosqueável e alça integrada.",
@@ -141,6 +150,7 @@ export const products: Product[] = [
     {
         id: 9,
         code: "18705",
+        slug: "garrafa-termica-500ml-infusor",
         name: "Garrafa Térmica 500ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica 500ml em aço inoxidável 304, acompanha infusor de bebidas.",
@@ -155,6 +165,7 @@ export const products: Product[] = [
     {
         id: 10,
         code: "18639",
+        slug: "garrafa-termica-inox-450ml",
         name: "Garrafa Térmica Inox 450ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica 450ml em inox com tampa que pode ser usada como caneca. Tampa interna em plástico resistente e base com borracha antiderrapante.",
@@ -169,6 +180,7 @@ export const products: Product[] = [
     {
         id: 11,
         code: "KIT18639",
+        slug: "kit-garrafa-termica-inox-450ml",
         name: "Kit Garrafa Térmica Inox 450ml",
         category: "Garrafas e Squeezes",
         description: "Kit garrafa térmica 450ml com duas tampas extras que podem ser usadas como xícaras. Garrafa em inox com revestimento plástico. Acompanha sacola de papel com berço de papelão.",
@@ -183,6 +195,7 @@ export const products: Product[] = [
     {
         id: 12,
         code: "18916",
+        slug: "garrafa-termica-900ml",
         name: "Garrafa Térmica 900ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de parede dupla em inox, capacidade de 900ml. Tampa rosqueável com alça, bico flip e canudo interno.",
@@ -197,6 +210,7 @@ export const products: Product[] = [
     {
         id: 13,
         code: "08196",
+        slug: "garrafa-termica-inox-750ml",
         name: "Garrafa Térmica Inox 750ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica inox 750ml com pintura eletrostática durável. Parede dupla e isolamento a vácuo. Tampa rosqueável e alça para transporte.",
@@ -211,6 +225,7 @@ export const products: Product[] = [
     {
         id: 14,
         code: "15071",
+        slug: "garrafa-termica-inox-500ml-copo",
         name: "Garrafa Térmica Inox 500ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica 500ml em inox com parede dupla e cordão tipo mosquetão. Tampa rosqueável com tampa plástica superior e copo adicional rosqueável na parte inferior.",
@@ -225,6 +240,7 @@ export const products: Product[] = [
     {
         id: 15,
         code: "15157",
+        slug: "garrafa-termica-500ml-filtro",
         name: "Garrafa Térmica 500ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de aço inox 304 com parede dupla. Possui filtro para bebidas saborizadas e anel de silicone para vedação segura.",
@@ -239,6 +255,7 @@ export const products: Product[] = [
     {
         id: 16,
         code: "15159",
+        slug: "garrafa-termica-850ml",
         name: "Garrafa Térmica 850ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de aço inox com parede dupla, capacidade de 900ml. Tampa rosqueável com alça, anel de silicone e opção de hidratação por canudo ou bico.",
@@ -253,6 +270,7 @@ export const products: Product[] = [
     {
         id: 17,
         code: "15165",
+        slug: "garrafa-termica-850ml-bico-flip",
         name: "Garrafa Térmica 850ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de 850ml em aço inox com parede dupla. Possui bico flip + canudo, tampa rosqueável com alça e anel de silicone para vedação.",
@@ -267,6 +285,7 @@ export const products: Product[] = [
     {
         id: 18,
         code: "08326",
+        slug: "garrafa-termica-950ml",
         name: "Garrafa Térmica 950ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica em inox com capacidade de 950ml. Design ergonômico, parede dupla e isolamento a vácuo. Tampa rosqueável em inox com alça fixa. Pintura eletrostática.",
@@ -281,6 +300,7 @@ export const products: Product[] = [
     {
         id: 19,
         code: "N/A",
+        slug: "garrafa-termica-710ml",
         name: "Garrafa térmica 710ml",
         category: "Garrafas e Squeezes",
         description: "Produzida em material de alta qualidade, mantém bebidas na temperatura ideal. Design moderno com tampa rosca, alta vedação e alça resistente. Formato ergonômico.",
@@ -295,6 +315,7 @@ export const products: Product[] = [
     {
         id: 20,
         code: "N/A",
+        slug: "garrafa-aluminio-800ml",
         name: "Garrafa em alumínio 800ml",
         category: "Garrafas e Squeezes",
         description: "Design moderno com dupla camada. Base em silicone removível para evitar riscos. Tampa com alça integrada para transporte fácil e seguro.",
@@ -309,6 +330,7 @@ export const products: Product[] = [
     {
         id: 21,
         code: "18969",
+        slug: "copo-termico-900ml",
         name: "Copo Térmico 900ml",
         category: "Copos e Canecas",
         description: "Copo térmico em aço inox com parede dupla, tampa rosqueável plástica com vedação a vácuo. Bico flip, canudo plástico e alça para transporte. Pintura eletrostática.",
@@ -323,6 +345,7 @@ export const products: Product[] = [
     {
         id: 22,
         code: "08146A",
+        slug: "copo-termico-800ml",
         name: "Copo Térmico 800ml",
         category: "Copos e Canecas",
         description: "Copo térmico em aço inox com pintura eletrostática e capacidade de 520ml. Parede dupla, tampa plástica com vedação a vácuo e bocal com trava de segurança.",
@@ -337,6 +360,7 @@ export const products: Product[] = [
     {
         id: 23,
         code: "15380",
+        slug: "caneca-termica-13l",
         name: "Caneca Térmica 1,3L",
         category: "Copos e Canecas",
         description: "Caneca térmica em inox com alça reforçada e pintura eletrostática. Capacidade de 1,3 litro. Parede dupla e vedação a vácuo. Tampa com protetor e acesso para canudo.",
@@ -351,6 +375,7 @@ export const products: Product[] = [
     {
         id: 24,
         code: "18817B",
+        slug: "caneca-termica-12l",
         name: "Caneca Térmica 1,2L",
         category: "Copos e Canecas",
         description: "Caneca de 1,2 litros em inox 304 com parede dupla. Tampa acrílica rosqueável com bico flexível e canudo. Pegador plástico para segurança.",
@@ -365,6 +390,7 @@ export const products: Product[] = [
     {
         id: 25,
         code: "09172",
+        slug: "copo-termico-500ml",
         name: "Copo Térmico 500ml",
         category: "Copos e Canecas",
         description: "Copo térmico em inox 304 com pintura eletrostática e capacidade de 500ml. Parede dupla, vedação a vácuo e base emborrachada. Tampa rosqueável com trava.",
@@ -379,6 +405,7 @@ export const products: Product[] = [
     {
         id: 26,
         code: "09073",
+        slug: "copo-termico-350ml",
         name: "Copo Térmico 350ml",
         category: "Copos e Canecas",
         description: "Copo térmico em inox 304 com pintura eletrostática, base antiderrapante e capacidade de 350ml. Parede dupla e vedação a vácuo. Tampa rosqueável com trava.",
@@ -393,6 +420,7 @@ export const products: Product[] = [
     {
         id: 27,
         code: "14726L",
+        slug: "copo-termico-inox-320ml",
         name: "Copo Térmico Inox 320ml",
         category: "Copos e Canecas",
         description: "Copo térmico em inox 304 com pintura eletrostática e capacidade de 500ml. Parede dupla, vedação a vácuo e base emborrachada. Tampa rosqueável com trava.",
@@ -407,6 +435,7 @@ export const products: Product[] = [
     {
         id: 28,
         code: "14724",
+        slug: "copo-termico-inox-500ml",
         name: "Copo Térmico Inox 500ml",
         category: "Copos e Canecas",
         description: "Copo térmico de inox 500ml com parede dupla, base com borracha antideslizante e tampa rosqueável.",
@@ -421,6 +450,7 @@ export const products: Product[] = [
     {
         id: 29,
         code: "18736",
+        slug: "copo-termico-520ml",
         name: "Copo Térmico 520ml",
         category: "Copos e Canecas",
         description: "Copo térmico em aço inox com pintura eletrostática e capacidade de 520ml. Parede dupla, tampa plástica com vedação a vácuo e bocal com trava.",
@@ -435,6 +465,7 @@ export const products: Product[] = [
     {
         id: 30,
         code: "O4081",
+        slug: "caneca-termica-inox-350ml",
         name: "Caneca Térmica Inox 350ml",
         category: "Copos e Canecas",
         description: "Caneca térmica de inox com capacidade de 350ml, livre de BPA. Tampa acrílica com bocal e trava de segurança.",
@@ -449,6 +480,7 @@ export const products: Product[] = [
     {
         id: 31,
         code: "18657",
+        slug: "caneca-termica-450ml",
         name: "Caneca Térmica 450ml",
         category: "Copos e Canecas",
         description: "Caneca térmica de inox 450ml com parede dupla e tampa com acesso ao bocal.",
@@ -463,6 +495,7 @@ export const products: Product[] = [
     {
         id: 32,
         code: "03889",
+        slug: "caneca-termica-400ml",
         name: "Caneca Térmica 400ml",
         category: "Copos e Canecas",
         description: "Caneca de inox com detalhes plásticos, capacidade de 400ml. Tampa com vedação e bocal com trava de segurança.",
@@ -477,6 +510,7 @@ export const products: Product[] = [
     {
         id: 33,
         code: "18578",
+        slug: "copo-retratil-silicone-150ml",
         name: "Copo Retrátil de Silicone 150ml",
         category: "Copos e Canecas",
         description: "Copo retrátil com capacidade de 150ml, livre de BPA. Tampa de encaixe com acesso para chaveiro.",
@@ -491,6 +525,7 @@ export const products: Product[] = [
     {
         id: 34,
         code: "15245",
+        slug: "copo-fibra-arroz-350ml",
         name: "Copo Fibra de Arroz 350ml",
         category: "Copos e Canecas",
         description: "Copo feito em fibra de arroz, alternativa sustentável ao plástico. Resistente ao calor e frio, tampa rosqueável e capacidade de 350ml.",
@@ -505,6 +540,7 @@ export const products: Product[] = [
     {
         id: 35,
         code: "03699",
+        slug: "copo-fibra-trigo-450ml",
         name: "Copo Fibra de Trigo 450ml",
         category: "Copos e Canecas",
         description: "Copo em fibra de trigo livre de BPA, capacidade de 450ml e tampa rosqueável com bocal. Acompanha mexedor e manga antiderrapante.",
@@ -519,6 +555,7 @@ export const products: Product[] = [
     {
         id: 36,
         code: "18786",
+        slug: "coqueteleira-plastica-500ml",
         name: "Coqueteleira Plástica 500ml",
         category: "Copos e Canecas",
         description: "Coqueteleira com capacidade de 500ml e 2 compartimentos extras. Em polipropileno, livre de BPA. Tampa rosqueável com trava e alça. Acompanha misturador de mola.",
@@ -533,6 +570,7 @@ export const products: Product[] = [
     {
         id: 37,
         code: "18915",
+        slug: "coqueteleira-termica-700ml",
         name: "Coqueteleira Térmica 700ml",
         category: "Copos e Canecas",
         description: "Coqueteleira Térmica de 700ml em inox. Tampa rosqueável com trava de segurança. Principal diferencial é a conservação térmica.",
@@ -547,6 +585,7 @@ export const products: Product[] = [
     {
         id: 38,
         code: "18908",
+        slug: "copo-inox-480ml",
         name: "Copo Inox 480ml",
         category: "Copos e Canecas",
         description: "Copo de inox de 480 ml com design prático e durável, ideal para qualquer ocasião.",
@@ -561,6 +600,7 @@ export const products: Product[] = [
     {
         id: 39,
         code: "1330P",
+        slug: "bolsa-termica-9l",
         name: "Bolsa Térmica 9L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica de nylon 9 litros com bolso posterior em malha. Acompanha plaquinha metálica.",
@@ -575,6 +615,7 @@ export const products: Product[] = [
     {
         id: 40,
         code: "1329P",
+        slug: "bolsa-termica-7l",
         name: "Bolsa Térmica 7L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica em Oxford resistente à água com zíper e capacidade de 7 litros. Revestimento interno em manta de alumínio. Bolsos frontal e traseiro.",
@@ -589,6 +630,7 @@ export const products: Product[] = [
     {
         id: 41,
         code: "O2798",
+        slug: "bolsa-termica-10l",
         name: "Bolsa Térmica 10L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica 10 litros de poliéster. Bolso frontal com zíper e alça transversal regulável em nylon (não removível).",
@@ -603,6 +645,7 @@ export const products: Product[] = [
     {
         id: 42,
         code: "06022",
+        slug: "bolsa-termica-dupla-9l",
         name: "Bolsa Térmica Dupla 9L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica dupla em oxford com dois compartimentos térmicos isolados, capacidade de 9 litros. Alças de mãos.",
@@ -617,6 +660,7 @@ export const products: Product[] = [
     {
         id: 43,
         code: "07084",
+        slug: "bolsa-termica-8l",
         name: "Bolsa Térmica 8L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica de nylon com capacidade de 8 Litros. Alça de mão em nylon.",
@@ -631,6 +675,7 @@ export const products: Product[] = [
     {
         id: 44,
         code: "08334",
+        slug: "bolsa-termica-25l",
         name: "Bolsa Térmica 25L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica em Oxford resistente à água, zíper e capacidade de 25 litros. Revestimento em folha de alumínio, botões laterais e bolso externo.",
@@ -645,6 +690,7 @@ export const products: Product[] = [
     {
         id: 45,
         code: "O4386",
+        slug: "bolsa-termica-7l-tnt",
         name: "Bolsa Térmica 7L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica em TNT com forro térmico de alumínio e capacidade de 7L.",
@@ -659,6 +705,7 @@ export const products: Product[] = [
     {
         id: 46,
         code: "04899",
+        slug: "bolsa-termica-9l-poliest",
         name: "Bolsa Térmica 9L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Bolsa térmica de poliéster 600D com capacidade de 9 litros, bolso frontal e alças de mãos.",
@@ -673,6 +720,7 @@ export const products: Product[] = [
     {
         id: 47,
         code: "15073",
+        slug: "mochila-termica-10l",
         name: "Mochila Térmica 10 Litros",
         category: "Bolsa Térmicas e Marmitas",
         description: "Mochila térmica 10L em nylon, com três compartimentos, sendo o principal térmico com saco antivazamento, um exclusivo com proteção antifurto e bolsos laterais telados.",
@@ -687,6 +735,7 @@ export const products: Product[] = [
     {
         id: 48,
         code: "07020",
+        slug: "cooler-termico-62l",
         name: "Cooler Térmico 62 Litros",
         category: "Bolsa Térmicas e Marmitas",
         description: "Cooler de 62 litros em poliéster com revestimento térmico em PEVA atóxico. Tampa de fácil acesso e pedestal metálico. Acompanha estojo.",
@@ -701,6 +750,7 @@ export const products: Product[] = [
     {
         id: 49,
         code: "07028",
+        slug: "marmita-hermetica-800ml",
         name: "Marmita Hermética 800ml",
         category: "Bolsa Térmicas e Marmitas",
         description: "Marmita hermética de 800ml com divisórias e garfo. Em PP atóxico e livre de BPA. Travas de segurança e vedação eficaz.",
@@ -715,6 +765,7 @@ export const products: Product[] = [
     {
         id: 50,
         code: "18858",
+        slug: "marmita-hermetica-plastica-1l",
         name: "Marmita Hermética Plástica 1L",
         category: "Bolsa Térmicas e Marmitas",
         description: "Marmita de 1L em polipropileno atóxico, livre de BPA. Tampa hermética que evita vazamentos e mantém a frescura dos alimentos.",
@@ -729,6 +780,7 @@ export const products: Product[] = [
     {
         id: 51,
         code: "06089",
+        slug: "marmita-fibra-trigo",
         name: "Marmita Fibra Trigo",
         category: "Bolsa Térmicas e Marmitas",
         description: "Marmita em fibra de trigo com tampa de bambu de 1 litro. Possui elástico para transporte seguro. Não aquecer por mais de 3 min no micro-ondas.",
@@ -743,6 +795,7 @@ export const products: Product[] = [
     {
         id: 52,
         code: "08029",
+        slug: "kit-copo-marmita-fibra-bambu",
         name: "Kit Copo e Marmita Fibra de Bambu",
         category: "Bolsa Térmicas e Marmitas",
         description: "Kit com copo salada de 500ml e marmita hermética de 1L com divisórias, garfo e faca em fibra de bambu. Feitos em PP atóxico e livres de BPA.",
@@ -757,6 +810,7 @@ export const products: Product[] = [
     {
         id: 53,
         code: "08125",
+        slug: "bolsa-lona-12l",
         name: "Bolsa de Lona 12L",
         category: "Sacolas e Ecobags",
         description: "Bolsa de lona resistente à água com alças reforçadas e fundo removível para manter a estrutura firme.",
@@ -771,6 +825,7 @@ export const products: Product[] = [
     {
         id: 54,
         code: "19035",
+        slug: "sacola-lona",
         name: "Sacola de Lona",
         category: "Sacolas e Ecobags",
         description: "Sacola em lona resistente a respingos d'água. Possui duas alças fixadas por costura interna.",
@@ -785,6 +840,7 @@ export const products: Product[] = [
     {
         id: 55,
         code: "08077",
+        slug: "bolsa-lona-7l",
         name: "Bolsa de Lona 7L",
         category: "Sacolas e Ecobags",
         description: "Bolsa de lona resistente à água com interior em tecido que mantém objetos organizados. Leve e durável.",
@@ -799,6 +855,7 @@ export const products: Product[] = [
     {
         id: 56,
         code: "18742",
+        slug: "sacola-juta",
         name: "Sacola de Juta",
         category: "Sacolas e Ecobags",
         description: "Sacola ecológica confeccionada em juta com alças costuradas na parte interna.",
@@ -813,6 +870,7 @@ export const products: Product[] = [
     {
         id: 57,
         code: "08067",
+        slug: "sacola-linho",
         name: "Sacola de Linho",
         category: "Sacolas e Ecobags",
         description: "Sacola de linho com alças reforçadas e estrutura de 400g/m². Perfeita para mercado ou praia.",
@@ -827,6 +885,7 @@ export const products: Product[] = [
     {
         id: 58,
         code: "13804",
+        slug: "sacola-algodao",
         name: "Sacola de Algodão",
         category: "Sacolas e Ecobags",
         description: "Sacola de algodão com alças costuradas na parte interna. Disponível em diversos tamanhos.",
@@ -841,6 +900,7 @@ export const products: Product[] = [
     {
         id: 59,
         code: "14585",
+        slug: "sacola-ecologica-algodao-juta",
         name: "Sacola Ecológica de Algodão e Juta",
         category: "Sacolas e Ecobags",
         description: "Sacola Ecológica de algodão e juta.",
@@ -855,6 +915,7 @@ export const products: Product[] = [
     {
         id: 60,
         code: "13780N",
+        slug: "sacola-tnt",
         name: "Sacola de TNT",
         category: "Sacolas e Ecobags",
         description: "Sacola de TNT com costura termo selada. Disponível em diversos tamanhos.",
@@ -869,6 +930,7 @@ export const products: Product[] = [
     {
         id: 61,
         code: "02082",
+        slug: "sacola-tnt-sem-alca",
         name: "Sacola TNT sem alça",
         category: "Sacolas e Ecobags",
         description: "Sacola de TNT sem alça com costura termo selada. Disponível em diversos tamanhos.",
@@ -883,6 +945,7 @@ export const products: Product[] = [
     {
         id: 62,
         code: "08341",
+        slug: "bolsa-couro-sintetico-20l",
         name: "Bolsa Couro Sintético 20L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa em couro sintético impermeável com zíper e capacidade de 20 litros. Compartimento interno revestido em nylon e três alças.",
@@ -897,6 +960,7 @@ export const products: Product[] = [
     {
         id: 63,
         code: "08240",
+        slug: "bolsa-oxford-36l",
         name: "Bolsa Oxford 36L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa em Oxford impermeável com dois bolsos internos e um externo. Compartimento inferior separado com zíper. Alça transversal removível.",
@@ -911,6 +975,7 @@ export const products: Product[] = [
     {
         id: 64,
         code: "04091",
+        slug: "bolsa-dobravel-expansivel-40l",
         name: "Bolsa Dobrável e Expansível 40L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa dobrável e expansível de 40L em poliéster à prova d'água. Dois compartimentos, bolsos internos, exclusivos para tênis e itens molhados.",
@@ -925,6 +990,7 @@ export const products: Product[] = [
     {
         id: 65,
         code: "08344",
+        slug: "mochila-poliest-23l",
         name: "Mochila Poliéster 23L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Mochila em poliéster impermeável com capacidade de 23L. Compartimento para notebook de 15,6 polegadas, três bolsos frontais e laterais com elástico.",
@@ -939,6 +1005,7 @@ export const products: Product[] = [
     {
         id: 66,
         code: "O1324",
+        slug: "mochila-nylon-oxford-14l",
         name: "Mochila Nylon Oxford 14L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Mochila em nylon Oxford impermeável com detalhes em couro sintético, capacidade de 14L. Compartimento para notebook de 15,6 polegadas e entrada USB.",
@@ -953,6 +1020,7 @@ export const products: Product[] = [
     {
         id: 67,
         code: "15386",
+        slug: "mochila-couro-sintetico-20l",
         name: "Mochila Couro Sintético 20L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Mochila em couro sintético com capacidade de 20L. Compartimento para notebook de 15,6 polegadas e três bolsos frontais.",
@@ -967,6 +1035,7 @@ export const products: Product[] = [
     {
         id: 68,
         code: "14185",
+        slug: "mochila-antifurto-poliest-16l",
         name: "Mochila Antifurto Poliéster 16L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Mochila antifurto impermeável com cadeado de segredo, entrada USB e compartimento para notebook de 15,6 polegadas.",
@@ -981,6 +1050,7 @@ export const products: Product[] = [
     {
         id: 69,
         code: "O1320",
+        slug: "mochila-nylon-usb-20l",
         name: "Mochila de Nylon USB 20L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Mochila de nylon 20L com três compartimentos, principal com bolso para notebook de 15,6 polegadas. Suporte USB externo.",
@@ -995,6 +1065,7 @@ export const products: Product[] = [
     {
         id: 70,
         code: "01442",
+        slug: "bolsa-ombro-nylon",
         name: "Bolsa de Ombro Nylon",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa de ombro em nylon com 2 compartimentos, bolso interno e saída para fone de ouvido. Alça transversal regulável.",
@@ -1009,6 +1080,7 @@ export const products: Product[] = [
     {
         id: 71,
         code: "12095B",
+        slug: "bolsa-ombro-nylon-antifurto",
         name: "Bolsa de Ombro Nylon",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa de ombro em nylon impermeável com alça ajustável para ombros e outra para mão. Possui bolso antifurto.",
@@ -1023,6 +1095,7 @@ export const products: Product[] = [
     {
         id: 72,
         code: "08064",
+        slug: "mini-bolsa-rpet-1l",
         name: "Mini Bolsa Transversal de rPET 1L",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa de ombro 1L feita em rPET resistente à água, com compartimento principal e bolso frontal externo. Alça regulável.",
@@ -1037,6 +1110,7 @@ export const products: Product[] = [
     {
         id: 73,
         code: "15332",
+        slug: "bolsa-poliest-pvc",
         name: "Bolsa Poliéster PVC Mescla",
         category: "Bolsas, Mochilas e utilitários",
         description: "Bolsa em poliéster mesclado com PVC, resistente à água. Possui dois compartimentos externos e alça transversal ajustável.",
@@ -1051,6 +1125,7 @@ export const products: Product[] = [
     {
         id: 74,
         code: "15293",
+        slug: "necessaire-juta",
         name: "Nécessaire Juta",
         category: "Bolsas, Mochilas e utilitários",
         description: "Nécessaire em juta com abertura em zíper, alça de mão lateral e detalhes em bidim.",
@@ -1065,6 +1140,7 @@ export const products: Product[] = [
     {
         id: 75,
         code: "15295",
+        slug: "necessaire-juta-compacto",
         name: "Nécessaire Juta",
         category: "Bolsas, Mochilas e utilitários",
         description: "Compacto em juta com alça de mão lateral em bidim e fechamento em zíper.",
@@ -1079,6 +1155,7 @@ export const products: Product[] = [
     {
         id: 76,
         code: "14571",
+        slug: "necessaire-couro-sintetico",
         name: "Nécessaire de Couro Sintético",
         category: "Bolsas, Mochilas e utilitários",
         description: "Nécessaire de couro sintético com pegador lateral.",
@@ -1093,6 +1170,7 @@ export const products: Product[] = [
     {
         id: 77,
         code: "18686",
+        slug: "necessaire-organizadora-poliest",
         name: "Nécessaire Organizadora de Poliéster",
         category: "Bolsas, Mochilas e utilitários",
         description: "Nécessaire impermeável em EVA com zíper e alça lateral em nylon.",
@@ -1107,6 +1185,7 @@ export const products: Product[] = [
     {
         id: 78,
         code: "15333",
+        slug: "necessaire-pvc-mescla",
         name: "Nécessaire Poliéster PVC Mescla",
         category: "Bolsas, Mochilas e utilitários",
         description: "Nécessaire resistente à água em poliéster com mescla de PVC. Fechamento em zíper e alça de mão lateral.",
@@ -1121,6 +1200,7 @@ export const products: Product[] = [
     {
         id: 79,
         code: "O6041",
+        slug: "guarda-chuva-automatico",
         name: "Guarda-chuva Automático",
         category: "Bolsas, Mochilas e utilitários",
         description: "Guarda-chuva de poliéster com abertura automática, estrutura metálica com 16 varetas e pegador em madeira.",
@@ -1135,6 +1215,7 @@ export const products: Product[] = [
     {
         id: 80,
         code: "O3145",
+        slug: "porta-relogios",
         name: "Porta-relógios",
         category: "Bolsas, Mochilas e utilitários",
         description: "Porta-relógios em couro sintético com revestimento interno em veludo. Seis divisórias com almofadas removíveis, visor de vidro e trava.",
@@ -1149,6 +1230,7 @@ export const products: Product[] = [
     {
         id: 81,
         code: "18042",
+        slug: "kit-viagem-3-pecas-cortica",
         name: "Kit Viagem 3 Peças",
         category: "Bolsas, Mochilas e utilitários",
         description: "Kit viagem 3 peças com acabamento em cortiça. Inclui porta-passaporte e tag identificadora de bagagens. Acondicionado em estojo de papel.",
@@ -1163,6 +1245,7 @@ export const products: Product[] = [
     {
         id: 82,
         code: "13828",
+        slug: "kit-viagem-2-pecas-bidins",
         name: "Kit Viagem 2 Peças Bidins",
         category: "Bolsas, Mochilas e utilitários",
         description: "Kit viagem 2 peças Bidins em couro sintético. Porta passaporte com três divisórias e identificador de bagagem com fivela.",
@@ -1177,6 +1260,7 @@ export const products: Product[] = [
     {
         id: 83,
         code: "15351",
+        slug: "agenda-diaria-2026-wire-o",
         name: "Agenda Diária 2026 Wire-O",
         category: "Materiais de Escritório",
         description: "Agenda diária em capa dura com elástico, marca páginas em fita de cetim e encadernação wire-O. Inclui calendários, metas e planejamento.",
@@ -1191,6 +1275,7 @@ export const products: Product[] = [
     {
         id: 84,
         code: "14461",
+        slug: "agenda-couro-sintetico-2026",
         name: "Agenda Couro Sintético 2026",
         category: "Materiais de Escritório",
         description: "Agenda diária com capa em couro sintético e ano '2026' em destaque. Marca-páginas em fita de cetim, calendários e planejamento diário.",
@@ -1205,6 +1290,7 @@ export const products: Product[] = [
     {
         id: 85,
         code: "06099A",
+        slug: "agenda-diaria-2026-linho",
         name: "Agenda Diária 2026 Linho",
         category: "Materiais de Escritório",
         description: "Agenda diária 2026 com capa dura revestida em linho. Inclui calendários 2026-2028 e planejamento diário.",
@@ -1219,6 +1305,7 @@ export const products: Product[] = [
     {
         id: 86,
         code: "14926",
+        slug: "agenda-2026-cromato",
         name: "Agenda 2026 Cromato",
         category: "Materiais de Escritório",
         description: "Agenda 2026 com capa dura em cromato. Páginas para dados pessoais, calendários, orçamentos, planejamento e contatos.",
@@ -1233,6 +1320,7 @@ export const products: Product[] = [
     {
         id: 87,
         code: "14756",
+        slug: "planner-percalux-anual",
         name: "Planner Percalux Anual",
         category: "Materiais de Escritório",
         description: "Planner anual em percalux com calendários mensais e semanais (sem datas fixas). Inclui páginas para metas, controle financeiro, saúde e pets.",
@@ -1247,6 +1335,7 @@ export const products: Product[] = [
     {
         id: 88,
         code: "O1810",
+        slug: "mouse-pad-ergonomico",
         name: "Mouse Pad ergonômico",
         category: "Materiais de Escritório",
         description: "Mouse Pad ergonômico de neoprene com apoio de silicone para o punho. Parte inferior antiderrapante.",
@@ -1261,6 +1350,7 @@ export const products: Product[] = [
     {
         id: 89,
         code: "18672",
+        slug: "pasta-executiva-13",
         name: "Pasta Executiva para Tablet e Notebook 13* Polegadas",
         category: "Materiais de Escritório",
         description: "Pasta à prova d'água em poliéster. Compartimento principal aveludado para notebook, 6 compartimentos externos e alça para mala.",
@@ -1275,6 +1365,7 @@ export const products: Product[] = [
     {
         id: 90,
         code: "10998",
+        slug: "kit-executivo-3-pecas",
         name: "Kit Executivo 3 Peças",
         category: "Materiais de Escritório",
         description: "Kit executivo em estojo de papelão. Contém porta cartão, caneta metal fosca e caderneta em couro sintético. Acompanha placa metálica.",
@@ -1289,6 +1380,7 @@ export const products: Product[] = [
     {
         id: 91,
         code: "14005",
+        slug: "kit-escritorio-4-em-1",
         name: "Kit Escritório 4 em 1",
         category: "Materiais de Escritório",
         description: "Kit escritório 4 em 1 em inox espelhado. Suporte para canetas, cartões, clips e celular.",
@@ -1303,6 +1395,7 @@ export const products: Product[] = [
     {
         id: 92,
         code: "N/A",
+        slug: "canetas-promocionais",
         name: "Canetas",
         category: "Materiais de Escritório",
         description: "Modelos em plástico e metal, com diferentes opções de acabamento e personalização. Ideal para ações promocionais, eventos e uso corporativo.",
@@ -1317,6 +1410,7 @@ export const products: Product[] = [
     {
         id: 93,
         code: "09824",
+        slug: "chaveiro-metal-abridor",
         name: "Chaveiro Metal Abridor",
         category: "Acessórios Promocionais",
         description: "Chaveiro metálico com abridor de garrafas e argola de ferro niquelado.",
@@ -1331,6 +1425,7 @@ export const products: Product[] = [
     {
         id: 94,
         code: "18909",
+        slug: "chaveiro-metal-bambu",
         name: "Chaveiro Metal Bambu",
         category: "Acessórios Promocionais",
         description: "Chaveiro retangular em metal com detalhe frontal em bambu e verso liso.",
@@ -1345,6 +1440,7 @@ export const products: Product[] = [
     {
         id: 95,
         code: "12209",
+        slug: "chaveiro-metal-casa",
         name: "Chaveiro Metal",
         category: "Acessórios Promocionais",
         description: "Chaveiro metal brilhante formato casa, frente e verso da chapa liso.",
@@ -1359,6 +1455,7 @@ export const products: Product[] = [
     {
         id: 96,
         code: "15001",
+        slug: "chaveiro-metal-couro",
         name: "Chaveiro Metal",
         category: "Acessórios Promocionais",
         description: "Chaveiro brilhante com detalhe de couro sintético, frente lisa e verso com parafuso.",
@@ -1373,6 +1470,7 @@ export const products: Product[] = [
     {
         id: 97,
         code: "14501",
+        slug: "chaveiro-metal-couro-2",
         name: "Chaveiro Metal com Couro",
         category: "Acessórios Promocionais",
         description: "Chaveiro brilhante com alça em couro sintético, frente lisa e verso com dois parafusos.",
@@ -1387,6 +1485,7 @@ export const products: Product[] = [
     {
         id: 98,
         code: "18818",
+        slug: "bone-poliest-aba-curva",
         name: "Boné Poliéster Aba Curva",
         category: "Acessórios Promocionais",
         description: "Boné de aba curva em poliéster com aba em poliestireno. Ajuste confortável com faixas de velcro.",
@@ -1401,6 +1500,7 @@ export const products: Product[] = [
     {
         id: 99,
         code: "18818",
+        slug: "bone-poliest-aba-curva-tela",
         name: "Boné Poliéster Aba Curva com Tela",
         category: "Acessórios Promocionais",
         description: "Boné de aba curva em poliéster e tela respirável em nylon. Fecho plástico de fácil ajuste.",
@@ -1415,6 +1515,7 @@ export const products: Product[] = [
     {
         id: 100,
         code: "05052",
+        slug: "chapeu-bucket",
         name: "Chapéu Bucket",
         category: "Acessórios Promocionais",
         description: "Chapéu bucket dupla face feito em poliéster.",
@@ -1429,6 +1530,7 @@ export const products: Product[] = [
     {
         id: 101,
         code: "N/A",
+        slug: "cuia-termica-inox",
         name: "Cuia Térmica de Inox",
         category: "Acessórios Promocionais",
         description: "Cuia térmica em inox com capacidade de 250ml. Parede dupla para conservar temperatura. Acompanha canudo bomba em inox.",
@@ -1443,6 +1545,7 @@ export const products: Product[] = [
     {
         id: 102,
         code: "N/A",
+        slug: "cuia-padrao",
         name: "Cuia Padrão",
         category: "Acessórios Promocionais",
         description: "Cuia feita de porongo com base esmaltada.",
@@ -1457,6 +1560,7 @@ export const products: Product[] = [
     {
         id: 103,
         code: "08225",
+        slug: "toalha-fitness-secagem-rapida",
         name: "Toalha Fitness Poliéster de Secagem Rápida",
         category: "Cuidado, bem estar e autocuidado",
         description: "Toalha em poliéster de textura macia e alta absorção. Alça elástica costurada e acompanha saco de nylon.",
@@ -1471,6 +1575,7 @@ export const products: Product[] = [
     {
         id: 104,
         code: "08285",
+        slug: "porta-comprimidos-semanal",
         name: "Porta Comprimidos Semanal Plástico",
         category: "Cuidado, bem estar e autocuidado",
         description: "Porta-comprimidos em plástico com sete divisórias de 10ml identificadas com os dias da semana. Acompanha corrente.",
@@ -1485,6 +1590,7 @@ export const products: Product[] = [
     {
         id: 105,
         code: "O4055",
+        slug: "massageador-facial-eletrico",
         name: "Massageador e Limpador Facial Elétrico",
         category: "Cuidado, bem estar e autocuidado",
         description: "Massageador facial em silicone à prova d'água. Três tamanhos de cerdas limpam e massageiam a face. Funciona com pilha AAA (não inclusa).",
@@ -1499,6 +1605,7 @@ export const products: Product[] = [
     {
         id: 106,
         code: "08059",
+        slug: "mini-massageador-corporal",
         name: "Mini Massageador Corporal",
         category: "Cuidado, bem estar e autocuidado",
         description: "Massageador que alivia tensões musculares. Feito de plástico leve e resistente. Alimentação via USB ou 3 pilhas AAA.",
@@ -1513,6 +1620,7 @@ export const products: Product[] = [
     {
         id: 107,
         code: "04055",
+        slug: "escova-magica",
         name: "Escova Mágica",
         category: "Cuidado, bem estar e autocuidado",
         description: "Escova compacta e ergonômica com cerdas flexíveis em dois níveis para desembaraçar sem repuxar. Feita em plástico.",
@@ -1527,6 +1635,7 @@ export const products: Product[] = [
     {
         id: 108,
         code: "O1764",
+        slug: "espelho-duplo-plastico",
         name: "Espelho Duplo com Aumento Plástico",
         category: "Cuidado, bem estar e autocuidado",
         description: "Espelho duplo compacto com moldura em plástico. Espelho superior sem aumento e inferior com aumento.",
@@ -1541,6 +1650,7 @@ export const products: Product[] = [
     {
         id: 109,
         code: "18920",
+        slug: "espelho-bolso-couro",
         name: "Espelho de Bolso em Couro Sintético",
         category: "Cuidado, bem estar e autocuidado",
         description: "Espelho duplo compacto com moldura em plástico. Espelho superior sem aumento e inferior com aumento.",
@@ -1555,6 +1665,7 @@ export const products: Product[] = [
     {
         id: 110,
         code: "18536",
+        slug: "kit-viagem-6-pecas",
         name: "Kit Viagem 6 Peças",
         category: "Cuidado, bem estar e autocuidado",
         description: "Kit viagem em estojo ziplock com frascos de 80ml (spray, rosqueável, pump), potes de 10ml e espátula.",
@@ -1569,6 +1680,7 @@ export const products: Product[] = [
     {
         id: 111,
         code: "12480",
+        slug: "kit-viagem-3-pecas-veludo",
         name: "Kit Viagem 3 Peças",
         category: "Cuidado, bem estar e autocuidado",
         description: "Kit com travesseiro inflável (revestido de veludo), máscara de cetim e protetor auricular. Acompanha nécessaire de veludo.",
@@ -1583,6 +1695,7 @@ export const products: Product[] = [
     {
         id: 112,
         code: "18891A",
+        slug: "kit-churrasco-3-pecas-nylon",
         name: "Kit Churrasco 3 Peças",
         category: "Gourmet e momentos ao ar livre",
         description: "Kit churrasco com faca, garfo e pegador em inox com detalhes em madeira. Acomodado em estojo de nylon. Acompanha plaquinha adesiva.",
@@ -1597,6 +1710,7 @@ export const products: Product[] = [
     {
         id: 113,
         code: "14565N",
+        slug: "kit-churrasco-3-pecas-kraft",
         name: "Kit Churrasco 3 Peças",
         category: "Gourmet e momentos ao ar livre",
         description: "Kit churrasco três peças em estojo de papel kraft, contendo faca, garfo e tábua de corte com canaleta.",
@@ -1611,6 +1725,7 @@ export const products: Product[] = [
     {
         id: 114,
         code: "05184",
+        slug: "kit-churrasco-8-pecas",
         name: "Kit Churrasco 8 Peças",
         category: "Gourmet e momentos ao ar livre",
         description: "Kit churrasco com 8 peças em inox e detalhes em madeira. Acomodado em estojo de nylon. Acompanha plaquinha adesiva.",
@@ -1625,6 +1740,7 @@ export const products: Product[] = [
     {
         id: 115,
         code: "N/A",
+        slug: "tabuas-corte",
         name: "Tábuas de Corte",
         category: "Gourmet e momentos ao ar livre",
         description: "Perfeitas para momentos de convivência, kits gourmet e ações especiais.",
@@ -1639,6 +1755,7 @@ export const products: Product[] = [
     {
         id: 116,
         code: "05024M ou 05024P",
+        slug: "porta-copos-isotermico",
         name: "Porta-Copos ou Garrafas Isotérmico",
         category: "Gourmet e momentos ao ar livre",
         description: "Porta-Copos ou Garrafas feito em neoprene isotérmico. Disponível em tamanhos pequeno e médio.",
@@ -1653,6 +1770,7 @@ export const products: Product[] = [
     {
         id: 117,
         code: "134331",
+        slug: "sacola-gelo-bebidas",
         name: "Sacola de Gelo para Bebidas",
         category: "Gourmet e momentos ao ar livre",
         description: "Sacola plástica para gelo com alça (Icebag) para transportar garrafas. Em PVC.",
@@ -1667,6 +1785,7 @@ export const products: Product[] = [
     {
         id: 118,
         code: "14402",
+        slug: "umidificador-ultrassonico-led",
         name: "Umidificador Ultrasônico com Led",
         category: "Tecnologia e Acessórios",
         description: "Umidificador ultrassônico com led de 7 cores alternadas. Plástico estilizado em madeira, capacidade de 130ml. Funciona com cabo USB.",
@@ -1681,6 +1800,7 @@ export const products: Product[] = [
     {
         id: 119,
         code: "14378",
+        slug: "mini-umidificador-led",
         name: "Mini Umidificador com LED",
         category: "Tecnologia e Acessórios",
         description: "Mini umidificador ultrassônico com led que muda de cor. Acompanha filtro de algodão e cabo USB. Capacidade de 130ml.",
@@ -1695,6 +1815,7 @@ export const products: Product[] = [
     {
         id: 120,
         code: "04051",
+        slug: "power-bank-10000mah",
         name: "Power Bank 10.000mAh com Carregamento via Indução ou via Cabo",
         category: "Tecnologia e Acessórios",
         description: "Com indicador led de bateria, contém dois conjuntos de ventosas nas extremidades da área de indução. O carregador possui duas portas de saídas.",
@@ -1709,6 +1830,7 @@ export const products: Product[] = [
     {
         id: 121,
         code: "06029",
+        slug: "caixa-som-bluetooth-tws",
         name: "Caixa de Som Bluetooth TWS",
         category: "Tecnologia e Acessórios",
         description: "Caixa de som bluetooth com conectividade TWS. Microfone para chamadas, base de silicone antiderrapante. Acompanha cordão e cabo USB.",
@@ -1723,6 +1845,7 @@ export const products: Product[] = [
     {
         id: 122,
         code: "13469",
+        slug: "lixocar-couro-sintetico",
         name: "Lixocar de Couro Sintético",
         category: "Tecnologia e Acessórios",
         description: "Lixocar de couro sintético.",

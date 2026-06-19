@@ -3,7 +3,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 const { title, description } = Astro.props;
-
 ---
 
 <!doctype html>
@@ -106,8 +105,14 @@ const { title, description } = Astro.props;
         </style>
     </head>
     <body style="font-family: Plus Jakarta Sans, sans-serif;">
+        <div
+            class="bg-emerald-950 text-white py-3 px-4 text-center text-sm font-semibold tracking-wide"
+        >
+            🌾 ORGULHO DE SER GAÚCHA: PRODUÇÃO E LOGÍSTICA RÁPIDA PARA TODO O
+            RIO GRANDE DO SUL 🌾
+        </div>
         <Header />
-            <slot />
+        <slot />
         <Footer />
     </body>
 </html>
