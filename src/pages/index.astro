@@ -54,7 +54,7 @@ const productsJson = JSON.stringify(products);
                             Solicitar Orçamento
                         </a>
                         <a
-                            href="#products"
+                            href="/catalogo"
                             class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/10 px-6 py-3 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white/15"
                         >
                             Ver Catálogo
@@ -168,6 +168,70 @@ const productsJson = JSON.stringify(products);
                         </div>
                     </div>
                 </div>
+                <div class="text-center mt-10 md:mt-12">
+                <a
+                    href="/catalogo"
+                    class="inline-flex w-full items-center justify-center rounded-lg bg-amber-500 px-7 py-3.5 text-base font-bold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 hover:bg-amber-600 sm:w-auto"
+                >
+                    Ver catálogo completo
+                </a>
+            </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="max-w-2xl">
+                    <span
+                        class="text-sm font-bold uppercase tracking-wide text-amber-600"
+                        >Diferenciais</span
+                    >
+                    <h2 class="section-title mt-3 font-bold text-emerald-950">
+                        Por que escolher a Trends?
+                    </h2>
+                </div>
+                <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
+                        <h3 class="font-bold text-slate-950">
+                            Personalização Profissional
+                        </h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Brindes com acabamento comercial e percepção de
+                            valor.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
+                        <h3 class="font-bold text-slate-950">
+                            Atendimento Especializado
+                        </h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Curadoria para escolher o produto certo para sua
+                            campanha.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
+                        <h3 class="font-bold text-slate-950">Produção Local</h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Mais proximidade, previsibilidade e agilidade no
+                            atendimento.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    >
+                        <h3 class="font-bold text-slate-950">Entrega Ágil</h3>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Operação preparada para empresas, eventos e ações
+                            promocionais.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -247,144 +311,6 @@ const productsJson = JSON.stringify(products);
                             materiais de escritório.
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 px-4">
-            <div class="max-w-7xl mx-auto">
-                <div class="max-w-2xl">
-                    <span
-                        class="text-sm font-bold uppercase tracking-wide text-amber-600"
-                        >Diferenciais</span
-                    >
-                    <h2 class="section-title mt-3 font-bold text-emerald-950">
-                        Por que escolher a Trends?
-                    </h2>
-                </div>
-                <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div
-                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-                    >
-                        <h3 class="font-bold text-slate-950">
-                            Personalização Profissional
-                        </h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">
-                            Brindes com acabamento comercial e percepção de
-                            valor.
-                        </p>
-                    </div>
-                    <div
-                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-                    >
-                        <h3 class="font-bold text-slate-950">
-                            Atendimento Especializado
-                        </h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">
-                            Curadoria para escolher o produto certo para sua
-                            campanha.
-                        </p>
-                    </div>
-                    <div
-                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-                    >
-                        <h3 class="font-bold text-slate-950">Produção Local</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">
-                            Mais proximidade, previsibilidade e agilidade no
-                            atendimento.
-                        </p>
-                    </div>
-                    <div
-                        class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-                    >
-                        <h3 class="font-bold text-slate-950">Entrega Ágil</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">
-                            Operação preparada para empresas, eventos e ações
-                            promocionais.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="products" class="py-20 px-4 bg-white">
-            <div class="max-w-7xl mx-auto">
-                <div class="mx-auto max-w-3xl text-center">
-                    <span
-                        class="text-sm font-bold uppercase tracking-wide text-amber-600"
-                        >Catálogo</span
-                    >
-                    <h2 class="section-title mt-3 font-bold text-emerald-950">
-                        Produtos para campanhas que precisam ser lembradas.
-                    </h2>
-                    <p class="body-copy mt-4 text-slate-600">
-                        Busque por nome ou código e filtre por categoria para
-                        encontrar o brinde ideal.
-                    </p>
-                </div>
-
-                <div class="mt-10 mb-6 flex justify-center">
-                    <label class="relative w-full max-w-xl">
-                        <span
-                            class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-                            >⌕</span
-                        >
-                        <input
-                            type="text"
-                            id="search-input"
-                            placeholder="Buscar por nome ou código..."
-                            class="w-full rounded-xl border border-slate-200 bg-slate-50 py-4 pl-11 pr-4 text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-amber-500 focus:bg-white focus:ring-4 focus:ring-amber-500/10"
-                            aria-label="Buscar produtos por nome ou código"
-                        />
-                    </label>
-                </div>
-
-                <div class="-mx-4 mb-10 overflow-x-auto px-4 pb-2">
-                    <div
-                        class="flex min-w-max gap-2 md:min-w-0 md:flex-wrap md:justify-center"
-                    >
-                        <button
-                            onclick="filterByCategory('all')"
-                            class="category-btn active px-4 py-2.5 rounded-full bg-emerald-900 text-white font-bold"
-                            data-category="all">Todos</button
-                        >
-                        <button
-                            onclick="filterByCategory('Garrafas e Squeezes')"
-                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                            data-category="Garrafas e Squeezes"
-                            >Garrafas e Squeezes</button
-                        >
-                        <button
-                            onclick="filterByCategory('Copos e Canecas')"
-                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                            data-category="Copos e Canecas"
-                            >Copos e Canecas</button
-                        >
-                        <button
-                            onclick="filterByCategory('Bolsas e Mochilas')"
-                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                            data-category="Bolsas e Mochilas"
-                            >Bolsas e Mochilas</button
-                        >
-                        <button
-                            onclick="filterByCategory('Bolsas Térmicas e Marmitas')"
-                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                            data-category="Bolsas Térmicas e Marmitas"
-                            >Bolsas Térmicas e Marmitas</button
-                        >
-                        <button
-                            onclick="filterByCategory('Materiais de Escritório')"
-                            class="category-btn px-4 py-2.5 rounded-full border-2 border-emerald-900 text-emerald-900 font-semibold"
-                            data-category="Materiais de Escritório"
-                            >Materiais de Escritório</button
-                        >
-                    </div>
-                </div>
-
-                <div
-                    id="products-grid"
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
                 </div>
             </div>
         </section>
@@ -555,7 +481,7 @@ const productsJson = JSON.stringify(products);
                 const bottomProducts = selectedProducts.slice(5);
                 const makeLoop = (items) => [...items, ...items];
                 const renderCard = (product) => `
-                <a href="/product?id=${product.id}" class="featured-card group block w-56 max-w-full overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
+                <a href="/produto/${product.slug}" class="featured-card group block w-56 max-w-full overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
                     <div class="aspect-square overflow-hidden flex items-center justify-center p-4 bg-slate-50/50 rounded-t-xl">
                         <img
                             src="${product.image}"

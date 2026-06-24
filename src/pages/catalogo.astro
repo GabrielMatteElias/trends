@@ -52,11 +52,11 @@ const breadcrumbSchema = {
 
         <main
             id="conteudo-principal"
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12"
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-8 md:pt-0 md:pb-12 lg:py-12"
         >
             <div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:items-start">
                 <aside
-                    class="space-y-6 lg:col-span-1 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm sticky top-6"
+                    class="hidden lg:block space-y-6 lg:col-span-1 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm sticky top-[7rem]"
                 >
                     <div>
                         <label
@@ -113,7 +113,6 @@ const breadcrumbSchema = {
                             id="sort-select"
                             class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:border-transparent transition-all appearance-none cursor-pointer"
                         >
-                            <option value="relevante">Mais relevantes</option>
                             <option value="az">Nome A-Z</option>
                             <option value="za">Nome Z-A</option>
                             <option value="cod-az">Código A-Z</option>
@@ -122,7 +121,7 @@ const breadcrumbSchema = {
                 </aside>
 
                 <section
-                    class="mt-8 lg:mt-0 lg:col-span-3"
+                    class="mt-0 lg:col-span-3"
                     aria-labelledby="products-heading"
                 >
                     <h2 id="products-heading" class="sr-only">
@@ -130,8 +129,41 @@ const breadcrumbSchema = {
                     </h2>
 
                     <div
+                        class="lg:hidden sticky top-20 z-30 -mx-4 sm:-mx-6 mb-5 border-b border-[#E2E8F0] bg-white px-4 py-3 shadow-sm sm:px-6"
+                    >
+                        <div class="flex items-center gap-3">
+                            <button
+                                type="button"
+                                id="mobile-filters-open"
+                                class="shrink-0 rounded-lg border border-[#0F172A] bg-white px-4 py-2.5 text-sm font-bold text-[#0F172A] transition-colors hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:ring-offset-2"
+                                aria-label="Abrir filtros"
+                                aria-expanded="false"
+                                aria-controls="mobile-filters-panel"
+                            >
+                                Filtros
+                            </button>
+
+                            <label for="mobile-search-input" class="sr-only">
+                                Buscar por nome ou codigo
+                            </label>
+                            <input
+                                type="search"
+                                id="mobile-search-input"
+                                placeholder="Nome ou codigo..."
+                                class="min-w-0 flex-1 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2.5 text-sm text-[#0F172A] placeholder-[#64748B] transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#065F46]"
+                            />
+                        </div>
+
+                        <div
+                            id="mobile-product-counter"
+                            class="mt-2 text-xs font-medium text-[#64748B]"
+                        >
+                        </div>
+                    </div>
+
+                    <div
                         id="product-counter"
-                        class="text-sm text-[#64748B] mb-4 font-medium"
+                        class="hidden lg:block text-sm text-[#64748B] mb-4 font-medium"
                     >
                     </div>
 
@@ -167,6 +199,105 @@ const breadcrumbSchema = {
                     </nav>
                 </section>
             </div>
+            <div
+                id="mobile-filters-panel"
+                class="fixed inset-0 z-[80] hidden h-screen w-full bg-white"
+                role="dialog"
+                aria-modal="true"
+                aria-hidden="true"
+                aria-labelledby="mobile-filters-title"
+            >
+                <div class="flex min-h-screen flex-col">
+                    <header
+                        class="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[#E2E8F0] bg-white px-4 py-4 shadow-sm"
+                    >
+                        <h3
+                            id="mobile-filters-title"
+                            class="text-lg font-bold text-[#0F172A]"
+                        >
+                            Filtrar e organizar
+                        </h3>
+
+                        <div class="flex items-center gap-2">
+                            <button
+                                type="button"
+                                id="mobile-filters-clear"
+                                class="rounded-lg px-3 py-2 text-sm font-bold text-[#065F46] transition-colors hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:ring-offset-2"
+                            >
+                                Limpar tudo
+                            </button>
+                            <button
+                                type="button"
+                                id="mobile-filters-close"
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-[#E2E8F0] text-xl font-bold leading-none text-[#0F172A] transition-colors hover:bg-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:ring-offset-2"
+                                aria-label="Fechar filtros"
+                            >
+                                X
+                            </button>
+                        </div>
+                    </header>
+
+                    <div class="flex-1 space-y-7 overflow-y-auto px-4 py-6">
+                        <div>
+                            <label
+                                for="mobile-category-select"
+                                class="block text-sm font-semibold text-[#0F172A] mb-2"
+                                >Categoria</label
+                            >
+                            <select
+                                id="mobile-category-select"
+                                class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-3 py-3 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:border-transparent transition-all appearance-none cursor-pointer"
+                            >
+                                <option value="">Todas as categorias</option>
+                                {
+                                    categories.map((cat) => (
+                                        <option
+                                            value={cat
+                                                .toLowerCase()
+                                                .replace(/\s+/g, "-")}
+                                        >
+                                            {cat}
+                                        </option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                for="mobile-sort-select"
+                                class="block text-sm font-semibold text-[#0F172A] mb-2"
+                                >Ordenacao</label
+                            >
+                            <select
+                                id="mobile-sort-select"
+                                class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-3 py-3 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:border-transparent transition-all appearance-none cursor-pointer"
+                            >
+                                <option value="az">Nome A-Z</option>
+                                <option value="za">Nome Z-A</option>
+                                <option value="cod-az">Codigo A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <footer
+                        class="sticky bottom-0 border-t border-[#E2E8F0] bg-white px-4 py-4 shadow-[0_-8px_20px_rgba(15,23,42,0.08)]"
+                    >
+                        <div
+                            id="mobile-filters-result-count"
+                            class="mb-3 text-sm font-medium text-[#64748B]"
+                        >
+                        </div>
+                        <button
+                            type="button"
+                            id="mobile-filters-apply"
+                            class="w-full rounded-lg bg-[#065F46] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#D97706] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:ring-offset-2"
+                        >
+                            Filtrar
+                        </button>
+                    </footer>
+                </div>
+            </div>
             <a
                 href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
                 target="_blank"
@@ -185,122 +316,323 @@ const breadcrumbSchema = {
 
         <script>
             const ITEMS_PER_PAGE = 16;
+            const DEFAULT_SORT = "az";
+            const VALID_SORTS = new Set(["az", "za", "cod-az"]);
+
             let products = [];
             let filteredProducts = [];
             let currentPage = 1;
+            let initialized = false;
+            let previousBodyOverflow = "";
+            let lastFocusedElement = null;
+
+            const state = {
+                search: "",
+                category: "",
+                sort: DEFAULT_SORT,
+            };
 
             const grid = document.getElementById("catalog-grid");
             const emptyState = document.getElementById("empty-state");
             const counter = document.getElementById("product-counter");
+            const mobileCounter = document.getElementById(
+                "mobile-product-counter",
+            );
             const paginationNav = document.getElementById("pagination-nav");
 
             const searchInput = document.getElementById("search-input");
             const categorySelect = document.getElementById("category-select");
             const sortSelect = document.getElementById("sort-select");
 
-            if (grid) {
-                products = JSON.parse(grid.dataset.initialProducts || "[]");
+            const mobileSearchInput = document.getElementById(
+                "mobile-search-input",
+            );
+            const mobileFiltersOpen = document.getElementById(
+                "mobile-filters-open",
+            );
+            const mobileFiltersPanel = document.getElementById(
+                "mobile-filters-panel",
+            );
+            const mobileFiltersClose = document.getElementById(
+                "mobile-filters-close",
+            );
+            const mobileFiltersClear = document.getElementById(
+                "mobile-filters-clear",
+            );
+            const mobileFiltersApply = document.getElementById(
+                "mobile-filters-apply",
+            );
+            const mobileCategorySelect = document.getElementById(
+                "mobile-category-select",
+            );
+            const mobileSortSelect =
+                document.getElementById("mobile-sort-select");
+            const mobileFiltersResultCount = document.getElementById(
+                "mobile-filters-result-count",
+            );
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", init, {
+                    once: true,
+                });
+            } else {
                 init();
             }
 
-            document.addEventListener("DOMContentLoaded", () => {
-                const grid = document.getElementById("catalog-grid");
-                if (grid && grid.dataset.initialProducts) {
-                    try {
-                        products = JSON.parse(grid.dataset.initialProducts);
-                        init();
-                    } catch (error) {
-                        console.error(
-                            "Erro ao ler produtos do dataset:",
-                            error,
-                        );
-                    }
-                }
-            });
-
             function init() {
-                const params = new URLSearchParams(window.location.search);
-                if (params.get("busca") && searchInput)
-                    searchInput.value = params.get("busca");
-                if (params.get("categoria") && categorySelect)
-                    categorySelect.value = params.get("categoria");
-                if (params.get("ordenacao") && sortSelect)
-                    sortSelect.value = params.get("ordenacao");
-                if (params.get("page"))
-                    currentPage = parseInt(params.get("page"), 10) || 1;
+                if (initialized || !grid) return;
+                initialized = true;
 
-                searchInput?.addEventListener("input", () => {
-                    currentPage = 1;
-                    applyFilters();
-                });
-                categorySelect?.addEventListener("change", () => {
-                    currentPage = 1;
-                    applyFilters();
-                });
-                sortSelect?.addEventListener("change", () => {
-                    applyFilters();
-                });
+                try {
+                    products = JSON.parse(grid.dataset.initialProducts || "[]");
+                } catch (error) {
+                    console.error("Erro ao ler produtos do dataset:", error);
+                    products = [];
+                }
 
+                readUrlParams();
+                syncControls();
+                bindEvents();
                 applyFilters(false);
             }
 
-            function applyFilters(updateHistory = true) {
-                const search = searchInput?.value.trim().toLowerCase() || "";
-                const categorySlug = categorySelect?.value || "";
-                const sort = sortSelect?.value || "relevante";
+            function readUrlParams() {
+                const params = new URLSearchParams(window.location.search);
+                const urlSort = params.get("ordenacao");
 
-                filteredProducts = products.filter((product) => {
+                state.search = params.get("busca") || "";
+                state.category = params.get("categoria") || "";
+                state.sort = VALID_SORTS.has(urlSort) ? urlSort : DEFAULT_SORT;
+                currentPage = parseInt(params.get("page") || "1", 10) || 1;
+            }
+
+            function bindEvents() {
+                searchInput?.addEventListener("input", () => {
+                    state.search = searchInput.value;
+                    if (mobileSearchInput)
+                        mobileSearchInput.value = state.search;
+                    currentPage = 1;
+                    applyFilters();
+                });
+
+                mobileSearchInput?.addEventListener("input", () => {
+                    state.search = mobileSearchInput.value;
+                    if (searchInput) searchInput.value = state.search;
+                    currentPage = 1;
+                    applyFilters();
+                });
+
+                categorySelect?.addEventListener("change", () => {
+                    state.category = categorySelect.value;
+                    syncMobileFilterControls();
+                    currentPage = 1;
+                    applyFilters();
+                });
+
+                sortSelect?.addEventListener("change", () => {
+                    state.sort = normalizeSort(sortSelect.value);
+                    syncMobileFilterControls();
+                    currentPage = 1;
+                    applyFilters();
+                });
+
+                mobileFiltersOpen?.addEventListener("click", openMobileFilters);
+                mobileFiltersClose?.addEventListener(
+                    "click",
+                    closeMobileFilters,
+                );
+                mobileFiltersClear?.addEventListener("click", clearAllFilters);
+                mobileFiltersApply?.addEventListener("click", () => {
+                    state.category = mobileCategorySelect?.value || "";
+                    state.sort = normalizeSort(mobileSortSelect?.value);
+                    currentPage = 1;
+                    syncControls();
+                    applyFilters();
+                    closeMobileFilters();
+                });
+
+                mobileCategorySelect?.addEventListener(
+                    "change",
+                    updateMobilePreviewCount,
+                );
+                mobileSortSelect?.addEventListener(
+                    "change",
+                    updateMobilePreviewCount,
+                );
+
+                document.addEventListener("keydown", (event) => {
+                    if (
+                        event.key === "Escape" &&
+                        !mobileFiltersPanel?.classList.contains("hidden")
+                    ) {
+                        closeMobileFilters();
+                    }
+                });
+
+                paginationNav?.addEventListener("click", (event) => {
+                    const button = event.target.closest("button[data-page]");
+                    if (!button) return;
+
+                    const targetPage = parseInt(button.dataset.page, 10);
+                    if (targetPage && targetPage !== currentPage) {
+                        currentPage = targetPage;
+                        applyFilters();
+                        window.scrollTo({
+                            top:
+                                document.getElementById(
+                                    "conteudo-principal",
+                                )?.offsetTop - 20,
+                            behavior: "smooth",
+                        });
+                    }
+                });
+            }
+
+            function applyFilters(updateHistory = true) {
+                state.search = state.search.trim();
+                state.sort = normalizeSort(state.sort);
+
+                filteredProducts = getFilteredProducts(
+                    state.search,
+                    state.category,
+                    state.sort,
+                );
+
+                const totalPages = Math.ceil(
+                    filteredProducts.length / ITEMS_PER_PAGE,
+                );
+                if (currentPage > totalPages) currentPage = totalPages || 1;
+
+                if (updateHistory) updateUrl();
+                updateUI();
+                updateMobilePreviewCount();
+            }
+
+            function getFilteredProducts(searchValue, categorySlug, sortValue) {
+                const search = searchValue.trim().toLowerCase();
+                const sort = normalizeSort(sortValue);
+
+                const result = products.filter((product) => {
+                    const productCategorySlug = slugify(product.category);
                     const matchesSearch =
+                        !search ||
                         product.name.toLowerCase().includes(search) ||
-                        product.code.toLowerCase().includes(search);
-                    const currentProdSlug = product.category
-                        .toLowerCase()
-                        .replace(/\s+/g, "-");
+                        product.code.toLowerCase().includes(search) ||
+                        product.category.toLowerCase().includes(search);
                     const matchesCategory =
-                        !categorySlug || currentProdSlug === categorySlug;
+                        !categorySlug || productCategorySlug === categorySlug;
+
                     return matchesSearch && matchesCategory;
                 });
 
-                if (sort === "az") {
-                    filteredProducts.sort((a, b) =>
-                        a.name.localeCompare(b.name),
-                    );
-                } else if (sort === "za") {
-                    filteredProducts.sort((a, b) =>
-                        b.name.localeCompare(a.name),
-                    );
-                } else if (sort === "cod-az") {
-                    filteredProducts.sort((a, b) =>
-                        a.code.localeCompare(b.code),
-                    );
-                } else {
-                    filteredProducts.sort((a, b) => a.id - b.id);
+                result.sort((a, b) => {
+                    if (sort === "za") return b.name.localeCompare(a.name);
+                    if (sort === "cod-az")
+                        return a.code.localeCompare(b.code);
+                    return a.name.localeCompare(b.name);
+                });
+
+                return result;
+            }
+
+            function updateUrl() {
+                const newParams = new URLSearchParams();
+
+                if (state.search) newParams.set("busca", state.search);
+                if (state.category) newParams.set("categoria", state.category);
+                if (state.sort !== DEFAULT_SORT)
+                    newParams.set("ordenacao", state.sort);
+                if (currentPage > 1)
+                    newParams.set("page", currentPage.toString());
+
+                const newUrl = `${window.location.pathname}${newParams.toString() ? "?" + newParams.toString() : ""}`;
+                window.history.replaceState({ path: newUrl }, "", newUrl);
+            }
+
+            function normalizeSort(sort) {
+                return VALID_SORTS.has(sort) ? sort : DEFAULT_SORT;
+            }
+
+            function slugify(value) {
+                return value.toLowerCase().replace(/\s+/g, "-");
+            }
+
+            function formatProductCount(total) {
+                return `${total} ${total === 1 ? "produto disponivel" : "produtos disponiveis"}`;
+            }
+
+            function syncControls() {
+                if (searchInput) searchInput.value = state.search;
+                if (mobileSearchInput) mobileSearchInput.value = state.search;
+                if (categorySelect) categorySelect.value = state.category;
+                if (sortSelect) sortSelect.value = state.sort;
+                syncMobileFilterControls();
+            }
+
+            function syncMobileFilterControls() {
+                if (mobileCategorySelect)
+                    mobileCategorySelect.value = state.category;
+                if (mobileSortSelect) mobileSortSelect.value = state.sort;
+                updateMobilePreviewCount();
+            }
+
+            function openMobileFilters() {
+                if (!mobileFiltersPanel) return;
+
+                lastFocusedElement = document.activeElement;
+                syncMobileFilterControls();
+                previousBodyOverflow = document.body.style.overflow;
+                document.body.style.overflow = "hidden";
+                mobileFiltersPanel.classList.remove("hidden");
+                mobileFiltersPanel.setAttribute("aria-hidden", "false");
+                mobileFiltersOpen?.setAttribute("aria-expanded", "true");
+                mobileFiltersClose?.focus();
+            }
+
+            function closeMobileFilters() {
+                if (!mobileFiltersPanel) return;
+
+                mobileFiltersPanel.classList.add("hidden");
+                mobileFiltersPanel.setAttribute("aria-hidden", "true");
+                mobileFiltersOpen?.setAttribute("aria-expanded", "false");
+                document.body.style.overflow = previousBodyOverflow;
+
+                if (lastFocusedElement instanceof HTMLElement) {
+                    lastFocusedElement.focus();
                 }
+            }
 
-                if (updateHistory) {
-                    const newParams = new URLSearchParams();
-                    if (search) newParams.set("busca", search);
-                    if (categorySlug) newParams.set("categoria", categorySlug);
-                    if (sort && sort !== "relevante")
-                        newParams.set("ordenacao", sort);
-                    if (currentPage > 1)
-                        newParams.set("page", currentPage.toString());
+            function clearAllFilters() {
+                state.search = "";
+                state.category = "";
+                state.sort = DEFAULT_SORT;
+                currentPage = 1;
+                syncControls();
+                applyFilters();
+            }
 
-                    const newUrl = `${window.location.pathname}${newParams.toString() ? "?" + newParams.toString() : ""}`;
-                    window.history.replaceState({ path: newUrl }, "", newUrl);
-                }
+            function updateMobilePreviewCount() {
+                if (!mobileFiltersResultCount) return;
 
-                updateUI();
+                const category = mobileCategorySelect?.value || "";
+                const sort = normalizeSort(mobileSortSelect?.value);
+                const total = getFilteredProducts(
+                    state.search,
+                    category,
+                    sort,
+                ).length;
+
+                mobileFiltersResultCount.textContent = formatProductCount(total);
             }
 
             function updateUI() {
                 if (!grid) return;
 
                 const totalFiltered = filteredProducts.length;
+                const formattedCount = formatProductCount(totalFiltered);
 
-                if (counter) {
-                    counter.textContent = `${totalFiltered} ${totalFiltered === 1 ? "produto disponível" : "produtos disponíveis"}`;
-                }
+                if (counter) counter.textContent = formattedCount;
+                if (mobileCounter) mobileCounter.textContent = formattedCount;
 
                 if (totalFiltered === 0) {
                     grid.innerHTML = "";
@@ -312,8 +644,6 @@ const breadcrumbSchema = {
                 emptyState?.classList.add("hidden");
 
                 const totalPages = Math.ceil(totalFiltered / ITEMS_PER_PAGE);
-                if (currentPage > totalPages) currentPage = totalPages || 1;
-
                 const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
                 const paginatedItems = filteredProducts.slice(
                     startIndex,
@@ -323,21 +653,21 @@ const breadcrumbSchema = {
                 grid.innerHTML = paginatedItems
                     .map(
                         (product) => `
-                        <article class="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-800 hover:shadow-xl focus-within:ring-2 focus-within:ring-emerald-800 focus-within:ring-offset-2">
+                        <a href="/produto/${product.slug}" class="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:border-emerald-800 hover:shadow-xl focus-within:ring-2 focus-within:ring-emerald-800 focus-within:ring-offset-2">
                             <div class="overflow-hidden bg-slate-100 aspect-[4/3] relative flex items-center justify-center">
                                 <img 
-                                src="${product.image}" 
-                                alt="${product.name}" 
-                                loading="lazy" 
-                                decoding="async" 
-                                class="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                                    src="${product.image.src}" 
+                                    alt="${product.name}" 
+                                    loading="lazy" 
+                                    decoding="async" 
+                                    class="h-full w-full object-contain bg-[rgb(236, 239, 241)] transform transition-transform duration-500 ease-out"                                
                                 >
                             </div>
                             
                             <div class="p-5 flex-1 flex flex-col">
                                 <div class="mb-3 flex items-center justify-between gap-3">
                                 <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800">${product.category}</span>
-                                <span class="text-xs font-bold text-amber-600">Cód. ${product.code}</span>
+                                <span class="text-xs font-bold text-amber-600">Cod. ${product.code}</span>
                                 </div>
                                 
                                 <h4 class="text-lg font-bold text-slate-950 mb-2 tracking-tight line-clamp-2">${product.name}</h4>
@@ -345,18 +675,18 @@ const breadcrumbSchema = {
                                 <p class="text-sm text-slate-600 mb-4 line-clamp-2">${product.description || ""}</p>
                                 
                                 <p class="text-xs text-slate-400 font-medium mt-auto mb-4">
-                                ${product.colors.length} ${product.colors.length === 1 ? "cor disponível" : "cores disponíveis"}
+                                ${product.colors.length} ${product.colors.length === 1 ? "cor disponivel" : "cores disponiveis"}
                                 </p>
 
-                                <a 
+                            <span
                             href="/produto/${product.slug}" 
                             class="inline-flex w-full items-center justify-center text-center px-4 py-3 rounded-lg text-sm font-bold text-white bg-emerald-900 hover:bg-amber-500 hover:text-slate-950 focus:outline-none transition-colors duration-200"
                             aria-label="Ver detalhes do produto ${product.name}"
-                        >
-                            Ver detalhes
-                        </a>
-                            </div>
-                            </article>
+                            >
+                                Ver detalhes
+                            </span>
+                        </div>
+                    </a>
                     `,
                     )
                     .join("");
@@ -417,28 +747,6 @@ const breadcrumbSchema = {
                 `;
 
                 paginationNav.innerHTML = html;
-
-                paginationNav
-                    .querySelectorAll("button[data-page]")
-                    .forEach((btn) => {
-                        btn.addEventListener("click", (e) => {
-                            const targetPage = parseInt(
-                                e.currentTarget.dataset.page,
-                                10,
-                            );
-                            if (targetPage && targetPage !== currentPage) {
-                                currentPage = targetPage;
-                                applyFilters();
-                                window.scrollTo({
-                                    top:
-                                        document.getElementById(
-                                            "conteudo-principal",
-                                        )?.offsetTop - 20,
-                                    behavior: "smooth",
-                                });
-                            }
-                        });
-                    });
             }
         </script>
     </body>

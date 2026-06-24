@@ -1,3 +1,7 @@
+---
+const isHome = Astro.url.pathname === "/";
+---
+
 <header
     id="site-header"
     class="site-header border-b border-transparent sticky top-0 z-40"
@@ -17,12 +21,18 @@
             <a href="/catalogo" class="hover:text-emerald-800 transition-colors"
                 >Catálogo</a
             >
-            <a href="#about" class="hover:text-emerald-800 transition-colors"
-                >Quem Somos</a
-            >
-            <a href="#contact" class="hover:text-emerald-800 transition-colors"
-                >Contato</a
-            >
+            {
+                isHome && (
+                    <>
+                        <a
+                            href="#about"
+                            class="hover:text-emerald-800 transition-colors"
+                        >
+                            Quem Somos
+                        </a>
+                    </>
+                )
+            }
         </nav>
 
         <button
@@ -34,21 +44,27 @@
             <span class="text-2xl leading-none">☰</span>
         </button>
     </div>
-
     <div
         id="mobile-menu"
         class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4"
     >
         <nav class="flex flex-col gap-3 text-sm font-semibold text-slate-700">
-            <a href="#products" onclick="toggleMobileMenu(false)" class="py-2"
+            <a href="/catalogo" onclick="toggleMobileMenu(false)" class="py-2"
                 >Catálogo</a
             >
-            <a href="#about" onclick="toggleMobileMenu(false)" class="py-2"
-                >Quem Somos</a
-            >
-            <a href="#contact" onclick="toggleMobileMenu(false)" class="py-2"
-                >Contato</a
-            >
+            {
+                isHome && (
+                    <>
+                        <a
+                            href="#about"
+                            onclick="toggleMobileMenu(false)"
+                            class="py-2"
+                        >
+                            Quem Somos
+                        </a>
+                    </>
+                )
+            }
             <a
                 href="https://wa.me/5551984502222?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20seus%20brindes."
                 target="_blank"

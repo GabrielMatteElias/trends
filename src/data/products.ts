@@ -1,3 +1,5 @@
+import squeezeAluminio from "../assets/products/garrafas_e_squeezes/squeeze_aluminio.png";
+
 
 export interface ProductDimensions {
     height?: string | null;
@@ -34,7 +36,7 @@ export const products: Product[] = [
         name: "Squeeze Alumínio 500ml",
         category: "Garrafas e Squeezes",
         description: "Squeeze de alumínio 500ml com pintura metalizada, tampa rosqueável e acompanha um segundo bico com mosquetão. Não é térmico.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Squeeze+Alum%C3%ADnio+500ml",
+        image: "https://placehold.co/600x400/cccccc/969696?text=Squeeze+Inox+750ml",
         dimensions: { height: "21.3 cm", width: "5.5 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -139,7 +141,7 @@ export const products: Product[] = [
         name: "Garrafa Alumínio 630ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa de alumínio 630ml com tampa plástica rosqueável e alça integrada.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+Alum%C3%ADnio+630ml",
+        image: squeezeAluminio,
         dimensions: { height: "24.7 cm", width: "6.6 cm", circumference: "20.8 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
