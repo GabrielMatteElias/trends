@@ -481,10 +481,10 @@ const productsJson = JSON.stringify(products);
                 const bottomProducts = selectedProducts.slice(5);
                 const makeLoop = (items) => [...items, ...items];
                 const renderCard = (product) => `
-                <a href="/produto/${product.slug}" class="featured-card group block w-56 max-w-full overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
+                <a href="/produto/${product.slug}" class="featured-card group block w-56 max-w-full transition-all duration-300 hover:-translate-y-1 overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25" aria-label="Ver detalhes de ${product.name}">
                     <div class="aspect-square overflow-hidden flex items-center justify-center p-4 bg-slate-50/50 rounded-t-xl">
                         <img
-                            src="${product.image}"
+                            src="${product.image.src}"
                             alt="${product.name}"
                             loading="lazy"
                             decoding="async"
