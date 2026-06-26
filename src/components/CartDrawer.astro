@@ -114,6 +114,7 @@
             removeFromCart,
             updateQuantity,
             generateWhatsAppUrl,
+            MAX_CART_ITEM_QUANTITY,
         } from "../scripts/cartStore";
 
         const panel = document.getElementById("cart-panel");
@@ -124,6 +125,9 @@
         const badge = document.getElementById("cart-badge");
         const countText = document.getElementById("cart-count");
         const whatsappBtn = document.getElementById("whatsapp-submit");
+        const integerFormatter = new Intl.NumberFormat("pt-BR", {
+            maximumFractionDigits: 0,
+        });
 
         function toggleCart(open: boolean) {
             const isDesktop = window.innerWidth >= 1024;
@@ -149,7 +153,9 @@
                 badge.innerText = totalItems.toString();
                 badge.classList.toggle("hidden", totalItems === 0);
             }
-            if (countText) countText.innerText = totalItems.toString();
+            if (countText) {
+                countText.innerText = integerFormatter.format(totalItems);
+            }
             if (whatsappBtn)
                 (whatsappBtn as HTMLButtonElement).disabled = cart.length === 0;
 
@@ -183,7 +189,7 @@
                 <div class="flex items-center justify-between mt-auto">
                     <div class="flex items-center border rounded-lg bg-gray-50 overflow-hidden">
                     <button class="qty-btn minus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria label="Diminuir quantidade">-</button>
-                    <input type="number" value="${item.quantity}" min="1" class="qty-input outline-none w-10 text-center text-xs font-bold bg-transparent border-none focus:ring-0" data-id="${item.id}" />
+                    <input type="number" value="${item.quantity}" min="1" max="${MAX_CART_ITEM_QUANTITY}" class="qty-input outline-none w-14 text-center text-xs font-bold bg-transparent border-none focus:ring-0" data-id="${item.id}" />
                     <button class="qty-btn plus p-1.5 hover:bg-gray-200" data-id="${item.id}" aria-label="Aumentar quantidade">+</button>
                     </div>
                 </div>

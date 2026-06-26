@@ -1,6 +1,18 @@
 export const CART_STORAGE_KEY = 'trends_brindes_cart';
+export const MAX_CART_ITEM_QUANTITY = 10000;
 
 let _cartCache = null;
+
+const clampQuantity = (quantity) => {
+    const parsed = Number(quantity);
+    if (!Number.isFinite(parsed)) return 1;
+    return Math.min(MAX_CART_ITEM_QUANTITY, Math.max(1, Math.floor(parsed)));
+};
+
+const normalizeCart = (cart) => cart.map(item => ({
+    ...item,
+    quantity: clampQuantity(item.quantity),
+}));
 
 export const invalidateCache = () => {
     _cartCache = null;
@@ -11,7 +23,11 @@ export const getCart = () => {
     if (_cartCache !== null) return _cartCache;
     try {
         const saved = localStorage.getItem(CART_STORAGE_KEY);
-        _cartCache = saved ? JSON.parse(saved) : [];
+        const parsedCart = saved ? JSON.parse(saved) : [];
+        _cartCache = normalizeCart(parsedCart);
+        if (saved && JSON.stringify(parsedCart) !== JSON.stringify(_cartCache)) {
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(_cartCache));
+        }
     } catch (e) {
         console.warn('[cartStore] Dados do carrinho corrompidos. Limpando.', e);
         localStorage.removeItem(CART_STORAGE_KEY);
@@ -21,20 +37,21 @@ export const getCart = () => {
 };
 
 export const saveCart = (cart) => {
-    _cartCache = cart; // Atualiza cache ANTES de persistir
+    const normalizedCart = normalizeCart(cart);
+    _cartCache = normalizedCart; // Atualiza cache ANTES de persistir
     try {
-        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(normalizedCart));
     } catch (e) {
-        console.warn('[cartStore] Falha ao salvar carrinho no localStorage.', e);
+        console.warn('[cartStore] Falha ao salvar carrinho.', e);
     }
-    window.dispatchEvent(new CustomEvent('cart-updated', { detail: cart }));
+    window.dispatchEvent(new CustomEvent('cart-updated', { detail: normalizedCart }));
 };
 
 export const addToCart = (product) => {
     const cart = getCart();
     const existingIndex = cart.findIndex(item => item.id === product.id);
     if (existingIndex > -1) {
-        cart[existingIndex].quantity += 1;
+        cart[existingIndex].quantity = clampQuantity(cart[existingIndex].quantity + 1);
     } else {
         cart.push({ ...product, quantity: 1 });
     }
@@ -48,9 +65,9 @@ export const removeFromCart = (productId) => {
 
 export const updateQuantity = (productId, quantity) => {
     const cart = getCart();
-    const index = cart.findIndex(item => item.id === productId);
+    const index = cart.findIndex(item => String(item.id) === String(productId));
     if (index > -1) {
-        cart[index].quantity = Math.max(1, Math.floor(quantity));
+        cart[index].quantity = clampQuantity(quantity);
         saveCart(cart);
     }
 };
