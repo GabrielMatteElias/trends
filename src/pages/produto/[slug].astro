@@ -89,10 +89,11 @@ const dimensionLabels: Record<string, string> = {
             <div class="max-w-6xl mx-auto">
                 <nav aria-label="Breadcrumb" class="mb-8">
                     <a
-                        href="/"
+                        href="#"
+                        id="back-link"
                         class="inline-flex items-center text-sm font-bold text-emerald-800 transition-colors hover:text-amber-600"
                     >
-                        ← Voltar para o início
+                        ← Voltar
                     </a>
                 </nav>
 
@@ -348,6 +349,18 @@ const dimensionLabels: Record<string, string> = {
                     "bg-[#065F46]",
                 );
             }, 2000);
+        }
+    });
+
+    const backLink = document.getElementById("back-link");
+
+    backLink?.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "/";
         }
     });
 </script>

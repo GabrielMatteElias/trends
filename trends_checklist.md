@@ -1,5 +1,13 @@
-0. Funcionalidades
+ITENS ADICIONADOS CATALOGO
+Ja foram feitas as 2 primeiras paginas do canvas(garrafas e squeezes)
+https://www.canva.com/design/DAHNYmYlbZo/NnkD7qJW1q-su1SQ9jS07w/edit
 
+    [ ] Validar nome
+    [ ] Validar foto
+    [ ] Validar codigo dos produtos
+    [ ] Validar descricoes dos produtos
+
+0. Funcionalidades
     [ ] Validar metadados BaseLayout
 
     [ ] Validar produtos pagina index vitrine e preview catalogo

@@ -1,5 +1,25 @@
-import squeezeAluminio from "../assets/products/garrafas_e_squeezes/squeeze_aluminio.png";
-
+import squeezeAluminio500 from "../assets/products/garrafas_e_squeezes/squeeze_aluminio_500.png";
+import squeezeInox750 from "../assets/products/garrafas_e_squeezes/squeeze_inox_750.webp";
+import garrafaTermica800 from "../assets/products/garrafas_e_squeezes/garrafa_termica_800.png";
+import garrafaInox750 from "../assets/products/garrafas_e_squeezes/garrafa_inox_750.webp";
+import garrafaTermica500 from "../assets/products/garrafas_e_squeezes/garrafa_termica_500.webp";
+import garrafaTermica750 from "../assets/products/garrafas_e_squeezes/garrafa_termica_750.webp";
+import garrafaTermicaInox550 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_550.webp";
+import garrafaAluminio630 from "../assets/products/garrafas_e_squeezes/garrafa_aluminio_630.png";
+import garrafaTermicaInox450 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_450.webp";
+import kitGarrafaTermicaInox450 from "../assets/products/garrafas_e_squeezes/kit_garrafa_termica_inox_450.webp";
+import garrafaTermica900 from "../assets/products/garrafas_e_squeezes/garrafa_termica_900.png";
+import garrafaTermicaInox750 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_750.webp";
+import garrafaTermicaInox500 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_500.webp";
+import garrafaTermica500_2 from "../assets/products/garrafas_e_squeezes/garrafa_termica_500_2.png";
+import garrafaTermica850 from "../assets/products/garrafas_e_squeezes/garrafa_termica_850.webp";
+import garrafaTermica950 from "../assets/products/garrafas_e_squeezes/garrafa_termica_950.png";
+import garrafaTermica700 from "../assets/products/garrafas_e_squeezes/garrafa_termica_700.png";
+import garrafaAluminio800 from "../assets/products/garrafas_e_squeezes/garrafa_aluminio_800.png";
+import garrafaTermicaInox900 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_900.webp";
+import garrafaTermicaInox950 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_950.png";
+import garrafaTermicaInox1000 from "../assets/products/garrafas_e_squeezes/garrafa_termica_inox_1000.png";
+import garrafaTermica1200 from "../assets/products/garrafas_e_squeezes/garrafa_termica_1200.png";
 
 export interface ProductDimensions {
     height?: string | null;
@@ -36,7 +56,7 @@ export const products: Product[] = [
         name: "Squeeze Alumínio 500ml",
         category: "Garrafas e Squeezes",
         description: "Squeeze de alumínio 500ml com pintura metalizada, tampa rosqueável e acompanha um segundo bico com mosquetão. Não é térmico.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Squeeze+Inox+750ml",
+        image: squeezeAluminio500,
         dimensions: { height: "21.3 cm", width: "5.5 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -51,7 +71,7 @@ export const products: Product[] = [
         name: "Squeeze Inox 750ml",
         category: "Garrafas e Squeezes",
         description: "Squeeze feito em inox com 750ml. Possui tampa plástica, bocal com tampa protetora e alça para transporte. Parceiro perfeito para atividades físicas.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Squeeze+Inox+750ml",
+        image: squeezeInox750,
         dimensions: { height: "25.5 cm", width: "8.7 cm", circumference: "22.3 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -66,7 +86,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 800ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica em inox 304 com capacidade de 800ml. Estrutura de parede dupla e vedação a vácuo para conservar a temperatura. Tampa rosqueável com protetor de bocal e trava de segurança.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+800ml",
+        image: garrafaTermica800,
         dimensions: { height: "30.6 cm", width: "7.8 cm", circumference: "24.5 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -81,7 +101,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 750ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de 750ml em inox 304, excelente para manter a temperatura, quente ou fria. Tampa plástica rosqueável e alça flexível emborrachada.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+750ml",
+        image: garrafaInox750,
         dimensions: { height: "26.1 cm", width: "7.8 cm", circumference: "24.5 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -96,7 +116,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 500ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica em inox com tampa rosqueável e pintura em spray. Estrutura de parede dupla e vedação a vácuo. Obs.: Tons de azul têm acabamento acetinado, demais cores opaco.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+500ml",
+        image: garrafaTermica500,
         dimensions: { height: "27.6 cm", width: "7 cm", circumference: "22 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -111,7 +131,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 750ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa 750ml em inox com tampa rosqueável e pintura fosca. Obs.: Não é um modelo térmico.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+750ml+Fosca",
+        image: garrafaTermica750,
         dimensions: { height: "27.5 cm", width: "7.3 cm", circumference: "23 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -126,7 +146,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica Inox 550ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa Térmica em Inox 304 com parede dupla e capacidade de 550ml. Tampa rosqueável e alça para transporte.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+Inox+550ml",
+        image: garrafaTermicaInox550,
         dimensions: { height: "23.4 cm", width: "6.1 cm", circumference: "23 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -141,7 +161,7 @@ export const products: Product[] = [
         name: "Garrafa Alumínio 630ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa de alumínio 630ml com tampa plástica rosqueável e alça integrada.",
-        image: squeezeAluminio,
+        image: garrafaAluminio630,
         dimensions: { height: "24.7 cm", width: "6.6 cm", circumference: "20.8 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -152,11 +172,11 @@ export const products: Product[] = [
     {
         id: 9,
         code: "18705",
-        slug: "garrafa-termica-500ml-infusor",
+        slug: "garrafa-termica-500ml",
         name: "Garrafa Térmica 500ml",
         category: "Garrafas e Squeezes",
-        description: "Garrafa térmica 500ml em aço inoxidável 304, acompanha infusor de bebidas.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+500ml+Infusor",
+        description: "Garrafa térmica 500ml.",
+        image: garrafaTermica500_2,
         dimensions: { height: "22.6 cm", width: "6.5 cm", circumference: "20.5 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -171,7 +191,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica Inox 450ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica 450ml em inox com tampa que pode ser usada como caneca. Tampa interna em plástico resistente e base com borracha antiderrapante.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+Inox+450ml",
+        image: garrafaTermicaInox450,
         dimensions: { height: "23.9 cm", width: "9.9 cm", circumference: "21 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -186,7 +206,7 @@ export const products: Product[] = [
         name: "Kit Garrafa Térmica Inox 450ml",
         category: "Garrafas e Squeezes",
         description: "Kit garrafa térmica 450ml com duas tampas extras que podem ser usadas como xícaras. Garrafa em inox com revestimento plástico. Acompanha sacola de papel com berço de papelão.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Kit+Garrafa+T%C3%A9rmica+450ml",
+        image: kitGarrafaTermicaInox450,
         dimensions: { height: "23.9 cm", width: "9.9 cm", circumference: "21 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -201,7 +221,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 900ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de parede dupla em inox, capacidade de 900ml. Tampa rosqueável com alça, bico flip e canudo interno.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+900ml",
+        image: garrafaTermica900,
         dimensions: { height: "24.6 cm", width: "9 cm", circumference: "28.8 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -216,7 +236,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica Inox 750ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica inox 750ml com pintura eletrostática durável. Parede dupla e isolamento a vácuo. Tampa rosqueável e alça para transporte.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+Inox+750ml",
+        image: garrafaTermicaInox750,
         dimensions: { height: "24.6 cm", width: "9 cm", circumference: "28.8 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -231,7 +251,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica Inox 500ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica 500ml em inox com parede dupla e cordão tipo mosquetão. Tampa rosqueável com tampa plástica superior e copo adicional rosqueável na parte inferior.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+Inox+500ml+Copo",
+        image: garrafaTermicaInox500,
         dimensions: { height: "25.9 cm", width: "7.5 cm", circumference: "23.8 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -242,11 +262,11 @@ export const products: Product[] = [
     {
         id: 15,
         code: "15157",
-        slug: "garrafa-termica-500ml-filtro",
-        name: "Garrafa Térmica 500ml",
+        slug: "garrafa-termica-900ml",
+        name: "Garrafa Térmica 900ml",
         category: "Garrafas e Squeezes",
-        description: "Garrafa térmica de aço inox 304 com parede dupla. Possui filtro para bebidas saborizadas e anel de silicone para vedação segura.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+500ml+Filtro",
+        description: "Garrafa térmica de aço inox com 900ml.",
+        image: garrafaTermicaInox900,
         dimensions: { height: "22.3 cm", width: "7.1 cm", circumference: "22.3 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -261,7 +281,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 850ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica de aço inox com parede dupla, capacidade de 900ml. Tampa rosqueável com alça, anel de silicone e opção de hidratação por canudo ou bico.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+850ml",
+        image: garrafaTermica850,
         dimensions: { height: "24.3 cm", width: "8.9 cm", circumference: "28.1 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -272,11 +292,11 @@ export const products: Product[] = [
     {
         id: 17,
         code: "15165",
-        slug: "garrafa-termica-850ml-bico-flip",
-        name: "Garrafa Térmica 850ml",
+        slug: "garrafa-termica-950ml-bico-flip",
+        name: "Garrafa Térmica 950ml",
         category: "Garrafas e Squeezes",
-        description: "Garrafa térmica de 850ml em aço inox com parede dupla. Possui bico flip + canudo, tampa rosqueável com alça e anel de silicone para vedação.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+850ml+Bico+Flip",
+        description: "Garrafa térmica de 850ml em aço inox com parede dupla. Possui bico flip, tampa rosqueável com alça.",
+        image: garrafaTermicaInox950,
         dimensions: { height: "24.4 cm", width: "8.7 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -291,7 +311,7 @@ export const products: Product[] = [
         name: "Garrafa Térmica 950ml",
         category: "Garrafas e Squeezes",
         description: "Garrafa térmica em inox com capacidade de 950ml. Design ergonômico, parede dupla e isolamento a vácuo. Tampa rosqueável em inox com alça fixa. Pintura eletrostática.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+950ml",
+        image: garrafaTermica950,
         dimensions: { height: "25.8 cm", width: "8.6 cm" },
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -306,7 +326,7 @@ export const products: Product[] = [
         name: "Garrafa térmica 710ml",
         category: "Garrafas e Squeezes",
         description: "Produzida em material de alta qualidade, mantém bebidas na temperatura ideal. Design moderno com tampa rosca, alta vedação e alça resistente. Formato ergonômico.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+T%C3%A9rmica+710ml",
+        image: garrafaTermica700,
         dimensions: null,
         colors: [
             { name: "Preto", hex: "#000000" },
@@ -316,12 +336,40 @@ export const products: Product[] = [
     },
     {
         id: 20,
+        code: "xxx",
+        slug: "garrafa-termica-inox-1000ml",
+        name: "Garrafa Térmica Inox 1L",
+        category: "Garrafas e Squeezes",
+        description: "Garrafa Térmica em Inox 304 com parede dupla e capacidade de 1 litro. Tampa rosqueável.",
+        image: garrafaTermicaInox1000,
+        dimensions: { height: "23.4 cm", width: "6.1 cm", circumference: "23 cm" },
+        colors: [
+            { name: "Prata", hex: "#C0C0C0" },
+        ],
+    },
+    {
+        id: 21,
+        code: "xxx",
+        slug: "garrafa-termica-inox-1200ml",
+        name: "Garrafa Térmica Inox 1,2 Litros",
+        category: "Garrafas e Squeezes",
+        description: "Garrafa Térmica em Inox 304 com parede dupla e capacidade de 550ml. Tampa rosqueável e alça para transporte.",
+        image: garrafaTermica1200,
+        dimensions: { height: "23.4 cm", width: "6.1 cm", circumference: "23 cm" },
+        colors: [
+            { name: "Preto", hex: "#000000" },
+            { name: "Prata", hex: "#C0C0C0" },
+            { name: "Azul", hex: "#0000FF" },
+        ],
+    },
+    {
+        id: 9999,
         code: "N/A",
         slug: "garrafa-aluminio-800ml",
         name: "Garrafa em alumínio 800ml",
         category: "Garrafas e Squeezes",
         description: "Design moderno com dupla camada. Base em silicone removível para evitar riscos. Tampa com alça integrada para transporte fácil e seguro.",
-        image: "https://placehold.co/600x400/cccccc/969696?text=Garrafa+Alum%C3%ADnio+800ml",
+        image: garrafaAluminio800,
         dimensions: null,
         colors: [
             { name: "Preto", hex: "#000000" },
